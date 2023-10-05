@@ -64,3 +64,6 @@ Table Admins {
   created_at datetime
   updated_at datetime
 }
+
+
+![Alt text](image.png)
