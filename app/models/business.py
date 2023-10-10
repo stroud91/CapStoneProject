@@ -11,7 +11,12 @@ class Business(db.Model):
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=True)
     address = db.Column(db.String, nullable=False)
-    phone = db.Column(db.String, nullable=True)
+    city = db.Column(db.String(length=50), nullable=False)
+    state = db.Column(db.String(length=25), nullable=False)
+    zip_code = db.Column(db.String(length=10), nullable=False)
+    about = db.Column(db.String(length=500), nullable=False)
+    phone_number = db.Column(db.String(length=30), nullable=False)
+    type = db.Column(db.String(length=255), nullable=False)
     email = db.Column(db.String, nullable=True, unique=True)
     logo_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Images.image_id')))
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Users.user_id')))
@@ -27,9 +32,15 @@ class Business(db.Model):
             'name': self.name,
             'description': self.description,
             'address': self.address,
-            'phone': self.phone,
+            'city': self.city,
+            'state': self.state,
+            'zip_code': self.zip_code,
+            'phone': self.phone_number,
+            'about': self.about,
+            'type': self.type,
             'email': self.email,
             'logo_id': self.logo_id,
+            'owner_id': self.owner_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
