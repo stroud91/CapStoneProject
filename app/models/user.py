@@ -1,7 +1,6 @@
-from .db import db, environment, SCHEMA
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -15,11 +14,14 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=True)
     phone = db.Column(db.String, nullable=True)
-    profile_image_id = db.Column(db.Integer, db.ForeignKey('Images.image_id'))
+    profile_image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Images.image_id')))
     role = db.Column(db.String, nullable=False)
-    business_id = db.Column(db.Integer, db.ForeignKey('Business.business_id'))
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
+
+    businesses_owned = db.relationship("Business", backref="owner", lazy=True)
+    orders = db.relationship("Orders", backref="user", lazy=True)
+    reviews = db.relationship("Reviews", backref="user", lazy=True)
 
     @property
     def password(self):
@@ -41,7 +43,7 @@ class User(db.Model, UserMixin):
             'phone': self.phone,
             'profile_image_id': self.profile_image_id,
             'role': self.role,
-            'business_id': self.business_id,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'businesses': [business.to_dict() for business in self.businesses_owned]
         }

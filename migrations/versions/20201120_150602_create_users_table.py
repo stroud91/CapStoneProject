@@ -57,11 +57,13 @@ def upgrade():
         'Business',
         sa.Column('business_id', sa.Integer, primary_key=True, autoincrement=True),
         sa.Column('name', sa.String, nullable=False),
+        sa.Column('owner_id', sa.Integer, sa.ForeignKey('Users.user_id')),
         sa.Column('description', sa.String, nullable=True),
         sa.Column('address', sa.String, nullable=False),
         sa.Column('phone', sa.String, nullable=True),
         sa.Column('email', sa.String, nullable=True, unique=True),
         sa.Column('logo_id', sa.Integer, sa.ForeignKey('Images.image_id')),
+        sa.Column('owner_id', sa.Integer, sa.ForeignKey('Users.user_id')),
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.Column('updated_at', sa.DateTime, nullable=False)
     )

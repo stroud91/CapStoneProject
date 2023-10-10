@@ -16,6 +16,9 @@ class Image(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     uploaded_at = db.Column(db.DateTime, nullable=False)
 
+    user = db.relationship("User", back_populates="profile_image", uselist=False)
+    business = db.relationship("Business", backref="logo", uselist=False)
+
     def to_dict(self):
         return {
             'image_id': self.image_id,

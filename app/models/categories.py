@@ -11,6 +11,8 @@ class Category(db.Model):
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=True)
 
+    dishes = db.relationship("Dish", back_populates="category", lazy=True)
+
     def to_dict(self):
         return {
             'category_id': self.category_id,

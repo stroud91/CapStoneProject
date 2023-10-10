@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class OrderDetail(db.Model):
     __tablename__ = 'OrderDetails'
@@ -6,10 +6,15 @@ class OrderDetail(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    order_id = db.Column(db.Integer, db.ForeignKey('Orders.order_id'), primary_key=True)
-    dish_id = db.Column(db.Integer, db.ForeignKey('Dishes.dish_id'), primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Orders.order_id')), primary_key=True)
+    dish_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Dishes.dish_id')), primary_key=True)
     quantity = db.Column(db.Integer, nullable=False)
     subtotal_price = db.Column(db.Float, nullable=False)
+
+    order = db.relationship("Order", back_populates="order_details")
+    dish = db.relationship("Dish", backref="order_details", lazy=True)
+
+
 
     def to_dict(self):
         return {
