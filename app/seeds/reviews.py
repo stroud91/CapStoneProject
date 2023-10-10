@@ -554,7 +554,7 @@ def seed_reviews():
         review56, review57, review58, review59, review60,
         review61, review62, review63, review64, review65,
         review66, review67, review68, review69, review70,
-        review71, review72, review73
+        review71, review72, review73 ,
     ])
 
     db.session.commit()

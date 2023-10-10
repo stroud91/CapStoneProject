@@ -15,7 +15,6 @@ class Dish(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Categories.category_id')))
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
-
     business = db.relationship("Business", back_populates="dishes")
     category = db.relationship("Category", back_populates="dishes")
     image = db.relationship("Images", backref="dishes", lazy=True)
