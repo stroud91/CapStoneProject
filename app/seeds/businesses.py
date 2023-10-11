@@ -472,8 +472,8 @@ def seed_businesses():
 
 def undo_businesses():
     if environment == "production":
-       db.session.execute(f"TRUNCATE table {SCHEMA}.businesses RESTART IDENTITY CASCADE;")
+       db.session.execute(f"TRUNCATE table {SCHEMA}.business RESTART IDENTITY CASCADE;")
     else:
-       db.session.execute(text("DELETE FROM businesses"))
+       db.session.execute(text("DELETE FROM business"))
 
     db.session.commit()

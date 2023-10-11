@@ -135,11 +135,11 @@ def upgrade():
 
 
 def downgrade():
-    op.drop_table('Reviews')
-    op.drop_table('OrderDetails')
-    op.drop_table('Orders')
-    op.drop_table('Dishes')
-    op.drop_table('Categories')
-    op.drop_table('Business')
-    op.drop_table('Users')
-    op.drop_table('Images')
+    op.drop_table('reviews')
+    op.drop_table('orderdetails')
+    op.drop_table('orders')
+    op.drop_table('dishes')
+    op.drop_table('categories')
+    op.drop_table('business')
+    op.drop_table('users')
+    op.drop_table('images')

@@ -1,5 +1,6 @@
 from app.models import db, Dish, Business, environment, SCHEMA
 import datetime
+from sqlalchemy.sql import text
 
 def seed_dishes():
 

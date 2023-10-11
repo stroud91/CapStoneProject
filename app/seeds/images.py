@@ -308,7 +308,7 @@ def seed_images():
 # For undoing
 def undo_images():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.Images RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.images RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM Images"))
+        db.session.execute(text("DELETE FROM images"))
     db.session.commit()
