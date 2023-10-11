@@ -131,7 +131,8 @@ def upgrade():
     )
 
     if environment == "production":
-      op.execute(f"ALTER TABLE Users SET SCHEMA {SCHEMA};")
+      op.execute(f"ALTER TABLE \"Users\" SET SCHEMA {SCHEMA};")
+
 
 def downgrade():
     op.drop_table('Reviews')
