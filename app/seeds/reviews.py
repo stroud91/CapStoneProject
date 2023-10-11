@@ -415,7 +415,7 @@ def seed_reviews():
 
     review61 = Review(
         user_id=61,
-        dish_id=61,
+        dish_id=59,
         rating=4,
         comment="Really good, though I'd prefer a little less salt.",
         review_date=datetime.datetime.now(),
@@ -425,7 +425,7 @@ def seed_reviews():
 
     review62 = Review(
         user_id=62,
-        dish_id=62,
+        dish_id=55,
         rating=3,
         comment="It was okay, a bit underwhelming.",
         review_date=datetime.datetime.now(),
@@ -435,7 +435,7 @@ def seed_reviews():
 
     review63 = Review(
         user_id=63,
-        dish_id=63,
+        dish_id=58,
         rating=2,
         comment="Not my cup of tea. Found it too spicy.",
         review_date=datetime.datetime.now(),
@@ -445,7 +445,7 @@ def seed_reviews():
 
     review64 = Review(
         user_id=64,
-        dish_id=64,
+        dish_id=56,
         rating=5,
         comment="Fantastic! Loved every bite of it.",
         review_date=datetime.datetime.now(),
@@ -455,7 +455,7 @@ def seed_reviews():
 
     review65 = Review(
         user_id=65,
-        dish_id=65,
+        dish_id=54,
         rating=4,
         comment="Tasty, but could use more veggies.",
         review_date=datetime.datetime.now(),
@@ -465,7 +465,7 @@ def seed_reviews():
 
     review66 = Review(
         user_id=66,
-        dish_id=66,
+        dish_id=52,
         rating=4,
         comment="The sauce was perfect but the chicken was a bit dry.",
         review_date=datetime.datetime.now(),
@@ -475,7 +475,7 @@ def seed_reviews():
 
     review67 = Review(
         user_id=67,
-        dish_id=67,
+        dish_id=51,
         rating=2,
         comment="Wasn't what I was expecting. Needs more flavor.",
         review_date=datetime.datetime.now(),
@@ -485,7 +485,7 @@ def seed_reviews():
 
     review68 = Review(
         user_id=68,
-        dish_id=68,
+        dish_id=50,
         rating=5,
         comment="Mouth-watering and succulent. Highly recommended!",
         review_date=datetime.datetime.now(),
@@ -495,7 +495,7 @@ def seed_reviews():
 
     review69 = Review(
         user_id=69,
-        dish_id=69,
+        dish_id=49,
         rating=3,
         comment="It's decent but I've had better at this price point.",
         review_date=datetime.datetime.now(),
@@ -505,7 +505,7 @@ def seed_reviews():
 
     review70 = Review(
         user_id=70,
-        dish_id=70,
+        dish_id=40,
         rating=4,
         comment="Really satisfying, especially with the dipping sauce.",
         review_date=datetime.datetime.now(),
@@ -515,7 +515,7 @@ def seed_reviews():
 
     review71 = Review(
         user_id=71,
-        dish_id=71,
+        dish_id=41,
         rating=3,
         comment="Enjoyable but not memorable.",
         review_date=datetime.datetime.now(),
@@ -525,7 +525,7 @@ def seed_reviews():
 
     review72 = Review(
         user_id=72,
-        dish_id=72,
+        dish_id=41,
         rating=5,
         comment="This dish was an explosion of flavors! Absolutely amazing.",
         review_date=datetime.datetime.now(),
@@ -535,7 +535,7 @@ def seed_reviews():
 
     review73 = Review(
         user_id=73,
-        dish_id=73,
+        dish_id=43,
         rating=4,
         comment="Would have liked a bit more spice, but still quite good.",
         review_date=datetime.datetime.now(),
