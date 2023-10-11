@@ -2,7 +2,7 @@
 from .db import db, environment, SCHEMA
 
 class Category(db.Model):
-    __tablename__ = 'Categories'
+    __tablename__ = 'categories'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}

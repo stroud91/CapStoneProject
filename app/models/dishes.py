@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Dish(db.Model):
-    __tablename__ = 'Dishes'
+    __tablename__ = 'dishes'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -10,9 +10,9 @@ class Dish(db.Model):
     business_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('business.id')))
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=True)
-    image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Images.id')))
+    image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('images.id')))
     price = db.Column(db.Float, nullable=False)
-    category_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Categories.id')))
+    category_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('categories.id')))
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 

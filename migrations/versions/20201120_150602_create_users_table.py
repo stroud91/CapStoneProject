@@ -23,7 +23,7 @@ depends_on = None
 def upgrade():
     # Creating the Images table
     op.create_table(
-        'Images',
+        'images',
         sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
         sa.Column('image_url', sa.String, unique=True, nullable=False),
         sa.Column('alt_text', sa.String, nullable=True),
@@ -35,7 +35,7 @@ def upgrade():
 
     # Creating the Users table
     op.create_table(
-        'Users',
+        'users',
         sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
         sa.Column('username', sa.String, nullable=False, unique=True),
         sa.Column('email', sa.String, nullable=False, unique=True),
@@ -44,7 +44,7 @@ def upgrade():
         sa.Column('password_hash', sa.String, nullable=False),
         sa.Column('address', sa.String, nullable=True),
         sa.Column('phone', sa.String, nullable=True),
-        sa.Column('profile_image_id', sa.Integer, sa.ForeignKey('Images.id')),
+        sa.Column('profile_image_id', sa.Integer, sa.ForeignKey('images.id')),
         sa.Column('role', sa.String, nullable=False),
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.Column('updated_at', sa.DateTime, nullable=False)
@@ -54,7 +54,7 @@ def upgrade():
 
      # Creating the Business table
     op.create_table(
-        'Business',
+        'business',
         sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
         sa.Column('name', sa.String, nullable=False),
         sa.Column('description', sa.String, nullable=True),
@@ -66,15 +66,15 @@ def upgrade():
         sa.Column('phone_number', sa.String(length=30), nullable=False),
         sa.Column('type', sa.String(length=255), nullable=False),
         sa.Column('email', sa.String, nullable=True, unique=True),
-        sa.Column('logo_id', sa.Integer, sa.ForeignKey('Images.id')),
-        sa.Column('owner_id', sa.Integer, sa.ForeignKey('Users.id')),
+        sa.Column('logo_id', sa.Integer, sa.ForeignKey('images.id')),
+        sa.Column('owner_id', sa.Integer, sa.ForeignKey('users.id')),
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.Column('updated_at', sa.DateTime, nullable=False)
     )
 
     # Creating the Categories table
     op.create_table(
-        'Categories',
+        'categories',
         sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
         sa.Column('name', sa.String, nullable=False),
         sa.Column('description', sa.String, nullable=True)
@@ -82,23 +82,23 @@ def upgrade():
 
     # Creating the Dishes table
     op.create_table(
-        'Dishes',
+        'dishes',
         sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('business_id', sa.Integer, sa.ForeignKey('Business.id')),
+        sa.Column('business_id', sa.Integer, sa.ForeignKey('business.id')),
         sa.Column('name', sa.String, nullable=False),
         sa.Column('description', sa.String, nullable=True),
-        sa.Column('image_id', sa.Integer, sa.ForeignKey('Images.id')),
+        sa.Column('image_id', sa.Integer, sa.ForeignKey('images.id')),
         sa.Column('price', sa.Float, nullable=False),
-        sa.Column('category_id', sa.Integer, sa.ForeignKey('Categories.id')),
+        sa.Column('category_id', sa.Integer, sa.ForeignKey('categories.id')),
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.Column('updated_at', sa.DateTime, nullable=False)
     )
 
     # Creating the Orders table
     op.create_table(
-        'Orders',
+        'orders',
         sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('user_id', sa.Integer, sa.ForeignKey('Users.id')),
+        sa.Column('user_id', sa.Integer, sa.ForeignKey('users.id')),
         sa.Column('total_price', sa.Float, nullable=False),
         sa.Column('order_date', sa.DateTime, nullable=False),
         sa.Column('delivery_address', sa.String, nullable=False),
@@ -109,9 +109,9 @@ def upgrade():
 
     # Creating the OrderDetails table
     op.create_table(
-        'OrderDetails',
-        sa.Column('order_id', sa.Integer, sa.ForeignKey('Orders.id')),
-        sa.Column('dish_id', sa.Integer, sa.ForeignKey('Dishes.id')),
+        'orderdetails',
+        sa.Column('order_id', sa.Integer, sa.ForeignKey('orders.id')),
+        sa.Column('dish_id', sa.Integer, sa.ForeignKey('dishes.id')),
         sa.Column('quantity', sa.Integer, nullable=False),
         sa.Column('subtotal_price', sa.Float, nullable=False),
         sa.PrimaryKeyConstraint('order_id', 'dish_id')
@@ -119,10 +119,10 @@ def upgrade():
 
     # Creating the Reviews table
     op.create_table(
-        'Reviews',
+        'reviews',
         sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('user_id', sa.Integer, sa.ForeignKey('Users.id')),
-        sa.Column('dish_id', sa.Integer, sa.ForeignKey('Dishes.id')),
+        sa.Column('user_id', sa.Integer, sa.ForeignKey('users.id')),
+        sa.Column('dish_id', sa.Integer, sa.ForeignKey('dishes.id')),
         sa.Column('rating', sa.Integer, nullable=False),
         sa.Column('comment', sa.String, nullable=True),
         sa.Column('review_date', sa.DateTime, nullable=False),
@@ -131,7 +131,7 @@ def upgrade():
     )
 
     if environment == "production":
-      op.execute(f"ALTER TABLE \"Users\" SET SCHEMA {SCHEMA};")
+      op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
 
 def downgrade():
