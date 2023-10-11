@@ -10,7 +10,7 @@ def seed_users():
         password='passwordAlice',
         address='123 Wonderland St',
         phone='123-456-7890',
-        profile_image_id=1,
+        profile_image_id=None,
         role='admin',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -22,7 +22,7 @@ def seed_users():
         password='passwordBob',
         address='456 Construct Ave',
         phone='987-654-3210',
-        profile_image_id=2,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -34,7 +34,7 @@ def seed_users():
         password='passwordCharlie',
         address='789 Choco Blvd',
         phone='123-789-4560',
-        profile_image_id=3,
+        profile_image_id=None,
         role='admin',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -46,7 +46,7 @@ def seed_users():
         password='passwordDavid',
         address='012 Dream Way',
         phone='456-123-7890',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -82,7 +82,7 @@ def seed_users():
         first_name='Stu',
         last_name='Dent',
         password='password7',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -94,7 +94,7 @@ def seed_users():
         first_name='Ali',
         last_name='Bye',
         password='password8',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -106,7 +106,7 @@ def seed_users():
         first_name='Sandy',
         last_name='Shore',
         password='password102',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -118,7 +118,7 @@ def seed_users():
         first_name='Phil',
         last_name='Up',
         password='password103',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -130,7 +130,7 @@ def seed_users():
         first_name='Barry',
         last_name='Dalive',
         password='password104',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -142,7 +142,7 @@ def seed_users():
         first_name='Holly',
         last_name='Wood',
         password='password105',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -154,7 +154,7 @@ def seed_users():
         first_name='Chris',
         last_name='PBacon',
         password='password106',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -166,7 +166,7 @@ def seed_users():
         first_name='Terry',
         last_name='Bull',
         password='password107',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -178,7 +178,7 @@ def seed_users():
         first_name='Anita',
         last_name='Bath',
         password='password108',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -190,7 +190,7 @@ def seed_users():
         first_name='Carmen',
         last_name='Getit',
         password='password109',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -202,7 +202,7 @@ def seed_users():
         first_name='Walter',
         last_name='Fall',
         password='password110',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -214,7 +214,7 @@ def seed_users():
         first_name='Willie',
         last_name='Makeit',
         password='password111',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -226,7 +226,7 @@ def seed_users():
         first_name='Al',
         last_name='Igator',
         password='password112',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -238,7 +238,7 @@ def seed_users():
         first_name='Ella',
         last_name='Phant',
         password='password113',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -250,7 +250,7 @@ def seed_users():
         first_name='Ian',
         last_name='Flatable',
         password='password114',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -262,7 +262,7 @@ def seed_users():
         first_name='Norm',
         last_name='Al',
         password='password115',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -274,7 +274,7 @@ def seed_users():
         first_name='Catie',
         last_name='Pillar',
         password='password116',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -286,7 +286,7 @@ def seed_users():
         first_name='Rob',
         last_name='Ank',
         password='password117',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -298,7 +298,7 @@ def seed_users():
         first_name='Joy',
         last_name='Stick',
         password='password118',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -310,7 +310,7 @@ def seed_users():
         first_name='Mary',
         last_name='Go',
         password='password119',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -322,7 +322,7 @@ def seed_users():
         first_name='Tina',
         last_name='Bopper',
         password='password120',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -334,7 +334,7 @@ def seed_users():
         first_name='Ian',
         last_name='Tense',
         password='password121',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -345,7 +345,7 @@ def seed_users():
         first_name='Jill',
         last_name='Out',
         password='password122',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -357,7 +357,7 @@ def seed_users():
         first_name='Art',
         last_name='Ist',
         password='password123',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -369,7 +369,7 @@ def seed_users():
         first_name='Rob',
         last_name='Inhood',
         password='password124',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -381,7 +381,7 @@ def seed_users():
         first_name='Ella',
         last_name='Vate',
         password='password125',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -393,7 +393,7 @@ def seed_users():
         first_name='Andy',
         last_name='Gravity',
         password='password126',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -405,7 +405,7 @@ def seed_users():
         first_name='Anne',
         last_name='Tenna',
         password='password127',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -417,7 +417,7 @@ def seed_users():
         first_name='Will',
         last_name='Power',
         password='password128',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -429,7 +429,7 @@ def seed_users():
         first_name='Luke',
         last_name='Out',
         password='password129',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -441,7 +441,7 @@ def seed_users():
         first_name='Sue',
         last_name='Perb',
         password='password130',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -453,7 +453,7 @@ def seed_users():
         first_name='Ivan',
         last_name='Idea',
         password='password131',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -465,7 +465,7 @@ def seed_users():
         first_name='Drew',
         last_name='Paper',
         password='password132',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -477,7 +477,7 @@ def seed_users():
         first_name='Justin',
         last_name='Time',
         password='password133',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -489,7 +489,7 @@ def seed_users():
         first_name='Pat',
         last_name='Down',
         password='password134',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -501,7 +501,7 @@ def seed_users():
         first_name='Sonny',
         last_name='Day',
         password='password135',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -513,7 +513,7 @@ def seed_users():
         first_name='Neil',
         last_name='Down',
         password='password136',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -525,7 +525,7 @@ def seed_users():
         first_name='Bill',
         last_name='Board',
         password='password137',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -537,7 +537,7 @@ def seed_users():
         first_name='Mayl',
         last_name='Flowers',
         password='password1381',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -549,7 +549,7 @@ def seed_users():
         first_name='Stan',
         last_name='Dup',
         password='password139',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -561,7 +561,7 @@ def seed_users():
     first_name='Dee',
     last_name='Veloper',
     password='password142',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -573,7 +573,7 @@ def seed_users():
     first_name='Tim',
     last_name='Ber',
     password='password143',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -585,7 +585,7 @@ def seed_users():
     first_name='May',
     last_name='Day',
     password='password144',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -597,7 +597,7 @@ def seed_users():
     first_name='Glen',
     last_name='Cove',
     password='password145',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -609,7 +609,7 @@ def seed_users():
     first_name='Hal',
     last_name='Lowed',
     password='password146',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -621,7 +621,7 @@ def seed_users():
     first_name='Sam',
     last_name='Wich',
     password='password147',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -633,7 +633,7 @@ def seed_users():
     first_name='Earl',
     last_name='Ybird',
     password='password148',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -645,7 +645,7 @@ def seed_users():
     first_name='Rose',
     last_name='Bud',
     password='password149',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -657,7 +657,7 @@ def seed_users():
     first_name='Ted',
     last_name='Ebear',
     password='password150',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -669,7 +669,7 @@ def seed_users():
     first_name='Ella',
     last_name='Vate',
     password='password151',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -681,7 +681,7 @@ def seed_users():
     first_name='Clara',
     last_name='Net',
     password='password152',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -693,7 +693,7 @@ def seed_users():
     first_name='Viola',
     last_name='Tunes',
     password='password153',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -705,7 +705,7 @@ def seed_users():
     first_name='Lee',
     last_name='Der',
     password='password154',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -717,7 +717,7 @@ def seed_users():
     first_name='Crystal',
     last_name='Ball',
     password='password155',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -729,7 +729,7 @@ def seed_users():
     first_name='Jenny',
     last_name='Rator',
     password='password156',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -741,7 +741,7 @@ def seed_users():
     first_name='Perry',
     last_name='Odic',
     password='password157',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -753,7 +753,7 @@ def seed_users():
     first_name='Sue',
     last_name='Pernova',
     password='password158',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -765,7 +765,7 @@ def seed_users():
     first_name='Anna',
     last_name='Lytics',
     password='password159',
-    profile_image_id=4,
+    profile_image_id=None,
         role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
@@ -776,7 +776,7 @@ def seed_users():
         first_name='Olive',
         last_name='Branch',
         password='password140',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -788,7 +788,7 @@ def seed_users():
         first_name='Ella',
         last_name='Ment',
         password='password141',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -800,7 +800,7 @@ def seed_users():
         first_name='Earl',
         last_name='Gray',
         password='password142',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -812,7 +812,7 @@ def seed_users():
         first_name='Jack',
         last_name='Pot',
         password='password143',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -824,7 +824,7 @@ def seed_users():
         first_name='Moe',
         last_name='Tion',
         password='password144',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -836,7 +836,7 @@ def seed_users():
         first_name='Dale',
         last_name='Ivery',
         password='password145',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -848,7 +848,7 @@ def seed_users():
         first_name='Pat',
         last_name='Riotic',
         password='password146',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -860,7 +860,7 @@ def seed_users():
         first_name='Jenny',
         last_name='Rate',
         password='password147',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -872,7 +872,7 @@ def seed_users():
         first_name='Rocky',
         last_name='Road',
         password='password148',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -884,7 +884,7 @@ def seed_users():
         first_name='Steve',
         last_name='Adore',
         password='password149',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -896,7 +896,7 @@ def seed_users():
         first_name='Ty',
         last_name='Tanic',
         password='password150',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -908,7 +908,7 @@ def seed_users():
         first_name='Liz',
         last_name='Tening',
         password='password151',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -920,7 +920,7 @@ def seed_users():
         first_name='Tom',
         last_name='Orrow',
         password='password152',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -932,7 +932,7 @@ def seed_users():
         first_name='Ann',
         last_name='Chovy',
         password='password153',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -944,7 +944,7 @@ def seed_users():
         first_name='Frank',
         last_name='Furter',
         password='password154',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -956,7 +956,7 @@ def seed_users():
         first_name='Ray',
         last_name='Sing',
         password='password155',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -968,7 +968,7 @@ def seed_users():
         first_name='Daisy',
         last_name='Chain',
         password='password156',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -980,7 +980,7 @@ def seed_users():
         first_name='Brad',
         last_name='Crumb',
         password='password157',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -992,7 +992,7 @@ def seed_users():
         first_name='Rose',
         last_name='Bush',
         password='password152',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1004,7 +1004,7 @@ def seed_users():
         first_name='Chip',
         last_name='Munk',
         password='password153',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1016,7 +1016,7 @@ def seed_users():
         first_name='Cliff',
         last_name='Hanger',
         password='password154',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1028,7 +1028,7 @@ def seed_users():
         first_name='Wendy',
         last_name='Wind',
         password='password155',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1040,7 +1040,7 @@ def seed_users():
         first_name='Cole',
         last_name='Dmine',
         password='password156',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1052,7 +1052,7 @@ def seed_users():
         first_name='Rocky',
         last_name='Shore',
         password='password157',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1064,7 +1064,7 @@ def seed_users():
         first_name='Crystal',
         last_name='Ball',
         password='password158',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1076,7 +1076,7 @@ def seed_users():
         first_name='Sandy',
         last_name='Beach',
         password='password159',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1088,7 +1088,7 @@ def seed_users():
         first_name='Bill',
         last_name='Folds',
         password='password160',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1100,7 +1100,7 @@ def seed_users():
         first_name='Terri',
         last_name='Bull',
         password='password161',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1112,7 +1112,7 @@ def seed_users():
         first_name='Barbie',
         last_name='Cue',
         password='password162',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1124,7 +1124,7 @@ def seed_users():
         first_name='Ty',
         last_name='Tan',
         password='password163',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1136,7 +1136,7 @@ def seed_users():
         first_name='Lou',
         last_name='Minate',
         password='password164',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1148,7 +1148,7 @@ def seed_users():
         first_name='Holly',
         last_name='Day',
         password='password165',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -1160,7 +1160,7 @@ def seed_users():
         first_name='Phil',
         last_name='Ter',
         password='password166',
-        profile_image_id=4,
+        profile_image_id=None,
         role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
