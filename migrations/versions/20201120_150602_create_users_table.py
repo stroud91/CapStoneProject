@@ -50,8 +50,7 @@ def upgrade():
         sa.Column('updated_at', sa.DateTime, nullable=False)
     )
 
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
 
      # Creating the Business table
     op.create_table(
@@ -130,6 +129,9 @@ def upgrade():
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.Column('updated_at', sa.DateTime, nullable=False)
     )
+
+    if environment == "production":
+      op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
 def downgrade():
     op.drop_table('Reviews')
