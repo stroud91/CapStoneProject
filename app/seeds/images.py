@@ -13,7 +13,7 @@ def seed_images():
     )
 
     italian_two_previmage = Image(
-        image_url="https://www.foodrepublic.com/img/gallery/100-italian-fooddrink-words-and-phrases/l-intro-1684783348.jpg",
+        image_url="https://www.foodrepublic.com/img/gallery/100-italian-fooddrink-words-and-phrases/l-intro-1684783349.jpg",
         alt_text="Italian Food",
         image_type="Business",
         preview=True,
@@ -22,7 +22,7 @@ def seed_images():
     )
 
     italian_three_previmage = Image(
-        image_url="https://www.foodrepublic.com/img/gallery/100-italian-fooddrink-words-and-phrases/l-intro-1684783348.jpg",
+        image_url="https://www.foodrepublic.com/img/gallery/100-italian-fooddrink-words-and-phrases/l-intro-1684783347.jpg",
         alt_text="Italian Food",
         image_type="Business",
         preview=True,
@@ -31,7 +31,7 @@ def seed_images():
     )
 
     italian_four_previmage = Image(
-        image_url="https://www.foodrepublic.com/img/gallery/100-italian-fooddrink-words-and-phrases/l-intro-1684783348.jpg",
+        image_url="https://www.foodrepublic.com/img/gallery/100-italian-fooddrink-words-and-phrases/l-intro-1684783346.jpg",
         alt_text="Italian Food",
         image_type="Business",
         preview=True,
@@ -40,7 +40,7 @@ def seed_images():
     )
 
     italian_five_previmage = Image(
-        image_url="https://www.foodrepublic.com/img/gallery/100-italian-fooddrink-words-and-phrases/l-intro-1684783348.jpg",
+        image_url="https://www.foodrepublic.com/img/gallery/100-italian-fooddrink-words-and-phrases/l-intro-1684783345.jpg",
         alt_text="Italian Food",
         image_type="Business",
         preview=True,
@@ -49,7 +49,7 @@ def seed_images():
     )
 
     italian_six_previmage = Image(
-        image_url="https://www.foodrepublic.com/img/gallery/100-italian-fooddrink-words-and-phrases/l-intro-1684783348.jpg",
+        image_url="https://www.foodrepublic.com/img/gallery/100-italian-fooddrink-words-and-phrases/l-intro-1684783340.jpg",
         alt_text="Italian Food",
         image_type="Business",
         preview=True,
@@ -67,7 +67,7 @@ def seed_images():
     )
 
     mexican_two_previmage = Image(
-        image_url="https://media.timeout.com/images/100292153/750/562/image.jpg",
+        image_url="https://media.timeout.com/images/100292153/750/563/image.jpg",
         alt_text="Mexican Food",
         image_type="Business",
         preview=True,
@@ -76,7 +76,7 @@ def seed_images():
     )
 
     mexican_three_previmage = Image(
-        image_url="https://media.timeout.com/images/100292153/750/562/image.jpg",
+        image_url="https://media.timeout.com/images/100292153/750/564/image.jpg",
         alt_text="Mexican Food",
         image_type="Business",
         preview=True,
@@ -85,7 +85,7 @@ def seed_images():
     )
 
     mexican_four_previmage = Image(
-        image_url="https://media.timeout.com/images/100292153/750/562/image.jpg",
+        image_url="https://media.timeout.com/images/100292153/750/561/image.jpg",
         alt_text="Mexican Food",
         image_type="Business",
         preview=True,
@@ -94,7 +94,7 @@ def seed_images():
     )
 
     mexican_five_previmage = Image(
-        image_url="https://media.timeout.com/images/100292153/750/562/image.jpg",
+        image_url="https://media.timeout.com/images/100292153/750/560/image.jpg",
         alt_text="Mexican Food",
         image_type="Business",
         preview=True,
@@ -103,7 +103,7 @@ def seed_images():
     )
 
     mexican_six_previmage = Image(
-        image_url="https://media.timeout.com/images/100292153/750/562/image.jpg",
+        image_url="https://media.timeout.com/images/100292153/750/565/image.jpg",
         alt_text="Mexican Food",
         image_type="Business",
         preview=True,
@@ -112,7 +112,7 @@ def seed_images():
     )
 
     mexican_seven_previmage = Image(
-        image_url="https://media.timeout.com/images/100292153/750/562/image.jpg",
+        image_url="https://media.timeout.com/images/100292153/750/567/image.jpg",
         alt_text="Mexican Food",
         image_type="Business",
         preview=True,
@@ -130,7 +130,7 @@ def seed_images():
     )
 
     middleast_two_previmage = Image(
-        image_url="https://shef.com/homemade-food/wp-content/uploads/lebanese-mezze-middle-eastern-food-scaled-e1662414361114.jpeg",
+        image_url="https://shef.com/homemade-food/wp-content/uploads/lebanese-mezze-middle-eastern-food-scaled-e1662414361115.jpeg",
         alt_text="Middle Eastern Food",
         image_type="Business",
         preview=True,
@@ -139,7 +139,7 @@ def seed_images():
     )
 
     middleast_three_previmage = Image(
-        image_url="https://shef.com/homemade-food/wp-content/uploads/lebanese-mezze-middle-eastern-food-scaled-e1662414361114.jpeg",
+        image_url="https://shef.com/homemade-food/wp-content/uploads/lebanese-mezze-middle-eastern-food-scaled-e1662414361116.jpeg",
         alt_text="Middle Eastern Food",
         image_type="Business",
         preview=True,
@@ -148,7 +148,7 @@ def seed_images():
     )
 
     middleast_four_previmage = Image(
-        image_url="https://shef.com/homemade-food/wp-content/uploads/lebanese-mezze-middle-eastern-food-scaled-e1662414361114.jpeg",
+        image_url="https://shef.com/homemade-food/wp-content/uploads/lebanese-mezze-middle-eastern-food-scaled-e1662414361117.jpeg",
         alt_text="Middle Eastern Food",
         image_type="Business",
         preview=True,
@@ -157,7 +157,7 @@ def seed_images():
     )
 
     middleast_five_previmage = Image(
-        image_url="https://shef.com/homemade-food/wp-content/uploads/lebanese-mezze-middle-eastern-food-scaled-e1662414361114.jpeg",
+        image_url="https://shef.com/homemade-food/wp-content/uploads/lebanese-mezze-middle-eastern-food-scaled-e1662414361118.jpeg",
         alt_text="Middle Eastern Food",
         image_type="Business",
         preview=True,
@@ -166,7 +166,7 @@ def seed_images():
     )
 
     middleast_six_previmage = Image(
-        image_url="https://shef.com/homemade-food/wp-content/uploads/lebanese-mezze-middle-eastern-food-scaled-e1662414361114.jpeg",
+        image_url="https://shef.com/homemade-food/wp-content/uploads/lebanese-mezze-middle-eastern-food-scaled-e1662414361119.jpeg",
         alt_text="Middle Eastern Food",
         image_type="Business",
         preview=True,
@@ -184,7 +184,7 @@ def seed_images():
     )
 
     jap_two_previmage = Image(
-        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan.jpg",
+        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan1.jpg",
         alt_text="Japanese Food",
         image_type="Business",
         preview=True,
@@ -193,7 +193,7 @@ def seed_images():
     )
 
     jap_three_previmage = Image(
-        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan.jpg",
+        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan2.jpg",
         alt_text="Japanese Food",
         image_type="Business",
         preview=True,
@@ -202,7 +202,7 @@ def seed_images():
     )
 
     jap_four_previmage = Image(
-        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan.jpg",
+        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan3.jpg",
         alt_text="Japanese Food",
         image_type="Business",
         preview=True,
@@ -211,7 +211,7 @@ def seed_images():
     )
 
     jap_five_previmage = Image(
-        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan.jpg",
+        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan4.jpg",
         alt_text="Japanese Food",
         image_type="Business",
         preview=True,
@@ -220,7 +220,7 @@ def seed_images():
     )
 
     jap_six_previmage = Image(
-        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan.jpg",
+        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan5.jpg",
         alt_text="Japanese Food",
         image_type="Business",
         preview=True,
@@ -229,7 +229,7 @@ def seed_images():
     )
 
     jap_seven_previmage = Image(
-        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan.jpg",
+        image_url="https://www.swedishnomad.com/wp-content/images/2018/09/yakitori-Classic-food-Japan6.jpg",
         alt_text="Japanese Food",
         image_type="Business",
         preview=True,
@@ -238,7 +238,7 @@ def seed_images():
     )
 
     american_one_previmage = Image(
-        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca.jpg",
+        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca8.jpg",
         alt_text="American Food",
         image_type="Business",
         preview=True,
@@ -247,7 +247,7 @@ def seed_images():
     )
 
     american_two_previmage = Image(
-        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca.jpg",
+        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca7.jpg",
         alt_text="American Food",
         image_type="Business",
         preview=True,
@@ -256,7 +256,7 @@ def seed_images():
     )
 
     american_three_previmage = Image(
-        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca.jpg",
+        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca88.jpg",
         alt_text="American Food",
         image_type="Business",
         preview=True,
@@ -265,7 +265,7 @@ def seed_images():
     )
 
     american_four_previmage = Image(
-        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca.jpg",
+        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca9.jpg",
         alt_text="American Food",
         image_type="Business",
         preview=True,
@@ -274,7 +274,7 @@ def seed_images():
     )
 
     american_five_previmage = Image(
-        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca.jpg",
+        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca10.jpg",
         alt_text="American Food",
         image_type="Business",
         preview=True,
@@ -283,7 +283,7 @@ def seed_images():
     )
 
     american_six_previmage = Image(
-        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca.jpg",
+        image_url="https://www.tasteatlas.com/images/toplistarticles/08c818739e4b48ce96d319c16f4cc0ca77.jpg",
         alt_text="American Food",
         image_type="Business",
         preview=True,

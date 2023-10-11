@@ -7,7 +7,7 @@ class Business(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    business_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=True)
     address = db.Column(db.String, nullable=False)
@@ -18,17 +18,19 @@ class Business(db.Model):
     phone_number = db.Column(db.String(length=30), nullable=False)
     type = db.Column(db.String(length=255), nullable=False)
     email = db.Column(db.String, nullable=True, unique=True)
-    logo_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Images.image_id')))
-    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Users.user_id')))
+    logo_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Images.id')))
+    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
     owner = db.relationship("User", back_populates="businesses_owned")
-    dishes = db.relationship("Dishes", backref="business", lazy=True)
+    dishes = db.relationship("Dish", back_populates="business", lazy=True)
+    logo = db.relationship("Image", backref="business_logo", uselist=False)
+
 
     def to_dict(self):
         return {
-            'business_id': self.business_id,
+            'id': self.id,
             'name': self.name,
             'description': self.description,
             'address': self.address,

@@ -6,13 +6,13 @@ class OrderDetail(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Orders.order_id')), primary_key=True)
-    dish_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Dishes.dish_id')), primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Orders.id')), primary_key=True)
+    dish_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Dishes.id')), primary_key=True)
     quantity = db.Column(db.Integer, nullable=False)
     subtotal_price = db.Column(db.Float, nullable=False)
 
     order = db.relationship("Order", back_populates="order_details")
-    dish = db.relationship("Dish", backref="order_details", lazy=True)
+    dish = db.relationship("Dish", back_populates="order_details", lazy=True)
 
 
 

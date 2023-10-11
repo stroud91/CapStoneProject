@@ -8,20 +8,23 @@ class User(db.Model, UserMixin):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String, nullable=False, unique=True)
     email = db.Column(db.String, nullable=False, unique=True)
     password_hash = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=True)
     phone = db.Column(db.String, nullable=True)
-    profile_image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Images.image_id')))
+    profile_image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Images.id')))
     role = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
+    first_name = db.Column(db.String, nullable=True)
+    last_name = db.Column(db.String, nullable=True)
 
-    businesses_owned = db.relationship("Business", backref="owner", lazy=True)
-    orders = db.relationship("Orders", backref="user", lazy=True)
-    reviews = db.relationship("Reviews", backref="user", lazy=True)
+    businesses_owned = db.relationship('Business', back_populates="owner")
+    orders = db.relationship("Order", back_populates="user", lazy=True)
+    reviews = db.relationship("Review", back_populates="user", lazy=True)
+    profile_image = db.relationship("Image", back_populates="user")
 
     @property
     def password(self):
@@ -36,7 +39,7 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
         return {
-            'user_id': self.user_id,
+            'id': self.id,
             'username': self.username,
             'email': self.email,
             'address': self.address,

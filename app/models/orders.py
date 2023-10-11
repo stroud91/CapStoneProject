@@ -6,8 +6,8 @@ class Order(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    order_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('Users.user_id')))
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     total_price = db.Column(db.Float, nullable=False)
     order_date = db.Column(db.DateTime, nullable=False)
     delivery_address = db.Column(db.String, nullable=False)
@@ -16,12 +16,12 @@ class Order(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False)
 
     user = db.relationship("User", back_populates="orders")
-    order_details = db.relationship("OrderDetails", backref="order", lazy=True)
+    order_details = db.relationship("OrderDetail", back_populates="order", lazy=True)
 
 
     def to_dict(self):
         return {
-            'order_id': self.order_id,
+            'id': self.id,
             'user_id': self.user_id,
             'total_price': self.total_price,
             'order_date': self.order_date,
