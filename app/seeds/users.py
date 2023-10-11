@@ -58,7 +58,7 @@ def seed_users():
         password='passwordEva',
         address='345 Explore Rd',
         phone='789-123-4560',
-        profile_image_id=5,
+        profile_image_id=None,
         role='admin',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
@@ -70,7 +70,7 @@ def seed_users():
         first_name='Tobe',
         last_name='Ornottobe',
         password='password6',
-        profile_image_id=1,
+        profile_image_id=None,
         role='admin',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
