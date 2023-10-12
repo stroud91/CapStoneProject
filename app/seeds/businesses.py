@@ -14,7 +14,7 @@ def seed_businesses():
         about="""Rita's Italian Ice & Frozen Custard is the largest Italian Ice concept in the nation, currently operating in 31 states with over 600 shops.""",
         phone_number="(719) 465-2867",
         type="Ice Cream & Frozen Yogurt, Desserts , Pretzels",
-        logo_id=None,
+        logo_id=1,
         owner_id=1,
         created_at=datetime.datetime.now(),
         updated_at=datetime.datetime.now()

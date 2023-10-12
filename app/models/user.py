@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=True)
     phone = db.Column(db.String, nullable=True)
-    profile_image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('images.id')))
+    profile_image_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('userimages.id')))
     role = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
@@ -24,7 +24,7 @@ class User(db.Model, UserMixin):
     businesses_owned = db.relationship('Business', back_populates="owner")
     orders = db.relationship("Order", back_populates="user", lazy=True)
     reviews = db.relationship("Review", back_populates="user", lazy=True)
-    profile_image = db.relationship("Image", back_populates="user")
+    profile_image = db.relationship("UserImage", back_populates="user")
 
     @property
     def password(self):
