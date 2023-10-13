@@ -11,7 +11,7 @@ class CartItem(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
-    cart = db.relationship('Cart', back_populates='items')
+    cart = db.relationship('Cart', back_populates='items', primaryjoin='CartItem.cart_id == Cart.id')
     dish = db.relationship('Dish', back_populates='item')
 
     def to_dict(self):
