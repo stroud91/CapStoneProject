@@ -149,6 +149,5 @@ def downgrade():
     op.drop_table('categories')
     op.drop_table('business')
     op.drop_table('users')
-    op.drop_table('userimages')
-    op.drop_table('businessimages')
-    op.drop_table('dishimages')
+    op.drop_table('carts')
+    op.drop_table('cart_items')

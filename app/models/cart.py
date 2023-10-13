@@ -9,12 +9,12 @@ class Cart(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False)
 
     items = db.relationship('CartItem', back_populates='cart')
-    
-def to_dict(self):
+
+    def to_dict(self):
         return {
             'id': self.id,
             'user_id': self.user_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'items': [item.to_dict() for item in self.items]  # Getting cart items as well
+            'items': [item.to_dict() for item in self.items]
         }
