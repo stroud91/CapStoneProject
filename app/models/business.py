@@ -18,14 +18,14 @@ class Business(db.Model):
     phone_number = db.Column(db.String(length=30), nullable=False)
     type = db.Column(db.String(length=255), nullable=False)
     email = db.Column(db.String, nullable=True, unique=True)
-    logo_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('businessimages.id')))
+    logo_id = db.Column(db.String(length=1000), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
     owner = db.relationship("User", back_populates="businesses_owned")
     dishes = db.relationship("Dish", back_populates="business", lazy=True)
-    logo = db.relationship("BusinessImage", back_populates="business", uselist=False)
+
 
 
     def to_dict(self):

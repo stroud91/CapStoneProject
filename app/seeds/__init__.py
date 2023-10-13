@@ -6,9 +6,6 @@ from .reviews import seed_reviews, undo_reviews
 from .orders import seed_orders, undo_orders
 from .order_details import seed_order_details, undo_order_details
 from .categories import seed_categories, undo_categories
-from .businessimages import seed_b_images,undo_b_images
-from .dishimages import seed_d_images, undo_d_images
-from .userimages import seed_user_images,undo_user_images
 from app.models.db import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
@@ -31,9 +28,7 @@ def seed():
         undo_reviews()
         undo_orders()
         undo_order_details()
-        undo_user_images()
-        undo_b_images()
-        undo_d_images
+
 
     seed_users()
     seed_businesses()
@@ -42,9 +37,7 @@ def seed():
     seed_orders()
     seed_order_details()
     seed_reviews()
-    seed_b_images()
-    seed_d_images()
-    seed_user_images()
+
     # Add other seed functions here
 
 

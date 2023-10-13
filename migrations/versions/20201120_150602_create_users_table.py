@@ -24,29 +24,7 @@ def upgrade():
     # Creating the Images table
 
     # Creating the Users table
-    op.create_table('userimages',
-        sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('image_url', sa.String, unique=True, nullable=False),
-        sa.Column('alt_text', sa.String, nullable=True),
-        sa.Column('created_at', sa.DateTime, nullable=False),
-        sa.Column('uploaded_at', sa.DateTime, nullable=False),
-    )
 
-    op.create_table('businessimages',
-        sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('image_url', sa.String, unique=True, nullable=False),
-        sa.Column('alt_text', sa.String, nullable=True),
-        sa.Column('created_at', sa.DateTime, nullable=False),
-        sa.Column('uploaded_at', sa.DateTime, nullable=False),
-    )
-
-    op.create_table('dishimages',
-        sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
-        sa.Column('image_url', sa.String, unique=True, nullable=False),
-        sa.Column('alt_text', sa.String, nullable=True),
-        sa.Column('created_at', sa.DateTime, nullable=False),
-        sa.Column('uploaded_at', sa.DateTime, nullable=False),
-    )
 
     op.create_table(
         'users',
@@ -58,8 +36,16 @@ def upgrade():
         sa.Column('password_hash', sa.String, nullable=False),
         sa.Column('address', sa.String, nullable=True),
         sa.Column('phone', sa.String, nullable=True),
-        sa.Column('profile_image_id', sa.Integer, sa.ForeignKey('userimages.id')),
+        sa.Column('profile_image_id', sa.String, nullable=True),
         sa.Column('role', sa.String, nullable=False),
+        sa.Column('created_at', sa.DateTime, nullable=False),
+        sa.Column('updated_at', sa.DateTime, nullable=False)
+    )
+
+    op.create_table(
+        'carts',
+        sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
+        sa.Column('user_id', sa.Integer, sa.ForeignKey('users.id'), unique=True),
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.Column('updated_at', sa.DateTime, nullable=False)
     )
@@ -78,7 +64,7 @@ def upgrade():
         sa.Column('phone_number', sa.String(length=30), nullable=False),
         sa.Column('type', sa.String(length=255), nullable=False),
         sa.Column('email', sa.String, nullable=True, unique=True),
-        sa.Column('logo_id', sa.Integer, sa.ForeignKey('businessimages.id')),
+        sa.Column('logo_id',  sa.String, nullable=True),
         sa.Column('owner_id', sa.Integer, sa.ForeignKey('users.id')),
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.Column('updated_at', sa.DateTime, nullable=False)
@@ -99,13 +85,22 @@ def upgrade():
         sa.Column('business_id', sa.Integer, sa.ForeignKey('business.id')),
         sa.Column('name', sa.String, nullable=False),
         sa.Column('description', sa.String, nullable=True),
-        sa.Column('image_id', sa.Integer, sa.ForeignKey('dishimages.id')),
+        sa.Column('image_id',  sa.String, nullable=True),
         sa.Column('price', sa.Float, nullable=False),
         sa.Column('category_id', sa.Integer, sa.ForeignKey('categories.id')),
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.Column('updated_at', sa.DateTime, nullable=False)
     )
 
+    op.create_table(
+        'cart_items',
+        sa.Column('id', sa.Integer, primary_key=True, autoincrement=True),
+        sa.Column('cart_id', sa.Integer, sa.ForeignKey('carts.id')),
+        sa.Column('dish_id', sa.Integer, sa.ForeignKey('dishes.id')),
+        sa.Column('quantity', sa.Integer, nullable=False),
+        sa.Column('created_at', sa.DateTime, nullable=False),
+        sa.Column('updated_at', sa.DateTime, nullable=False)
+    )
     # Creating the Orders table
     op.create_table(
         'orders',
