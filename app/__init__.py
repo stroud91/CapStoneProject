@@ -9,7 +9,12 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .seeds import seed_commands
 from .config import Config
-
+from .api.bussiness_routes import business_bp
+from .api.dishes import dish_bp
+from .api.reviews import review_routes
+from .api.cart import cart_bp
+from .api.owner_order import owner_bp
+from .api.user_order import order_bp
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
 # Setup login manager
@@ -28,6 +33,12 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(business_bp, url_prefix='/api/business')
+app.register_blueprint(dish_bp, url_prefix='/api/menu')
+app.register_blueprint(review_routes, url_prefix='/api/review')
+app.register_blueprint(cart_bp, url_prefix='/api/cart')
+app.register_blueprint(owner_bp, url_prefix='/api/order_admin')
+app.register_blueprint(order_bp, url_prefix='/api/order_user')
 db.init_app(app)
 Migrate(app, db)
 
