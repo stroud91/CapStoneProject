@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, FileField
-from wtforms.validators import DataRequired, Length, Email, ValidationError
+from wtforms.validators import DataRequired, Length, ValidationError
 from app.models import Business
 
 
@@ -68,7 +68,7 @@ class BusinessForm(FlaskForm):
     ])
 
     email = StringField('Email', validators=[
-        Email(),
+
         Length(min=1, max=255)
     ])
 
