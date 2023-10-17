@@ -13,7 +13,7 @@ def seed_users():
         address='123 Wonderland St',
         phone='123-456-7890',
         profile_image_id="https://robohash.org/1",
-        role='admin',
+        # role='admin',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -27,7 +27,7 @@ def seed_users():
         address='456 Construct Ave',
         phone='987-654-3210',
         profile_image_id="https://robohash.org/2",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -41,7 +41,7 @@ def seed_users():
         address='789 Choco Blvd',
         phone='123-789-4560',
         profile_image_id="https://robohash.org/3",
-        role='admin',
+        # role='admin',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -55,7 +55,7 @@ def seed_users():
         address='012 Dream Way',
         phone='456-123-7890',
         profile_image_id="https://robohash.org/4",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -69,7 +69,7 @@ def seed_users():
         address='345 Explore Rd',
         phone='789-123-4560',
         profile_image_id="https://robohash.org/5",
-        role='admin',
+        # role='admin',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -83,7 +83,7 @@ def seed_users():
         address='123 Choco Blvd',
         phone='202-555-0101',
         profile_image_id="https://robohash.org/6",
-        role='admin',
+        # role='admin',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -97,7 +97,7 @@ def seed_users():
         address='611 Tangerine Way',
         phone='341-555-0161',
         profile_image_id="https://robohash.org/7",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -111,7 +111,7 @@ def seed_users():
         address='622 Lime Ave',
         phone='342-555-0162',
         profile_image_id="https://robohash.org/8",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -125,7 +125,7 @@ def seed_users():
         address='633 Mango St',
         phone='343-555-0163',
         profile_image_id="https://robohash.org/9",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -139,7 +139,7 @@ def seed_users():
         address='644 Papaya Dr',
         phone='344-555-0164',
         profile_image_id="https://robohash.org/10",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -153,7 +153,7 @@ def seed_users():
         address='655 Grape Blvd',
         phone='345-555-0165',
         profile_image_id="https://robohash.org/11",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -167,7 +167,7 @@ def seed_users():
         address='666 Olive Ln',
         phone='346-555-0166',
         profile_image_id="https://robohash.org/12",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -181,7 +181,7 @@ def seed_users():
         address='677 Peach Pl',
         phone='347-555-0167',
         profile_image_id="https://robohash.org/13",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -195,7 +195,7 @@ def seed_users():
         address='688 Pecan Rd',
         phone='348-555-0168',
         profile_image_id="https://robohash.org/14",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -209,7 +209,7 @@ def seed_users():
         address='699 Fig St',
         phone='349-555-0169',
         profile_image_id="https://robohash.org/15",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -223,7 +223,7 @@ def seed_users():
         address='7001 Cashew Ave',
         phone='350-555-0170',
         profile_image_id="https://robohash.org/16",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -237,7 +237,7 @@ def seed_users():
         address='711 Cherry Dr',
         phone='351-555-0171',
         profile_image_id="https://robohash.org/17",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -251,7 +251,7 @@ def seed_users():
         address='722 Pear Rd',
         phone='352-555-0172',
         profile_image_id="https://robohash.org/18",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -265,7 +265,7 @@ def seed_users():
         address='733 Apricot Blvd',
         phone='353-555-0173',
         profile_image_id="https://robohash.org/19",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -279,7 +279,7 @@ def seed_users():
         address='744 Raspberry Ln',
         phone='354-555-0174',
         profile_image_id="https://robohash.org/20",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -293,7 +293,7 @@ def seed_users():
         address='755 Apple St',
         phone='355-555-0175',
         profile_image_id="https://robohash.org/21",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -307,7 +307,7 @@ def seed_users():
         address='766 Guava Dr',
         phone='356-555-0176',
         profile_image_id="https://robohash.org/22",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -321,7 +321,7 @@ def seed_users():
         address='777 Nectarine Blvd',
         phone='357-555-0177',
         profile_image_id="https://robohash.org/23",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -335,7 +335,7 @@ def seed_users():
         address='788 Passionfruit Ln',
         phone='358-555-0178',
         profile_image_id="https://robohash.org/24",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -349,7 +349,7 @@ def seed_users():
         address='799 Lychee Pl',
         phone='359-555-0179',
         profile_image_id="https://robohash.org/25",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -363,7 +363,7 @@ def seed_users():
         address='8010 Kiwi Rd',
         phone='360-555-0180',
         profile_image_id="https://robohash.org/26",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -377,7 +377,7 @@ def seed_users():
         address='812 Pineapple Ave',
         phone='361-555-0181',
         profile_image_id="https://robohash.org/27",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -391,7 +391,7 @@ def seed_users():
         address='823 Banana Dr',
         phone='362-555-0182',
         profile_image_id="https://robohash.org/28",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -404,7 +404,7 @@ def seed_users():
         address='834 Watermelon Way',
         phone='363-555-0183',
         profile_image_id="https://robohash.org/29",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -418,7 +418,7 @@ def seed_users():
         address='845 Cantaloupe St',
         phone='364-555-0184',
         profile_image_id="https://robohash.org/30",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -432,7 +432,7 @@ def seed_users():
         address='856 Honeydew Dr',
         phone='365-555-0185',
         profile_image_id="https://robohash.org/31",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -446,7 +446,7 @@ def seed_users():
         address='867 Guava Blvd',
         phone='366-555-0186',
         profile_image_id="https://robohash.org/32",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -460,7 +460,7 @@ def seed_users():
         address='878 Plum Ln',
         phone='367-555-0187',
         profile_image_id="https://robohash.org/33",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -474,7 +474,7 @@ def seed_users():
         address='889 Avocado Pl',
         phone='368-555-0188',
         profile_image_id="https://robohash.org/34",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -488,7 +488,7 @@ def seed_users():
         address='8910 Dragonfruit Rd',
         phone='369-555-0189',
         profile_image_id="https://robohash.org/35",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -502,7 +502,7 @@ def seed_users():
         address='9021 Pine St',
         phone='370-555-0190',
         profile_image_id="https://robohash.org/36",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -516,7 +516,7 @@ def seed_users():
         address='9199 Cedar Ave',
         phone='371-555-0991',
         profile_image_id="https://robohash.org/37",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -530,7 +530,7 @@ def seed_users():
         address='9132 Cedar Ave',
         phone='371-555-0191',
         profile_image_id="https://robohash.org/38",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -544,7 +544,7 @@ def seed_users():
         address='9243 Maple Dr',
         phone='372-555-0192',
         profile_image_id="https://robohash.org/39",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -558,7 +558,7 @@ def seed_users():
         address='9354 Redwood Blvd',
         phone='373-555-0193',
         profile_image_id="https://robohash.org/40",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -572,7 +572,7 @@ def seed_users():
         address='9465 Willow Ln',
         phone='374-555-0194',
         profile_image_id="https://robohash.org/41",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -586,7 +586,7 @@ def seed_users():
         address='9576 Birch St',
         phone='375-555-0195',
         profile_image_id="https://robohash.org/42",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -600,7 +600,7 @@ def seed_users():
         address='9687 Elm Dr',
         phone='376-555-0196',
         profile_image_id="https://robohash.org/43",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -614,7 +614,7 @@ def seed_users():
         address='9798 Oak Way',
         phone='377-555-0197',
         profile_image_id="https://robohash.org/44",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -628,7 +628,7 @@ def seed_users():
         address='98109 Fir Rd',
         phone='378-555-0198',
         profile_image_id="https://robohash.org/45",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -642,7 +642,7 @@ def seed_users():
         address='100120 Alder Blvd',
         phone='379-555-0199',
         profile_image_id="https://robohash.org/46",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -656,7 +656,7 @@ def seed_users():
     address='101131 Spruce Ln',
     phone='380-555-0200',
     profile_image_id="https://robohash.org/47",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -670,7 +670,7 @@ def seed_users():
     address='1012 Hazel St',
     phone='381-555-0201',
     profile_image_id="https://robohash.org/48",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -684,7 +684,7 @@ def seed_users():
     address='1023 Pinecone Ave',
     phone='382-555-0202',
     profile_image_id="https://robohash.org/49",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -698,7 +698,7 @@ def seed_users():
     address='1034 Cypress Blvd',
     phone='383-555-0203',
     profile_image_id="https://robohash.org/50",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -712,7 +712,7 @@ def seed_users():
     address='1045 Redbud Ln',
     phone='384-555-0204',
     profile_image_id="https://robohash.org/51",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -726,7 +726,7 @@ def seed_users():
     address='1056 Dogwood Dr',
     phone='385-555-0205',
     profile_image_id="https://robohash.org/52",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -740,7 +740,7 @@ def seed_users():
     address='1067 Sequoia Way',
     phone='386-555-0206',
     profile_image_id="https://robohash.org/53",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -754,7 +754,7 @@ def seed_users():
     address='1078 Cedarbark Rd',
     phone='387-555-0207',
     profile_image_id="https://robohash.org/54",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -768,7 +768,7 @@ def seed_users():
     address='1089 Teakwood Pl',
     phone='388-555-0208',
     profile_image_id="https://robohash.org/55",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -782,7 +782,7 @@ def seed_users():
     address='10910 Magnolia Blvd',
     phone='389-555-0209',
     profile_image_id="https://robohash.org/56",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -796,7 +796,7 @@ def seed_users():
     address='11021 Tulip Dr',
     phone='390-555-0210',
     profile_image_id="https://robohash.org/57",
-     role='user',
+    #  role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -810,7 +810,7 @@ def seed_users():
     address='11132 Rose Ln',
     phone='391-555-0211',
     profile_image_id="https://robohash.org/58",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -824,7 +824,7 @@ def seed_users():
     address='11243 Daffodil Rd',
     phone='392-555-0212',
     profile_image_id="https://robohash.org/59",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -838,7 +838,7 @@ def seed_users():
     address='11354 Sunflower St',
     phone='393-555-0213',
     profile_image_id="https://robohash.org/60",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -852,7 +852,7 @@ def seed_users():
     address='11465 Violet Ave',
     phone='394-555-0214',
     profile_image_id="https://robohash.org/61",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -866,7 +866,7 @@ def seed_users():
     address='11576 Daisy Dr',
     phone='395-555-0215',
     profile_image_id="https://robohash.org/62",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -880,7 +880,7 @@ def seed_users():
     address='11687 Marigold Blvd',
     phone='396-555-0216',
     profile_image_id="https://robohash.org/63",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -894,7 +894,7 @@ def seed_users():
     address='11798 Lilac Ln',
     phone='397-555-0217',
     profile_image_id="https://robohash.org/64",
-    role='user',
+    # role='user',
     created_at=datetime.utcnow(),
     updated_at=datetime.utcnow()
 )
@@ -907,7 +907,7 @@ def seed_users():
         address='118109 Orchid Rd',
         phone='398-555-0218',
         profile_image_id="https://robohash.org/65",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -921,7 +921,7 @@ def seed_users():
         address='119120 Jasmine Pl',
         phone='399-555-0219',
         profile_image_id="https://robohash.org/66",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -935,7 +935,7 @@ def seed_users():
         address='120131 Lavender St',
         phone='400-555-0220',
         profile_image_id="https://robohash.org/67",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -949,7 +949,7 @@ def seed_users():
         address='121142 Gardenia Way',
         phone='401-555-0221',
         profile_image_id="https://robohash.org/68",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -963,7 +963,7 @@ def seed_users():
         address='122153 Peony Dr',
         phone='402-555-0222',
         profile_image_id="https://robohash.org/69",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -977,7 +977,7 @@ def seed_users():
         address='123164 Poppy Ln',
         phone='403-555-0223',
         profile_image_id="https://robohash.org/70",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -991,7 +991,7 @@ def seed_users():
         address='124175 Iris Ave',
         phone='404-555-0224',
         profile_image_id="https://robohash.org/71",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1005,7 +1005,7 @@ def seed_users():
         address='125186 Hydrangea Blvd',
         phone='405-555-0225',
         profile_image_id="https://robohash.org/72",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1019,7 +1019,7 @@ def seed_users():
         address='126197 Zinnia Rd',
         phone='406-555-0226',
         profile_image_id="https://robohash.org/73",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1033,7 +1033,7 @@ def seed_users():
         address='127888 Aster St',
         phone='407-555-9999',
         profile_image_id="https://robohash.org/74",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1047,7 +1047,7 @@ def seed_users():
         address='127208 Aster St',
         phone='407-555-0227',
         profile_image_id="https://robohash.org/75",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1061,7 +1061,7 @@ def seed_users():
         address='128219 Lily Dr',
         phone='408-555-0228',
         profile_image_id="https://robohash.org/76",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1075,7 +1075,7 @@ def seed_users():
         address='129230 Pansy Ln',
         phone='409-555-0229',
         profile_image_id="https://robohash.org/77",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1089,7 +1089,7 @@ def seed_users():
         address='130241 Tulip Ave',
         phone='410-555-0230',
         profile_image_id="https://robohash.org/78",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1103,7 +1103,7 @@ def seed_users():
         address='131252 Daisy Blvd',
         phone='411-555-0231',
         profile_image_id="https://robohash.org/79",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1117,7 +1117,7 @@ def seed_users():
         address='132263 Daffodil Rd',
         phone='412-555-0232',
         profile_image_id="https://robohash.org/80",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1131,7 +1131,7 @@ def seed_users():
         address='133274 Buttercup Dr',
         phone='413-555-0233',
         profile_image_id="https://robohash.org/81",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1145,7 +1145,7 @@ def seed_users():
         address='134285 Snowdrop Ln',
         phone='414-555-0234',
         profile_image_id="https://robohash.org/82",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1159,7 +1159,7 @@ def seed_users():
         address='135296 Primrose Ave',
         phone='415-555-0235',
         profile_image_id="https://robohash.org/83",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1173,7 +1173,7 @@ def seed_users():
         address='136307 Bluebell Way',
         phone='416-555-0236',
         profile_image_id="https://robohash.org/84",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1187,7 +1187,7 @@ def seed_users():
         address='137318 Begonia Dr',
         phone='417-555-0237',
         profile_image_id="https://robohash.org/85",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1201,7 +1201,7 @@ def seed_users():
         address='138329 Hibiscus Blvd',
         phone='418-555-0238',
         profile_image_id="https://robohash.org/86",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1215,7 +1215,7 @@ def seed_users():
         address='139340 Azalea Ln',
         phone='419-555-0239',
         profile_image_id="https://robohash.org/87",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1229,7 +1229,7 @@ def seed_users():
         address='140351 Freesia Rd',
         phone='420-555-0240',
         profile_image_id="https://robohash.org/88",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1243,7 +1243,7 @@ def seed_users():
         address='141362 Camellia Blvd',
         phone='421-555-0241',
         profile_image_id="https://robohash.org/89",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1257,7 +1257,7 @@ def seed_users():
         address='142373 Dandelion Dr',
         phone='422-555-0242',
         profile_image_id="https://robohash.org/90",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1271,7 +1271,7 @@ def seed_users():
         address='143384 Sunflower Ln',
         phone='423-555-0243',
         profile_image_id="https://robohash.org/91",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1285,7 +1285,7 @@ def seed_users():
         address='144395 Petunia Ave',
         phone='424-555-0244',
         profile_image_id="https://robohash.org/92",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1299,7 +1299,7 @@ def seed_users():
         address='145406 Marigold St',
         phone='425-555-0245',
         profile_image_id="https://robohash.org/93",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1313,7 +1313,7 @@ def seed_users():
         address='146417 Snapdragon Rd',
         phone='426-555-0246',
         profile_image_id="https://robohash.org/94",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1327,7 +1327,7 @@ def seed_users():
         address='147428 Dahlia Way',
         phone='427-555-0247',
         profile_image_id="https://robohash.org/95",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1341,7 +1341,7 @@ def seed_users():
         address='148439 Lotus Ln',
         phone='428-555-0248',
         profile_image_id="https://robohash.org/96",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )
@@ -1355,7 +1355,7 @@ def seed_users():
         address='149440 Chrysanthemum Blvd',
         phone='429-555-0249',
         profile_image_id="https://robohash.org/97",
-        role='user',
+        # role='user',
         created_at=datetime.utcnow(),
         updated_at=datetime.utcnow()
     )

@@ -69,7 +69,6 @@ def sign_up():
             address=form.data.get('address', None),
             phone=form.data.get('phone', None),
             profile_image_id=form.data.get('profile_image_id', None),
-            role=form.data.get('role', ),
             first_name=form.data.get('first_name', None),
             last_name=form.data.get('last_name', None)
         )

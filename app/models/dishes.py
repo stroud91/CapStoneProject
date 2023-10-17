@@ -21,7 +21,7 @@ class Dish(db.Model):
     business = db.relationship("Business", back_populates="dishes")
     category = db.relationship("Category", back_populates="dishes")
     item = db.relationship('CartItem', back_populates='dish')
-    order_details = db.relationship("OrderDetail", back_populates="dish", lazy=True)
+    order_details = db.relationship("OrderDetail", back_populates="dish", lazy=True, cascade="all, delete-orphan")
     reviews = db.relationship("Review", back_populates="dish", lazy=True)
 
     def to_dict(self):

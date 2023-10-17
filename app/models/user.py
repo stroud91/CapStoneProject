@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -15,9 +16,9 @@ class User(db.Model, UserMixin):
     address = db.Column(db.String, nullable=True)
     phone = db.Column(db.String, nullable=True)
     profile_image_id = db.Column(db.String(length=1000), nullable=False)
-    role = db.Column(db.String, nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=False)
+    # role = db.Column(db.String, nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False,default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, nullable=False,default=datetime.utcnow)
     first_name = db.Column(db.String, nullable=True)
     last_name = db.Column(db.String, nullable=True)
 
@@ -45,7 +46,6 @@ class User(db.Model, UserMixin):
             'address': self.address,
             'phone': self.phone,
             'profile_image_id': self.profile_image_id,
-            'role': self.role,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'businesses': [business.to_dict() for business in self.businesses_owned]

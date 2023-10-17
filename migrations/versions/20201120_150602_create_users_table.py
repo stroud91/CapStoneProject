@@ -37,7 +37,7 @@ def upgrade():
         sa.Column('address', sa.String, nullable=True),
         sa.Column('phone', sa.String, nullable=True),
         sa.Column('profile_image_id', sa.String, nullable=True),
-        sa.Column('role', sa.String, nullable=False),
+        # sa.Column('role', sa.String, nullable=False),
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.Column('updated_at', sa.DateTime, nullable=False)
     )

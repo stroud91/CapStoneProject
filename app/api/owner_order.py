@@ -8,12 +8,12 @@ owner_bp = Blueprint('owner', __name__)
 @login_required
 def get_business_orders(business_id):
     try:
-        # Ensure the authenticated user is the owner of the business
+        
         business = Business.query.get_or_404(business_id)
         if business.owner_id != current_user.id:
             return jsonify(error="Unauthorized"), 403
 
-        # Fetching orders related to the business's dishes
+
         orders = (
             Order.query
             .join(OrderDetail)

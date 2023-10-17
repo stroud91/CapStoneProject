@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from ..models import db, Business, Review, Dish
 from ..forms.bussiness import BusinessForm
+from ..forms.search_form import SearchForm
 from flask_login import login_required, current_user
 from datetime import datetime
 from werkzeug.utils import secure_filename
@@ -9,6 +10,34 @@ import os
 
 business_bp = Blueprint('business', __name__)
 
+@business_bp.route('/search', methods=['POST'])
+def search_business():
+    form = SearchForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    results_list = []
+
+    if form.validate():
+        searchTerm = form.search.data
+        businesses = Business.query.filter(Business.name.ilike(f'%{searchTerm}%')).all()
+
+        for business in businesses:
+            business_dict = business.to_dict()
+
+
+            dishes_list = []
+            for dish in business.dishes:
+                dish_dict = dish.to_dict()
+
+
+                dish_dict['category'] = dish.category.name if dish.category else None
+                dishes_list.append(dish_dict)
+
+           
+            business_dict['dishes'] = dishes_list
+
+            results_list.append(business_dict)
+
+    return {"queried businesses": results_list}
 
 #get all bussiness
 @business_bp.route('/', methods=['GET'])
@@ -27,7 +56,7 @@ def get_single_business(business_id):
     dishes_data = []
     for dish in business.dishes:
         dish_data = dish.to_dict()
-        
+
         reviews_data = []
         for review in dish.reviews:
             review_data = review.to_dict()
@@ -57,7 +86,7 @@ def add_business():
             about=form.about.data,
             type=form.type.data,
             email=form.email.data,
-            logo_url=form.logo_url.data,
+            logo_id=form.logo_id.data,
             owner_id=form.owner_id.data,
             created_at=datetime.utcnow(),
             updated_at=datetime.utcnow()
@@ -124,10 +153,12 @@ def delete_business(b_id):
     try:
 
         for dish in business.dishes:
-            for review in dish.reviews:
-                db.session.delete(review)
+           for order_detail in dish.order_details:
+              db.session.delete(order_detail)
+           for review in dish.reviews:
+              db.session.delete(review)
+        db.session.delete(dish)
 
-            db.session.delete(dish)
 
 
         db.session.delete(business)

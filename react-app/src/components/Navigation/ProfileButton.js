@@ -4,6 +4,8 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import UserOrder from "../UserOrder"
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -45,8 +47,15 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
+            <li>Welcome, {user.firstName} {user.lastName}</li>
             <li>{user.email}</li>
+            <li>
+              <Link>
+                buttonText="View Orders"
+                onItemClick={closeMenu}
+                modalComponent={<UserOrder />}
+             </Link>
+            </li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

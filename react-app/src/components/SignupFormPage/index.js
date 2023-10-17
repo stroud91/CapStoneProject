@@ -11,6 +11,11 @@ function SignupFormPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const [profileImageId, setProfileImageId] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -18,7 +23,7 @@ function SignupFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-        const data = await dispatch(signUp(username, email, password));
+        const data = await dispatch(signUp(username, email, password, address, phone, profileImageId, firstName, lastName));
         if (data) {
           setErrors(data)
         }
@@ -36,44 +41,43 @@ function SignupFormPage() {
         </ul>
         <label>
           Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </label>
         <label>
           Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
         </label>
         <label>
           Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </label>
         <label>
           Confirm Password
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
+          <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+        </label>
+        <label>
+          Address
+          <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+        </label>
+        <label>
+          Phone
+          <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
+        </label>
+        <label>
+          Profile Image ID
+          <input type="text" value={profileImageId} onChange={(e) => setProfileImageId(e.target.value)} />
+          </label>
+        <label>
+          First Name
+          <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+        </label>
+        <label>
+          Last Name
+          <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </label>
         <button type="submit">Sign Up</button>
       </form>
     </>
   );
 }
-
 export default SignupFormPage;
