@@ -11,7 +11,7 @@ function MainPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
   }
 
   const handleChange = (e) => {
@@ -24,11 +24,11 @@ function MainPage() {
       const businessesData = await businessesResponse.json();
       setBusinesses(businessesData);
 
-      const topRatedResponse = await fetch("/api/dish/top-rated");
+      const topRatedResponse = await fetch("/api/menu/top-rated");
       const topRatedData = await topRatedResponse.json();
       setTopRatedDishes(topRatedData);
 
-      const topOrderedResponse = await fetch("/api/dish/top-ordered");
+      const topOrderedResponse = await fetch("/api/menu/top-ordered");
       const topOrderedData = await topOrderedResponse.json();
       setTopOrderedDishes(topOrderedData);
     }
@@ -39,7 +39,7 @@ function MainPage() {
   return businesses.length > 0 ? (
     <div className='main-page-container'>
       <header className='main-header'>
-        <Search handleSubmit={handleSubmit} handleChange={handleChange} search={search} />
+        {/* <Search handleSubmit={handleSubmit} handleChange={handleChange} search={search} /> */}
       </header>
 
       <div className="main-page-image-container">
@@ -65,7 +65,6 @@ function MainPage() {
           {topOrderedDishes.map(dish => (
             <div key={dish.id} className="dish-card">
               <p>{dish.name}</p>
-              <p>{dish.orders}</p>
             </div>
           ))}
         </div>

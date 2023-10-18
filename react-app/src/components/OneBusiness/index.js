@@ -20,7 +20,7 @@ function BusinessDetails() {
 
     const [loading, setLoading] = useState(true);
     const [showAddDishForm, setShowAddDishForm] = useState(false);
-
+    const [showAddBusinesshForm, setShowAddBusinessForm] = useState(false);
     const selectedBusiness = useSelector((state) => state.business.selectedBusiness);
     const dishes = useSelector((state) => state.dish.dishesForBusiness);
     const currentUser = useSelector((state) => state.session.user);
@@ -37,19 +37,27 @@ function BusinessDetails() {
         history.push(`/dish/${id}`);
     }
 
-        const handleEdit = (id) => {
-            history.push(`/update-dish/${id}`);
-        }
+    const handleEdit = (id) => {
+        history.push(`/update-dish/${id}`);
+    }
 
-        const handleDelete = (id) => {
+    const handleDelete = (id) => {
+        dispatch(removeDishForBusiness(id));
+    }
 
-            dispatch(removeDishForBusiness(id));
-        }
+    const handleEditBusiness = (id) => {
+        history.push(`/update-business/${id}`);
+    }
 
-        const handleAddToCart = (dishId) => {
+    const handleDeleteBusiness = (id) => {
+        dispatch(deleteBusiness(id));
+    }
 
-            dispatch(addItemToCart(dishId));
-        }
+
+
+    const handleAddToCart = (dishId) => {
+        dispatch(addItemToCart(dishId));
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -66,13 +74,27 @@ function BusinessDetails() {
     }
 
     return (
-        <div className="business-container">
-              {/* Display Selected Business Information */}
-              <h2>{selectedBusiness.name}</h2>
-            <p>{selectedBusiness.address}</p>
-            <p>{selectedBusiness.description}</p>
-            {/* ... other business information ... */}
+        <div className="business-info-container">
+    <div className="business-logo">
+        <img src={selectedBusiness.logo_id} alt="Business Logo" />
+    </div>
+    <div className="business-name">
+        {/* Name of the business */}
+        {selectedBusiness.name}
+    </div>
+    <div className="business-details">
 
+        <p>About: {selectedBusiness.about}</p>
+        <p>Address: {selectedBusiness.address}, {selectedBusiness.city}</p>
+        <p>Email: {selectedBusiness.email}</p>
+        <p>Phone Number: {selectedBusiness.phone}</p>
+    </div>
+    {user && selectedBusiness.owner_id === user.id && (
+    <div className="business-actions">
+        <button className="edit-button" onClick={() => handleEditBusiness(selectedBusiness.id)}>Edit</button>
+        <button className="delete-button" onClick={() => handleDeleteBusiness(selectedBusiness.id)}>Delete</button>
+    </div>
+    )}
             <div className="dishes-container">
                 {dishes.map(dish => (
                     <div className="dish" onClick={() => setSelectedDish(dish.id)}>
