@@ -77,6 +77,7 @@ export const getAllBusinesses = () => async (dispatch) => {
   const response = await fetch(`/api/business`);
   if (response.ok) {
     const data = await response.json();
+    console.log("this is all bussiness", data)
     dispatch(setAllBusinesses(data));
   } else {
     console.error("Thunk Error: Bad Req");
@@ -102,9 +103,11 @@ export const createNewBusiness = (business) => async (dispatch) => {
 };
 
 export const fetchOneBusiness = (id) => async (dispatch) => {
+  console.log("id", id)
   const response = await fetch(`/api/business/${id}`);
   if (response.ok) {
     const business = await response.json();
+    console.log("this is one bussiness", business)
     dispatch(setOneBusiness(business));
   } else {
     const errorData = await response.json();

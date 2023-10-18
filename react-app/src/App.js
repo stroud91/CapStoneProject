@@ -13,7 +13,7 @@ import UpdateBusinessForm from "./components/UpdateBusinessForm";
 import UpdateDishForm from "./components/UpdateDishForm";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-
+import BusinessMainPage from "./components/Bussiness";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -34,6 +34,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <MainPageView />
+          </Route>
+          <Route exact path="/all">
+            <BusinessMainPage />
           </Route>
           <Route path="/business/:id">
             <OneBusiness />

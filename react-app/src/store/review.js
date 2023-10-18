@@ -54,9 +54,9 @@ export const fetchAllReviews = () => async dispatch => {
     }
 };
 
-export const fetchSingleBusinessReviews = id => async dispatch => {
+export const fetchSingleBusinessReviews = businessId => async dispatch => {
     try {
-        const response = await fetch(`/api/reviews/${id}/reviews`);
+        const response = await fetch(`/api/reviews/business/${businessId}`);
 
         if (!response.ok) {
             const errorData = await response.json();
@@ -66,7 +66,7 @@ export const fetchSingleBusinessReviews = id => async dispatch => {
         const reviews = await response.json();
         dispatch(getSingleBusinessReviews(reviews));
     } catch (err) {
-        console.error('Error fetching single business reviews:', err);
+        console.error('Error fetching reviews for business:', err);
     }
 };
 

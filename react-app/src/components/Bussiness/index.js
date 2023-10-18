@@ -6,14 +6,15 @@ import noImage from "../../images/no-image.png";
 import './Business.css';
 
 function getPrev(business) {
-    if (business.images.length) {
-        const previewImage = business.images.find(bus => bus.image_preview);
+    if (business.logo_id) {
+        const previewImage = business.logo_id
         return previewImage ? previewImage.image_url : noImage;
     }
     return noImage;
 }
 
 function BusinessCard({ business }) {
+    console.log("this is for the image", business)
     return (
         <div className='businessMain__item'>
             <div className="businessMain__image">
@@ -23,8 +24,6 @@ function BusinessCard({ business }) {
                      key={business.id} />
             </div>
             <p className="businessMain_name">{business.name}</p>
-            <p>Category: {business.category}</p>
-            <p>Rating: {business.avg_rating}</p>
             <p>{business.address}, {business.city}, {business.state} {business.zip_code}</p>
             <p>{business.phone_number}</p>
             <Link to={`/business/${business.id}`}>View More</Link>
