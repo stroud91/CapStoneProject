@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBusinessOrders } from 'path-to-your-redux-file'; // Adjust the path to your actual file
+import { getBusinessOrders } from 'path-to-your-redux-file';
+import './BusinessOrder.css';
 
 function BusinessOrders({ businessId }) {
   const dispatch = useDispatch();
-  const orders = useSelector(state => state.orders); // Assuming your orders are stored in state.orders
+  const orders = useSelector(state => state.order.orders);
 
   useEffect(() => {
     dispatch(getBusinessOrders(businessId));
@@ -38,7 +39,7 @@ function BusinessOrders({ businessId }) {
               <td>{order.status}</td>
               <td>{new Date(order.created_at).toLocaleDateString()}</td>
               <td>{new Date(order.updated_at).toLocaleDateString()}</td>
-              
+
             </tr>
           ))}
         </tbody>
