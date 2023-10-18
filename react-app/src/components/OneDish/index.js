@@ -4,30 +4,29 @@ import { Link, useParams } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
 import DeleteDishModal from "../DeleteDishModal";
 
-import { fetchSingleBusinessReviews } from '../../store/review';
+import { fetchReviewsForDish } from '../../store/review';
 import { getSingleDish, removeDishForBusiness } from '../../store/dish';
 function DishDetail() {
     const dispatch = useDispatch();
-    const { dishId } = useParams();
+    const { id } = useParams();
     const [dish, setDish] = useState(null);
     const [reviews, setReviews] = useState([]);
     const currentUser = useSelector(state => state.session.user);
-
+    const currentDish = useSelector(state => state.dish.current);
+    const currentReviews = useSelector(state => state.review.reviewsForDish);
+    const business = useSelector(state => state.business.selectedBusiness);
+    console.log("this is current dish",currentDish)
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
 
-        const fetchDish = async () => {
-            const fetchedDish = await dispatch(getSingleDish(dishId));
-            setDish(fetchedDish);
-        }
 
-        const fetchReviews = async () => {
-            const fetchedReviews = await dispatch(fetchSingleBusinessReviews(dishId));
-            setReviews(fetchedReviews);
+        async function fetchData() {
+            await dispatch(getSingleDish(id));
+            await dispatch(fetchReviewsForDish(id));
+            setLoading(false);
         }
-
-        fetchDish();
-        fetchReviews();
-    }, [dispatch, dishId]);
+        fetchData();
+    }, [dispatch, id]);
 
     const handleDelete = async (dishId) => {
         if (!dish) return;
@@ -35,16 +34,17 @@ function DishDetail() {
     };
 
 
-    if (!dish) return <div>Loading...</div>;
-
+    if (!currentDish) return <div>Loading...</div>;
+    if (!currentReviews) return <div>Loading...</div>;
+    
     return (
         <div className="dish-detail-container">
-            <img src={dish.image_id} alt={dish.name} className="dish-image" />
-            <h3>{dish.name}</h3>
-            <p>{dish.description}</p>
-            <span>${dish.price.toFixed(2)}</span>
+            <img src={currentDish.image_id} alt={currentDish.name} className="dish-image" />
+            <h3>{currentDish.name}</h3>
+            <p>{currentDish.description}</p>
+            <span>${currentDish.price.toFixed(2)}</span>
 
-            {currentUser && currentUser.id === dish.business_id && (
+            {currentUser && currentUser.id === business.owner_id && (
                 <div className="dish-buttons">
                      <Link to={`/dish/${dish.id}/edit`} className="edit-button">
                        Edit
@@ -59,10 +59,10 @@ function DishDetail() {
 
             <div className="dish-reviews">
                 <h4>Reviews</h4>
-                {reviews.map(review => (
+                {currentReviews.map(review => (
                     <div key={review.id} className="review">
-                        <h5>{review.title}</h5>
-                        <p>{review.content}</p>
+                        <h5>{review.user_name}</h5>
+                        <p>{review.comment}</p>
                         <span>Rating: {review.rating}</span>
                     </div>
                 ))}

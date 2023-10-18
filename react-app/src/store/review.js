@@ -5,6 +5,8 @@ const GET_SINGLE_BUSINESS_REVIEWS = 'GET_SINGLE_BUSINESS_REVIEWS';
 const CREATE_REVIEW = 'CREATE_REVIEW';
 const DELETE_REVIEW = 'DELETE_REVIEW';
 const EDIT_REVIEW = 'EDIT_REVIEW';
+const SET_REVIEWS_FOR_DISH = "SET_REVIEWS_FOR_DISH";
+
 
 // Action Creators
 const getBusinessReviews = reviews => ({
@@ -37,10 +39,15 @@ const editReviewAction = review => ({
     review
 });
 
+const setReviewsForDish = reviews => ({
+    type: SET_REVIEWS_FOR_DISH,
+    reviews
+});
+
 // Thunks
 export const fetchAllReviews = () => async dispatch => {
     try {
-        const response = await fetch('/api/reviews');
+        const response = await fetch('/api/review');
 
         if (!response.ok) {
             const errorData = await response.json();
@@ -56,7 +63,7 @@ export const fetchAllReviews = () => async dispatch => {
 
 export const fetchSingleBusinessReviews = businessId => async dispatch => {
     try {
-        const response = await fetch(`/api/reviews/business/${businessId}`);
+        const response = await fetch(`/api/review/business/${businessId}`);
 
         if (!response.ok) {
             const errorData = await response.json();
@@ -70,9 +77,25 @@ export const fetchSingleBusinessReviews = businessId => async dispatch => {
     }
 };
 
+export const fetchReviewsForDish = (dishId) => async (dispatch) => {
+    try {
+        const response = await fetch(`/api/review/dish/${dishId}`);
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw errorData;
+        }
+
+        const reviews = await response.json();
+        dispatch(setReviewsForDish(reviews));
+    } catch (err) {
+        console.error('Error fetching reviews for dish:', err);
+    }
+};
+
 export const fetchUserReviews = () => async dispatch => {
     try {
-        const response = await fetch('/api/reviews/user');
+        const response = await fetch('/api/review/user');
 
         if (!response.ok) {
             const errorData = await response.json();
@@ -88,7 +111,7 @@ export const fetchUserReviews = () => async dispatch => {
 
 export const createReview = (businessId, reviewData) => async dispatch => {
     try {
-        const response = await fetch(`/api/reviews/${businessId}/reviews`, {
+        const response = await fetch(`/api/review/${businessId}/reviews`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -110,7 +133,7 @@ export const createReview = (businessId, reviewData) => async dispatch => {
 
 export const updateReview = (reviewId, updatedData) => async dispatch => {
     try {
-        const response = await fetch(`/api/reviews/${reviewId}`, {
+        const response = await fetch(`/api/review/${reviewId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -132,7 +155,7 @@ export const updateReview = (reviewId, updatedData) => async dispatch => {
 
 export const deleteReview = reviewId => async dispatch => {
     try {
-        const response = await fetch(`/api/reviews/${reviewId}`, {
+        const response = await fetch(`/api/review/${reviewId}`, {
             method: 'DELETE'
         });
 
@@ -152,6 +175,7 @@ const initialState = {
     allBusinessReviews: [],
     singleBusinessReviews: [],
     userReviews: [],
+    reviewsForDish: [],
 };
 
 const reviewReducer = (state = initialState, action) => {
@@ -162,6 +186,11 @@ const reviewReducer = (state = initialState, action) => {
             return { ...state, singleBusinessReviews: action.reviews };
         case GET_CURRENT_USER_REVIEWS:
             return { ...state, userReviews: action.reviews };
+        case SET_REVIEWS_FOR_DISH:
+            return {
+                ...state,
+                reviewsForDish: action.reviews
+                };
         case CREATE_REVIEW:
             return {
                 ...state,

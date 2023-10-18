@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
-from ..models import Review, db
+from ..models import Review, db,Dish
 from ..forms.reviews import ReviewForm
 from datetime import datetime
 review_routes = Blueprint('reviews', __name__)
@@ -8,6 +8,25 @@ review_routes = Blueprint('reviews', __name__)
 @review_routes.route('/', methods=['GET'])
 def get_all_reviews():
     reviews = Review.query.all()
+    return jsonify([review.to_dict() for review in reviews])
+
+@review_routes.route('/business/<int:business_id>', methods=['GET'])
+def get_reviews_for_business(business_id):
+
+    dishes = Dish.query.filter_by(business_id=business_id).all()
+
+
+    dish_ids = [dish.id for dish in dishes]
+
+
+    reviews = Review.query.filter(Review.dish_id.in_(dish_ids)).all()
+
+    return jsonify([review.to_dict() for review in reviews])
+
+
+@review_routes.route('/dish/<int:dish_id>', methods=['GET'])
+def get_reviews_for_dish(dish_id):
+    reviews = Review.query.filter_by(dish_id=dish_id).all()
     return jsonify([review.to_dict() for review in reviews])
 
 @review_routes.route('/user', methods=['GET'])

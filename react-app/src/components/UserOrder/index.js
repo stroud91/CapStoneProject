@@ -4,8 +4,8 @@ import { getUserOrders } from '../../store/order';
 
 function UserOrders() {
   const dispatch = useDispatch();
-  const orders = useSelector(state => state.orders);
-
+  const orders = useSelector(state => state.order.orders);
+  console.log("this is orders", orders)
   useEffect(() => {
     dispatch(getUserOrders());
   }, [dispatch]);
@@ -26,7 +26,7 @@ function UserOrders() {
             <th>Status</th>
             <th>Created At</th>
             <th>Updated At</th>
-            <th>Actions</th>
+            
           </tr>
         </thead>
         <tbody>

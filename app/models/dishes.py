@@ -28,11 +28,13 @@ class Dish(db.Model):
         return {
             'id': self.id,
             'business_id': self.business_id,
+            'business_name': self.business.name,
             'name': self.name,
             'description': self.description,
             'image_id': self.image_id,
             'price': self.price,
             'category_id': self.category_id,
+            'category_name': self.category.name, 
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

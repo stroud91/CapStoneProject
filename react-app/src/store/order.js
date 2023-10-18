@@ -33,9 +33,10 @@ export const updateOrderStatus = (order) => ({
 
 // Thunks
 export const getUserOrders = () => async (dispatch) => {
-  const response = await fetch("/api/user/orders");
+  const response = await fetch("/api/order_user/orders");
   if (response.ok) {
     const data = await response.json();
+    console.log("this is data", data)
     dispatch(setOrders(data));
   } else {
     console.error("Thunk Error: Failed to fetch user orders");
@@ -43,7 +44,7 @@ export const getUserOrders = () => async (dispatch) => {
 };
 
 export const getBusinessOrders = (businessId) => async (dispatch) => {
-  const response = await fetch(`/api/business/${businessId}/orders`);
+  const response = await fetch(`/api/order_admin/business/${businessId}/orders`);
   if (response.ok) {
     const data = await response.json();
     dispatch(setOrders(data));

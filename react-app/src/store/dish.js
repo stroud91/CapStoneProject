@@ -53,7 +53,7 @@ export const deleteDish = (id) => ({
 });
 
 export const getAllDishes = () => async (dispatch) => {
-  const response = await fetch(`/api/dish`);
+  const response = await fetch(`/api/menu`);
   if (response.ok) {
     const dishes = await response.json();
     dispatch(setAllDishes(dishes));
@@ -63,7 +63,7 @@ export const getAllDishes = () => async (dispatch) => {
 };
 
 export const getDishesForBusiness = (businessId) => async (dispatch) => {
-  const response = await fetch(`/api/dish/business/${businessId}`);
+  const response = await fetch(`/api/menu/business/${businessId}`);
   if (response.ok) {
     const dishes = await response.json();
     dispatch(setDishesForBusiness(dishes));
@@ -73,7 +73,7 @@ export const getDishesForBusiness = (businessId) => async (dispatch) => {
 };
 
 export const getSingleDish = (dishId) => async (dispatch) => {
-  const response = await fetch(`/api/dish/${dishId}`);
+  const response = await fetch(`/api/menu/${dishId}`);
   if (response.ok) {
     const dish = await response.json();
     dispatch(setSingleDish(dish));
@@ -83,7 +83,7 @@ export const getSingleDish = (dishId) => async (dispatch) => {
 };
 
 export const createDishForBusiness = (businessId, dish) => async (dispatch) => {
-  const response = await fetch(`/api/dish/business/${businessId}/add`, {
+  const response = await fetch(`/api/menu/business/${businessId}/add`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -99,7 +99,7 @@ export const createDishForBusiness = (businessId, dish) => async (dispatch) => {
 };
 
 export const editDishForBusiness = (businessId, dishId, updatedDish) => async (dispatch) => {
-  const response = await fetch(`/api/dish/business/${businessId}/update/${dishId}`, {
+  const response = await fetch(`/api/menu/business/${businessId}/update/${dishId}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -115,7 +115,7 @@ export const editDishForBusiness = (businessId, dishId, updatedDish) => async (d
 };
 
 export const removeDishForBusiness = (businessId, dishId) => async (dispatch) => {
-  const response = await fetch(`/api/dish/business/${businessId}/dish/${dishId}`, {
+  const response = await fetch(`/api/menu/business/${businessId}/dish/${dishId}`, {
     method: 'DELETE',
   });
   if (response.ok) {
@@ -127,7 +127,7 @@ export const removeDishForBusiness = (businessId, dishId) => async (dispatch) =>
 
 export const fetchTopRatedDishes = () => {
   return async (dispatch) => {
-    const response = await fetch('/dish/top-rated');
+    const response = await fetch('api/menu/top-rated');
     if (response.ok) {
       const dishes = await response.json();
       dispatch(setTopRatedDishes(dishes));
@@ -137,7 +137,7 @@ export const fetchTopRatedDishes = () => {
 
 export const fetchTopOrderedDishes = () => {
   return async (dispatch) => {
-    const response = await fetch('/dish/top-ordered');
+    const response = await fetch('api/menu/top-ordered');
     if (response.ok) {
       const dishes = await response.json();
       dispatch(setTopOrderedDishes(dishes));
