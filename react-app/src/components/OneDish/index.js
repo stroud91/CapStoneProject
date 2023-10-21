@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import OpenModalButton from "../OpenModalButton";
 import DeleteDishModal from "../DeleteDishModal";
-
+import { fetchOneBusiness } from '../../store/business';
 import { fetchReviewsForDish } from '../../store/review';
-import { getSingleDish, removeDishForBusiness } from '../../store/dish';
+import { getDishesForBusiness, getSingleDish, removeDishForBusiness } from '../../store/dish';
 import { addItemToCart } from '../../store/cart';
 
 function DishDetail() {
@@ -21,12 +21,15 @@ function DishDetail() {
     const currentDish = useSelector(state => state.dish.current);
     const currentReviews = useSelector(state => state.review.reviewsForDish);
     const business = useSelector(state => state.business.selectedBusiness);
+    console.log("this is business for one dish", business)
     console.log("this is current dish",currentDish)
 
     useEffect(() => {
         async function fetchData() {
+            await dispatch(fetchOneBusiness(id));
             await dispatch(getSingleDish(id));
             await dispatch(fetchReviewsForDish(id));
+
             setLoading(false);
         }
         fetchData();
@@ -54,14 +57,14 @@ function DishDetail() {
 
             {currentUser && currentUser.id === business.owner_id && (
                 <div className="dish-buttons">
-                     <Link to={`/dish/${dish.id}/edit`} className="edit-button">
+                     <Link to={`/dish/${id}/update`} className="edit-button">
                        Edit
                      </Link>
-                    <OpenModalButton
+                    {/* <OpenModalButton
                         buttonText="Delete"
                         modalComponent={<DeleteDishModal id={dish.id} onDelete={() => handleDelete(dish.id)} businessId={dish.business_id} />}
                         id={`dish-delete-button-${dish.id}`}
-                    />
+                    /> */}
                 </div>
             )}
 

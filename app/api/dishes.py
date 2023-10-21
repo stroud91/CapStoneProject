@@ -32,7 +32,7 @@ def get_single_dish(dish_id):
 
 
 
-@dish_bp.route('/business/<int:business_id>/add', methods=['POST'])  
+@dish_bp.route('/business/<int:business_id>/add', methods=['POST'])
 @login_required
 def add_dish(business_id):
     business = Business.query.get_or_404(business_id)
@@ -131,7 +131,7 @@ def get_top_rated_dishes():
         .order_by(func.avg(Review.rating).desc())\
         .limit(3).all()
 
-    dishes_data = [{'id': dish.id, 'name': dish.name, 'rating': average_rating} for dish, average_rating in top_rated_dishes]
+    dishes_data = [{'id': dish.id, 'name': dish.name, 'rating': average_rating, 'image_id': dish.image_id} for dish, average_rating in top_rated_dishes]
     return jsonify(dishes_data)
 
 
@@ -144,5 +144,5 @@ def get_top_ordered_dishes():
         .order_by(func.count(OrderDetail.dish_id).desc())\
         .limit(3).all()
 
-    dishes_data = [{'id': dish.id, 'name': dish.name, 'orders': order_count} for dish, order_count in top_ordered_dishes]
+    dishes_data = [{'id': dish.id, 'name': dish.name, 'orders': order_count, 'image_id': dish.image_id} for dish, order_count in top_ordered_dishes]
     return jsonify(dishes_data)

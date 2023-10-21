@@ -8,16 +8,20 @@ import { addItemToCart } from "../../store/cart";
 import { fetchSingleBusinessReviews } from "../../store/review";
 import {removeDishForBusiness} from '../../store/dish'
 import DishCreationForm from '../CreateDishForm'
+import OpenModalButton from "../OpenModalButton";
+import DeleteDishModal from "../DeleteDishModal";
 import "./OneBusiness.css";
 import plusImage from '../../images/plusimage.jpg'
-
+import { useModal } from "../../context/Modal";
 
 function BusinessDetails() {
 
     const history = useHistory();
     const dispatch = useDispatch();
     const { id } = useParams();
+    const { setModalContent } = useModal();
 
+    console.log("Business ID from params:", id);
     const [loading, setLoading] = useState(true);
     const [showAddDishForm, setShowAddDishForm] = useState(false);
     const [showAddBusinesshForm, setShowAddBusinessForm] = useState(false);
@@ -26,33 +30,34 @@ function BusinessDetails() {
     const currentUser = useSelector((state) => state.session.user);
     const reviews = useSelector((state) => state.review.allReviews);
     const user = currentUser;
-
-
+    console.log("Selected Business from Redux:", selectedBusiness);
 
     const showAddDishFormFunction = () => {
-        setShowAddDishForm(true);
+        history.push(`/create-dish`);
     }
 
     const setSelectedDish = (id) => {
         history.push(`/dish/${id}`);
     }
 
-    const handleEdit = (id) => {
-        history.push(`/update-dish/${id}`);
+    const handleEdit = (businessId, id, event) => {
+        event.stopPropagation();
+        history.push(`/business/${businessId}/update-dish/${id}`);
     }
 
-    const handleDelete = (id) => {
-        dispatch(removeDishForBusiness(id));
-    }
 
-    const handleEditBusiness = (id) => {
-        history.push(`/update-business/${id}`);
-    }
+    // const handleDelete = async (businessId, dishId, event) => {
+    //     event.stopPropagation();
+    //      return dispatch(removeDishForBusiness(businessId, dishId)).then(() => {
 
-    const handleDeleteBusiness = (id) => {
-        dispatch(deleteBusiness(id));
-    }
-
+    //        dispatch(getDishesForBusiness(businessId));
+    //        history.push(`/business/${businessId}`);
+    //      });
+    //    };
+    const handleDelete = (businessId, dishId, event) => {
+        event.stopPropagation();
+        setModalContent(<DeleteDishModal businessId={businessId} dishId={dishId} />);
+    };
 
 
     const handleAddToCart = (dishId) => {
@@ -60,13 +65,20 @@ function BusinessDetails() {
     }
 
     useEffect(() => {
+        let isMounted = true;
+
         async function fetchData() {
-            await dispatch(fetchOneBusiness(id));
-            await dispatch(getDishesForBusiness(id));
-            await dispatch(fetchSingleBusinessReviews(id));
-            setLoading(false);
+            if (isMounted) {
+                await dispatch(fetchOneBusiness(id));
+                await dispatch(getDishesForBusiness(id));
+                await dispatch(fetchSingleBusinessReviews(id));
+                setLoading(false);
+            }
         }
+
         fetchData();
+
+        return () => isMounted = false;
     }, [dispatch, id]);
 
     if (loading) {
@@ -74,7 +86,9 @@ function BusinessDetails() {
     }
 
     return (
+
         <div className="business-info-container">
+
     <div className="business-logo">
         <img src={selectedBusiness.logo_id} alt="Business Logo" />
     </div>
@@ -83,18 +97,13 @@ function BusinessDetails() {
         {selectedBusiness.name}
     </div>
     <div className="business-details">
-
         <p>About: {selectedBusiness.about}</p>
         <p>Address: {selectedBusiness.address}, {selectedBusiness.city}</p>
         <p>Email: {selectedBusiness.email}</p>
         <p>Phone Number: {selectedBusiness.phone}</p>
     </div>
-    {user && selectedBusiness.owner_id === user.id && (
-    <div className="business-actions">
-        <button className="edit-button" onClick={() => handleEditBusiness(selectedBusiness.id)}>Edit</button>
-        <button className="delete-button" onClick={() => handleDeleteBusiness(selectedBusiness.id)}>Delete</button>
-    </div>
-    )}
+
+
             <div className="dishes-container">
                 {dishes.map(dish => (
                     <div className="dish" onClick={() => setSelectedDish(dish.id)}>
@@ -107,8 +116,8 @@ function BusinessDetails() {
                         </div>
                         {user && selectedBusiness.owner_id === user.id && (
                             <div className="dish-owner-actions">
-                                <button className="edit-btn" onClick={() => handleEdit(dish.id)}>Edit</button>
-                                <button className="delete-btn" onClick={() => handleDelete(dish.id)}>Delete</button>
+                                <button className="edit-btn" onClick={(event) => handleEdit(selectedBusiness.id, dish.id, event)}>Edit</button>
+                                <button className="delete-btn" onClick={(event) => handleDelete(selectedBusiness.id, dish.id, event)}>Delete</button>
                             </div>
                         )}
                         {user && (
@@ -130,6 +139,7 @@ function BusinessDetails() {
                 {showAddDishForm && <DishCreationForm />}
             </div>
         </div>
+
     );
 }
 

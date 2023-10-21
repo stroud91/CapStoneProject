@@ -30,10 +30,10 @@ function UpdateBusiness() {
   const [state, setState] = useState(business ? business.state : '');
   const [zip_code, setZipCode] = useState(business ? business.zip_code : '');
   const [phone_number, setPhoneNumber] = useState(business ? business.phone_number : '');
-  const [category_id, setCategoryId] = useState(business ? business.category_id : '');
-  const [website, setWebsite] = useState(business ? business.website : '');
+  const [email, setEmail] = useState(business ? business.email : '');
   const [about, setAbout] = useState(business ? business.about : '');
   const [type, setType] = useState(business ? business.type : '');
+  const [logo_id, setLogo] = useState(business ? business.type : '');
   const [validationErrors, setValidationErrors] = useState([]);
 
 
@@ -68,12 +68,12 @@ function UpdateBusiness() {
         errors.push("Invalid phone number.");
     }
 
-    if (!values.category_id) {
-        errors.push("Category is required.");
-    }
+    if (!values.logo_id || values.logo_id.length > 500) {
+      errors.push("Invalid url.");
+  }
 
-    if (!values.website || values.website.length > 255) {
-        errors.push("Invalid website URL.");
+    if (!values.email || values.email.length > 255) {
+        errors.push("Invalid email URL.");
     }
 
     if (!values.about || values.about.length > 500) {
@@ -100,9 +100,9 @@ function UpdateBusiness() {
       state,
       zip_code,
       phone_number,
-      category_id,
+      logo_id,
       owner_id,
-      website,
+      email,
       about,
       type
     });
@@ -120,9 +120,9 @@ function UpdateBusiness() {
       state,
       zip_code,
       phone_number,
-      category_id,
+      logo_id,
       owner_id,
-      website,
+      email,
       about,
       type
     };
@@ -211,13 +211,24 @@ function UpdateBusiness() {
         </div>
 
         <div className='form__input'>
-          <label>Website</label>
+          <label>Image</label>
           <input
             type="text"
-            value={website}
-            onChange={(e) => setWebsite(e.target.value)}
+            value={logo_id}
+            onChange={(e) => setLogo(e.target.value)}
             required
-            placeholder='Enter the website URL'
+            placeholder='Input new bussiness image'
+          />
+        </div>
+
+        <div className='form__input'>
+          <label>Email</label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder='Enter the email URL'
           />
         </div>
 

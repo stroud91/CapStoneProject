@@ -3,7 +3,7 @@ from wtforms import StringField, IntegerField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired, NumberRange, Length
 
 class ReviewForm(FlaskForm):
-    review_body = TextAreaField('Review', validators=[
+    comment = TextAreaField('Review', validators=[
         DataRequired(),
         Length(max=500, message="Review must be under 500 characters.")
     ])

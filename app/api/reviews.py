@@ -45,10 +45,10 @@ def get_single_review(review_id):
 def create_review():
     form = ReviewForm()
     form_data = request.get_json()
-
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_review = Review(
-            review_body=form_data['review_body'],
+            comment=form_data['comment'],
             rating=form_data['rating'],
             user_id=current_user.id,
             dish_id=form_data['dish_id'],

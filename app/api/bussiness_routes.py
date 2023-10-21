@@ -11,33 +11,26 @@ import os
 business_bp = Blueprint('business', __name__)
 
 @business_bp.route('/search', methods=['POST'])
-def search_business():
+def search_dishes():
     form = SearchForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     results_list = []
 
-    if form.validate():
-        searchTerm = form.search.data
-        businesses = Business.query.filter(Business.name.ilike(f'%{searchTerm}%')).all()
+    if not form.validate():
 
-        for business in businesses:
-            business_dict = business.to_dict()
+        return {"error": "Invalid form data"}, 400
 
+    searchTerm = form.search.data
+    dishes = Dish.query.filter(Dish.name.ilike(f'%{searchTerm}%')).all()
+    print("Queried Dishes:", dishes)
 
-            dishes_list = []
-            for dish in business.dishes:
-                dish_dict = dish.to_dict()
+    for dish in dishes:
+        business_name = dish.business.name
 
+        results_list.append({'dish_id': dish.id, 'dish_name': dish.name,'dish_price':dish.price, 'dish_image':dish.image_id, 'business_name': business_name})
 
-                dish_dict['category'] = dish.category.name if dish.category else None
-                dishes_list.append(dish_dict)
+    return {"queried_dishes": results_list}
 
-           
-            business_dict['dishes'] = dishes_list
-
-            results_list.append(business_dict)
-
-    return {"queried businesses": results_list}
 
 #get all bussiness
 @business_bp.route('/', methods=['GET'])
@@ -122,7 +115,7 @@ def edit_business(b_id):
         attributes_to_update = [
             'name', 'address', 'city', 'state',
             'zip_code', 'phone_number', 'category_id',
-            'website', 'about', 'type', 'logo_url'
+            'website', 'about', 'type', 'logo_id'
         ]
         for attr in attributes_to_update:
             if hasattr(form, attr):
@@ -150,16 +143,12 @@ def delete_business(b_id):
 
     temp = business.to_dict()
 
-    try:
-
-        for dish in business.dishes:
-           for order_detail in dish.order_details:
-              db.session.delete(order_detail)
-           for review in dish.reviews:
-              db.session.delete(review)
+    for dish in business.dishes:
+        for order_detail in dish.order_details:
+            db.session.delete(order_detail)
+        for review in dish.reviews:
+            db.session.delete(review)
         db.session.delete(dish)
-
-
 
         db.session.delete(business)
         db.session.commit()
@@ -169,7 +158,3 @@ def delete_business(b_id):
         }
 
         return jsonify(response)
-
-    except SQLAlchemyError as e:
-        db.session.rollback()
-        return jsonify({"error": "An error occurred while deleting the business", "message": str(e)}), 500

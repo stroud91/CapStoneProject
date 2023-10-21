@@ -46,6 +46,7 @@ export const searchBusiness = (search) => ({
 
 
 export const searchBusinessByName = (search) => async (dispatch) => {
+  console.log("search", search)
   const response = await fetch(`api/business/search`, {
     method: "POST",
     headers: {
@@ -56,6 +57,7 @@ export const searchBusinessByName = (search) => async (dispatch) => {
 
   if (response.ok) {
     const results = await response.json();
+    console.log("this is search result", results)
     dispatch(searchBusiness(results));
   } else {
     const errorData = await response.json();
@@ -140,6 +142,7 @@ export const deleteBusiness = (id) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log("this is data to delete", data)
     dispatch(removeBusiness(id));
     return data;
   } else {

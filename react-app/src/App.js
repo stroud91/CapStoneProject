@@ -14,6 +14,9 @@ import UpdateDishForm from "./components/UpdateDishForm";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import BusinessMainPage from "./components/Bussiness";
+import SearchBar from "./components/Search"
+import QueryBusiness from "./components/Query";
+import OwnedBusinesses from "./components/OwnedBusiness";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,14 +29,25 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/business/:businessId/update-dish/:id">
+            <UpdateDishForm />
+          </Route>
+          <Route path="/search" >
+            <SearchBar />
+          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+
           <Route exact path="/">
             <MainPageView />
+          </Route>
+
+          <Route exact path="/owned">
+            <OwnedBusinesses />
           </Route>
           <Route exact path="/all">
             <BusinessMainPage />
@@ -41,24 +55,24 @@ function App() {
           <Route path="/business/:id">
             <OneBusiness />
           </Route>
-          <Route path="/dish/:id">
-            <OneDish />
-          </Route>
           <Route path="/orders">
             <UserOrder />
+          </Route>
+
+          <Route path="/dish/:id">
+            <OneDish />
           </Route>
           <Route path="/create-business">
             <CreateBusinessForm />
           </Route>
+          <Route exact path="/update-business/:id">
+            <UpdateBusinessForm />
+          </Route>
           <Route path="/create-dish">
             <CreateDishForm />
           </Route>
-          <Route path="/update-business/:id">
-            <UpdateBusinessForm />
-          </Route>
-          <Route path="/update-dish/:id">
-            <UpdateDishForm />
-          </Route>
+
+
         </Switch>
       )}
     </>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { deleteBusiness } from "../../store/business";
+import { getAllBusinesses , deleteBusiness } from "../../store/business";
 import "./DeleteBusinessModal.css";
 import { useModal } from "../../context/Modal";
 
@@ -17,6 +17,7 @@ export default function DeleteModal({ bus_data }) {
     e.preventDefault();
     return dispatch(deleteBusiness(id)).then(() => {
       closeModal();
+      dispatch(getAllBusinesses());
       history.push('/owned')
     });
   };
@@ -27,7 +28,7 @@ export default function DeleteModal({ bus_data }) {
       <div className="deleteText">Are you sure you want to delete this business?</div>
       <div>
         <button
-          class="confirm-yes cursor"
+          className="confirm-yes cursor"
           onClick={handleSubmit}
         >
           Yes (Delete Business)

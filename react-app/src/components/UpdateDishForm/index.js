@@ -1,7 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+import { editDishForBusiness } from '../../store/dish';
+import './UpdateDishForm.css';
+import { setSingleDish } from '../../store/dish';
+import { setDishesForBusiness } from '../../store/dish';
 
 
-const CATEGORIES = [
+
+function DishUpdateForm() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const {businessId, id} = useParams();
+  console.log("this is use params for bid and id", businessId, id)
+  const currentDish = useSelector(state =>
+    state.dish.list
+      ? state.dish.list.find(dish => dish.id === parseInt(id))
+      : null
+  );
+  console.log("this is current dish for update form", currentDish)
+  const CATEGORIES = [
     { id: 1, name: 'Asian' },
     { id: 2, name: 'European' },
     { id: 3, name: 'Vegetarian' },
@@ -19,17 +37,21 @@ const CATEGORIES = [
     { id: 15, name: 'Soups' }
   ];
 
-
-function DishUpdateForm({ initialData }) {
   const [formData, setFormData] = useState({
-    id: initialData.id,
-    business_id: initialData.business_id,
-    name: initialData.name,
-    description: initialData.description,
-    price: initialData.price,
-    category_id: initialData.category_id,
-    image_id: initialData.image_id,
+    id: currentDish ? currentDish.id : null,
+    business_id: currentDish ? currentDish.business_id : null,
+    name: currentDish ? currentDish.name : '',
+    description: currentDish ? currentDish.description : '',
+    price: currentDish ? currentDish.price : '',
+    category_id: currentDish ? currentDish.category_id : null,
+    image_id: currentDish ? currentDish.image_id : null,
   });
+
+
+  useEffect(() => {
+       setSingleDish(id)
+       setDishesForBusiness(id)
+  }, [dispatch, id]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -38,23 +60,15 @@ function DishUpdateForm({ initialData }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const response = await fetch(`/api/dish/business/${formData.business_id}/update/${formData.id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      const updated = await response.json();
-      alert('Dish updated successfully!');
-      
-    } else {
-      console.error("Failed to update dish");
-      alert('Failed to update dish. Please try again.');
-    }
+    dispatch(editDishForBusiness(businessId, id, formData))
+      .then(() => {
+        alert('Dish updated successfully!');
+        history.push(`/business/${businessId}`);
+      })
+      .catch(() => {
+        console.error("Failed to update dish");
+        alert('Failed to update dish. Please try again.');
+      });
   };
 
   return (

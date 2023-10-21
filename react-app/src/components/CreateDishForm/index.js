@@ -1,6 +1,10 @@
-// DishCreationForm.js
+
 
 import React, { useState } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import { createDishForBusiness } from '../../store/dish';
 
 const CATEGORIES = [
   { id: 1, name: 'Asian' },
@@ -21,6 +25,11 @@ const CATEGORIES = [
 ];
 
 function DishCreationForm() {
+
+ const dispatch = useDispatch();
+ const history = useHistory();
+ const selectedBusiness = useSelector(state => state.business.selectedBusiness);
+
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -41,6 +50,17 @@ function DishCreationForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const dishData = {
+      name: formData.name,
+      description: formData.description,
+      price: formData.price,
+      image_id: formData.image_id,
+      category_id: formData.category_id,
+    };
+
+    await dispatch(createDishForBusiness(selectedBusiness.id, dishData));
+
+    history.push(`/business/${selectedBusiness.id}`);
   };
 
   return (

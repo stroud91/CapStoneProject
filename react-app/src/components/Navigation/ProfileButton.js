@@ -5,7 +5,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import UserOrder from "../UserOrder"
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -47,14 +47,20 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>Welcome, {user.firstName} {user.lastName}</li>
+            <li>Welcome, {user.username} </li>
+            <li>{user.firstName} {user.lastName}</li>
             <li>{user.email}</li>
+            <li>
+              <NavLink exact to="/owned" className="view-business-button">View Business</NavLink>
+              <NavLink exact to="/create-business" className="create-business-button">Create a business</NavLink>
+            </li>
             <li>
               <Link>
                 buttonText="View Orders"
                 onItemClick={closeMenu}
                 modalComponent={<UserOrder />}
              </Link>
+
             </li>
             <li>
               <button onClick={handleLogout}>Log Out</button>

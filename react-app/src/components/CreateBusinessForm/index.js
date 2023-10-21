@@ -12,8 +12,8 @@ const CreateBusinessForm = () => {
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
-    const [zipCode, setZipCode] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [zip_code, setZipCode] = useState('');
+    const [phone_number, setPhoneNumber] = useState('');
     const [about, setAbout] = useState('');
     const [type, setType] = useState('');
     const [email, setEmail] = useState('');
@@ -45,11 +45,11 @@ const CreateBusinessForm = () => {
             errors.push("Invalid state.");
         }
 
-        if (!zipCode || !/^\d{5}$/.test(zipCode)) {
+        if (!zip_code || !/^\d{5}$/.test(zip_code)) {
             errors.push("Invalid ZIP Code.");
         }
 
-        if (!phoneNumber || !/^\d{10}$/.test(phoneNumber)) {
+        if (!phone_number || !/^\d{10}$/.test(phone_number)) {
             errors.push("Invalid phone number.");
         }
 
@@ -92,8 +92,8 @@ const CreateBusinessForm = () => {
             address,
             city,
             state,
-            zipCode,
-            phoneNumber,
+            zip_code,
+            phone_number,
             about,
             type,
             email,
@@ -128,11 +128,11 @@ const CreateBusinessForm = () => {
                 </label>
                 <label>
                     Zip Code:
-                    <input type="text" value={zipCode} onChange={e => setZipCode(e.target.value)} />
+                    <input type="text" value={zip_code} onChange={e => setZipCode(e.target.value)} />
                 </label>
                 <label>
                     Phone Number:
-                    <input type="text" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} />
+                    <input type="text" value={phone_number} onChange={e => setPhoneNumber(e.target.value)} />
                 </label>
                 <label>
                     About:

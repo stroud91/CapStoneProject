@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Search from "../Search";
-import yelgImg from "../../images/dc.png";
+import { Link } from 'react-router-dom';
+import dcImg from "../../images/dl.png";
 import './MainPageView.css';
-
+import backgroundImage from "../../images/backgroundImage.jpg"
 function MainPage() {
   const [search, setSearch] = useState('');
   const [businesses, setBusinesses] = useState([]);
@@ -37,13 +37,14 @@ function MainPage() {
   }, []);
 
   return businesses.length > 0 ? (
-    <div className='main-page-container'>
+    <div className='main-page-container' style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+
       <header className='main-header'>
         {/* <Search handleSubmit={handleSubmit} handleChange={handleChange} search={search} /> */}
       </header>
 
       <div className="main-page-image-container">
-        <img src={yelgImg} alt="Cover" />
+        <img src={dcImg} alt="Cover" />
         <div className="image-text">Discover your new favorite restaurant</div>
       </div>
 
@@ -52,8 +53,12 @@ function MainPage() {
         <div className="dish-container">
           {topRatedDishes.map(dish => (
             <div key={dish.id} className="dish-card">
+              <div className="image-for-top-rated">
+                 <img src={dish.image_id} alt="CoverTwo" />
+                </div>
               <p>{dish.name}</p>
               <p>{dish.rating} ★</p>
+              <Link to={`/dish/${dish.id}`}>More...</Link>
             </div>
           ))}
         </div>
@@ -63,8 +68,13 @@ function MainPage() {
         <h2>Top Ordered Dish</h2>
         <div className="dish-container">
           {topOrderedDishes.map(dish => (
-            <div key={dish.id} className="dish-card">
+
+              <div key={dish.id} className="dish-card">
+                <div className="image-for-top-picked">
+                 <img src={dish.image_id} alt="CoverTwo" />
+                </div>
               <p>{dish.name}</p>
+              <Link to={`/dish/${dish.id}`}>More...</Link>
             </div>
           ))}
         </div>
