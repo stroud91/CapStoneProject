@@ -1,24 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { useModal } from "../../context/Modal";
-import { useParams } from "react-router-dom";
 import "./UpdateReviewModal.css";
 import StarsRating from "./StarsRating";
-import { editedReview } from "../../store/review";
-import { fetchOneBusiness } from "../../store/business";
-import { fetchSingleBusinessReviews } from "../../store/review";
+import { updateReview } from "../../store/review";
+import { fetchReviewsForDish } from "../../store/review";
 
-function EditReviewModal({ business_id, review }) {
-
+function EditReviewModal({ id, review }) {
+ console.log("modal for update r", id, review)
   const dispatch = useDispatch();
-  const history = useHistory();
-  const business = useSelector((state) => state.business.selectedBusiness);
   const user = useSelector((state) => state.session.user);
-  const reviews = useSelector((state) => state.reviews.reviews);
   const [errors, setErrors] = useState({});
   const [stars, setStars] = useState(review.rating);
-  const [comment, setComment] = useState(review.review_body);
+  const [comment, setComment] = useState(review.comment);
   const [formDisabled, setFormDisabled] = useState(true);
   const { closeModal } = useModal();
 
@@ -50,19 +44,19 @@ function EditReviewModal({ business_id, review }) {
     setErrors({});
     const userId = user ? user.id : null;
 
-    const editedReview = { comment, stars };
+    const updatedReview = {
+      user_id: userId,
+      comment: comment,
+      rating: stars
+    };
 
-
-    dispatch(editedReview(review.id, editedReview))
+    dispatch(updateReview(review.id, updatedReview))
       .then(() => {
-        dispatch(fetchOneBusiness(business_id));
-        dispatch(fetchSingleBusinessReviews(business_id));
+        dispatch(fetchReviewsForDish(id));
         closeModal();
-      })
-
+      });
   };
 
-  if (!business) return <div>Loading...</div>;
   return (
     <div id="editReviewContainer">
       <div className="editReviewHeading">Edit Your Review</div>
@@ -79,7 +73,7 @@ function EditReviewModal({ business_id, review }) {
       <div className="rating-input">
         <StarsRating disabled={false} stars={stars} onChange={onChange} />
         <div>Stars</div>
-        {errors.rating && <p>{errors.rating}</p>}
+        {errors.stars && <p>{errors.stars}</p>}
       </div>
       <button
         onClick={handleSubmit}

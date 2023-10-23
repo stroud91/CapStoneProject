@@ -109,9 +109,9 @@ export const fetchUserReviews = () => async dispatch => {
     }
 };
 
-export const createReview = (businessId, reviewData) => async dispatch => {
+export const createReview = (reviewData) => async dispatch => {
     try {
-        const response = await fetch(`/api/review/${businessId}/reviews`, {
+        const response = await fetch(`/api/review/create`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

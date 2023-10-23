@@ -1,35 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import OpenModalButton from "../OpenModalButton";
-import DeleteDishModal from "../DeleteDishModal";
 import { fetchOneBusiness } from '../../store/business';
-import { fetchReviewsForDish } from '../../store/review';
+import { fetchReviewsForDish, createReview, updateReview, deleteReview } from '../../store/review';
 import { getDishesForBusiness, getSingleDish, removeDishForBusiness } from '../../store/dish';
 import { addItemToCart } from '../../store/cart';
+import CreateReviewModal from '../CreateReviewModal';
+import EditReviewModal from '../UpdateReviewModal';
+import DeleteReviewModal from '../DeleteReviewModal';
+import { useModal } from "../../context/Modal";
+import OpenModalButton from "../OpenModalButton";
 
 function DishDetail() {
-
     const dispatch = useDispatch();
     const { id } = useParams();
-
-    const [dish, setDish] = useState(null);
-    const [reviews, setReviews] = useState([]);
+    const { setModalContent, closeModal } = useModal();
     const [loading, setLoading] = useState(true);
 
     const currentUser = useSelector(state => state.session.user);
     const currentDish = useSelector(state => state.dish.current);
     const currentReviews = useSelector(state => state.review.reviewsForDish);
+    console.log("current reviews", currentReviews)
     const business = useSelector(state => state.business.selectedBusiness);
-    console.log("this is business for one dish", business)
-    console.log("this is current dish",currentDish)
 
     useEffect(() => {
         async function fetchData() {
             await dispatch(fetchOneBusiness(id));
             await dispatch(getSingleDish(id));
             await dispatch(fetchReviewsForDish(id));
-
             setLoading(false);
         }
         fetchData();
@@ -39,14 +37,12 @@ function DishDetail() {
         dispatch(addItemToCart(dishId));
     }
 
-    const handleDelete = async (dishId) => {
-        if (!dish) return;
-        await dispatch(removeDishForBusiness(dish.business_id, dishId));
+    const handleDeleteDish = async (dishId) => {
+        if (!currentDish) return;
+        await dispatch(removeDishForBusiness(currentDish.business_id, dishId));
     };
 
-
-    if (!currentDish) return <div>Loading...</div>;
-    if (!currentReviews) return <div>Loading...</div>;
+    if (loading) return <div>Loading...</div>;
 
     return (
         <div className="dish-detail-container">
@@ -57,20 +53,26 @@ function DishDetail() {
 
             {currentUser && currentUser.id === business.owner_id && (
                 <div className="dish-buttons">
-                     <Link to={`/dish/${id}/update`} className="edit-button">
-                       Edit
-                     </Link>
-                    {/* <OpenModalButton
-                        buttonText="Delete"
-                        modalComponent={<DeleteDishModal id={dish.id} onDelete={() => handleDelete(dish.id)} businessId={dish.business_id} />}
-                        id={`dish-delete-button-${dish.id}`}
-                    /> */}
+                    <Link to={`/dish/${id}/update`} className="edit-button">Edit</Link>
+                    <button onClick={() => handleDeleteDish(currentDish.id)}>Delete</button>
                 </div>
             )}
 
-            {currentUser && (
+            {currentUser && currentUser.id !== business.owner_id && (
                 <div className="dish-user-actions">
-                    <button className="add-cart-btn" onClick={() => handleAddToCart(dish.id)}>Add to Cart</button>
+                    <button className="add-cart-btn" onClick={() => handleAddToCart(currentDish.id)}>Add to Cart</button>
+                    <div className="postYourReview">
+                    {currentUser &&
+                     currentUser.id !== business.owner_id &&
+                      !currentReviews.some(review => review.user_id === currentUser.id) && (
+                    <OpenModalButton
+                     buttonText="Add a review"
+                     modalComponent={<CreateReviewModal id={id} currentUser={currentUser.id} />}
+                     id={"post-review-button"}
+  />
+)}
+
+      </div>
                 </div>
             )}
 
@@ -81,6 +83,25 @@ function DishDetail() {
                         <h5>{review.user_name}</h5>
                         <p>{review.comment}</p>
                         <span>Rating: {review.rating}</span>
+
+                        {currentUser && currentUser.id === review.user_id && (
+                            <div className="reviewButtons">
+                                <OpenModalButton
+                                buttonText="Edit"
+                                modalComponent={
+                                <EditReviewModal id={id} review={review} />
+                                }
+                                id={"review-edit-button"}
+                                />
+                                <OpenModalButton
+                                 buttonText="Delete"
+                                 modalComponent={
+                                <DeleteReviewModal id={id} review={review.id} />
+                                 }
+                                 id={"review-delete-button"}
+                               />
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>

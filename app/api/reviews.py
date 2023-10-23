@@ -65,6 +65,7 @@ def create_review():
 
 @review_routes.route('/<int:review_id>', methods=['PUT'])
 @login_required
+
 def update_review(review_id):
     review = Review.query.get_or_404(review_id)
     if review.user_id != current_user.id:
@@ -72,9 +73,9 @@ def update_review(review_id):
 
     form = ReviewForm()
     form_data = request.get_json()
-
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        review.review_body = form_data['review_body']
+        review.comment = form_data['comment']
         review.rating = form_data['rating']
         db.session.commit()
         return jsonify(review.to_dict()), 200
@@ -85,6 +86,7 @@ def update_review(review_id):
 @login_required
 def delete_review(review_id):
     review = Review.query.get_or_404(review_id)
+    
     if review.user_id != current_user.id:
         return jsonify(error="Not authorized"), 403
 

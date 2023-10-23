@@ -6,14 +6,16 @@ import { useParams } from "react-router-dom";
 import "./CreateReviewModal.css";
 import { createReview } from "../../store/review";
 import StarsRating from "./StarsRating";
-import { fetchOneBusiness } from '../../store/business';
+import { fetchReviewsForDish } from '../../store/review';
 import { fetchSingleBusinessReviews } from "../../store/review";
 
-function PostReviewModal({ id, user }) {
+function CreateReviewModal({ id, currentUser }) {
+  console.log("review props", id , currentUser)
   const dispatch = useDispatch();
   const history = useHistory();
-  const business = useSelector(state => state.business.selectedBusiness);
-
+  const currentReviews = useSelector(state => state.review.reviewsForDish);
+  const dish = useSelector(state => state.dish.current);
+  console.log("dish for create review", dish)
 
   const [errors, setErrors] = useState({});
   const [stars, setStars] = useState(0);
@@ -22,8 +24,8 @@ function PostReviewModal({ id, user }) {
   const { closeModal } = useModal();
 
   useEffect(() => {
-    dispatch(fetchSingleBusinessReviews(id));
-  }, [dispatch]);
+    dispatch(fetchReviewsForDish(id));
+  }, [dispatch, id]);
 
   useEffect(() => {
     const errors = {};
@@ -54,23 +56,19 @@ function PostReviewModal({ id, user }) {
     e.preventDefault();
     setErrors({});
 
-    // Check if the user has already posted a review
-    //   const hasUserPostedReview =
-    //   business.reviews.some((review) => review.user_id === (user ? user.id : null));
+    const userId = currentUser ? currentUser.id : null;
+    const dishId = dish && dish.id ? dish.id : null;
+    const submittedReview = {
+      user_id: userId,
+      comment: comment,
+      rating: stars,
+      dish_id: dishId
+    };
 
-    // if (hasUserPostedReview) {
-    //   // User has already posted a review, handle accordingly (e.g., display an error message)
-    //   setErrors({ review: "You have already posted a review for this business." });
-    //   return;
-    // }
-    const userId = user ? user.id : null;
-    const businessId = business && business.id ? business.id : null;
-    const submittedReview = { userId, review_body: comment, rating: stars };
-
-    dispatch(createReview(business.id, submittedReview))
+    dispatch(createReview(submittedReview))
       .then(() => {
-        dispatch(fetchOneBusiness(id));
-        dispatch(fetchSingleBusinessReviews(id));
+        dispatch(fetchReviewsForDish(id));
+
         closeModal();
       })
       .catch(async (res) => {
@@ -81,7 +79,7 @@ function PostReviewModal({ id, user }) {
       });
   };
 
-  if (!business) return <div>Loading...</div>;
+  if (!dish) return <div>Loading...</div>;
   return (
     <div id="postReviewContainer">
       <div className="postReviewHeading">How was your stay?</div>
@@ -114,4 +112,4 @@ function PostReviewModal({ id, user }) {
   );
 }
 
-export default PostReviewModal;
+export default CreateReviewModal;
