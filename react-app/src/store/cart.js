@@ -23,8 +23,8 @@ export const removeItem = (itemId) => ({
   payload: itemId,
 });
 
-export const getCart = (userId) => async (dispatch) => {
-  const response = await fetch(`/cart/`);
+export const getCart = (currentUser) => async (dispatch) => {
+  const response = await fetch(`/api/cart/`);
   if (response.ok) {
     const cart = await response.json();
     dispatch(setCart(cart));
@@ -33,13 +33,14 @@ export const getCart = (userId) => async (dispatch) => {
   }
 };
 
-export const addItemToCart = (cartId, dishId, quantity) => async (dispatch) => {
-  const response = await fetch(`/cart/${cartId}/items`, {
+export const addItemToCart = (cart_id, dish_id, quantity) => async (dispatch) => {
+  console.log("this is add item ", cart_id,dish_id,quantity)
+  const response = await fetch(`/api/cart/${cart_id}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ dish_id: dishId, quantity }),
+    body: JSON.stringify({ dish_id: dish_id, quantity: quantity }),
   });
 
   if (response.ok) {

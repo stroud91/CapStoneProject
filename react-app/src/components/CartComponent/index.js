@@ -1,50 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItemToCart, updateCartQuantity, deleteItemFromCart } from '../store/cart';  // Ensure these actions exist.
-
+import {getCart, addItemToCart, deleteItemFromCart, checkoutCart } from '../../store/cart';  // Ensure these actions exist.
+import { getSingleDish } from '../../store/dish';
 const CartContainer = () => {
-  const [dishId, setDishId] = useState('');
+  const [dish_id, setDishId] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [deliveryAddress, setDeliveryAddress] = useState('');
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const cartItems = useSelector(state => state.cart.current.items);
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const total_price = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const cart_id = useSelector(state => state.cart.current);
+  const currentUser = useSelector(state => state.session.user);
+  console.log("current user", currentUser)
+  const currentDish = useSelector(state => state.dish.current);
+  console.log("current Dish", currentDish)
+
 
   useEffect(() => {
-    // Any cart setup or fetching can be added here.
+    async function fetchData() {
+      await dispatch(getCart(currentUser.id))
+      await dispatch(getSingleDish(currentDish));
+      setLoading(false);
+  }
+  fetchData();
   }, [dispatch]);
 
-  const handleAddToCart = () => {
-    dispatch(addItemToCart(dishId, quantity));
-  };
+  if (loading) return <div>Loading...</div>;
 
-  const handleUpdateQuantity = () => {
-    dispatch(updateCartQuantity(dishId, quantity));
+  const handleAddToCart = () => {
+    dispatch(addItemToCart(cart_id, dish_id, quantity));
   };
 
   const handleDeleteFromCart = () => {
-    dispatch(deleteItemFromCart(dishId));
+    dispatch(deleteItemFromCart(dish_id));
   };
 
   const handleSubmitCart = async () => {
-    const response = await fetch(`/api/cart/${cartItems[0].cart_id}/submit`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        total_price: totalPrice,
-        delivery_address: deliveryAddress
-      })
-    });
-
-    const data = await response.json();
-    if (response.ok) {
-      console.log("Cart submitted successfully!", data);
-      // You can do more things here, like redirecting to a different page, or showing a success message.
-    } else {
-      console.error("Error submitting cart:", data.error);
-    }
+    dispatch(checkoutCart(cart_id, total_price));
   };
 
   return (
@@ -63,13 +56,15 @@ const CartContainer = () => {
 
       {/* Add to Cart */}
       <div>
-        <select value={dishId} onChange={(e) => setDishId(e.target.value)}>
-          {/* Replace this with a list of all available dishes */}
-          <option value="">Select a dish</option>
-        </select>
-        <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+      <select value={dish_id} onChange={(e) => setDishId(e.target.value)}>
+    <option value="">Select a dish</option>
+    {currentDish.map(dish => (
+      <option value={dish.id}>{dish.name}</option>
+    ))}
+</select>
+
+        <input type="number" value={1} onChange={(e) => setQuantity(e.target.value)} />
         <button onClick={handleAddToCart}>Add to Cart</button>
-        <button onClick={handleUpdateQuantity}>Update Quantity</button>
       </div>
 
       {/* Submit Cart */}

@@ -72,8 +72,8 @@ export const getDishesForBusiness = (businessId) => async (dispatch) => {
   }
 };
 
-export const getSingleDish = (dishId) => async (dispatch) => {
-  const response = await fetch(`/api/menu/${dishId}`);
+export const getSingleDish = (id) => async (dispatch) => {
+  const response = await fetch(`/api/menu/${id}`);
   if (response.ok) {
     const dish = await response.json();
     dispatch(setSingleDish(dish));

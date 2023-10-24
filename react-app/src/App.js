@@ -17,6 +17,7 @@ import BusinessMainPage from "./components/Bussiness";
 import SearchBar from "./components/Search"
 import QueryBusiness from "./components/Query";
 import OwnedBusinesses from "./components/OwnedBusiness";
+import CartContainer from "./components/CartComponent";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -58,7 +59,6 @@ function App() {
           <Route path="/orders">
             <UserOrder />
           </Route>
-
           <Route path="/dish/:id">
             <OneDish />
           </Route>
@@ -71,8 +71,6 @@ function App() {
           <Route path="/create-dish">
             <CreateDishForm />
           </Route>
-
-
         </Switch>
       )}
     </>
