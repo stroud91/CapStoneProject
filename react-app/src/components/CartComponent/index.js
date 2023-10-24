@@ -51,6 +51,11 @@ const Cart = ({ dishes }) => {
         return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
     }
 
+    const handleSubmit = () => {
+        setCartItems([]);
+        localStorage.removeItem('cart');
+    };
+
     return (
         <div>
             <div class="cart-container">
@@ -67,7 +72,11 @@ const Cart = ({ dishes }) => {
             </li>
                ))}
              </ul>
-     <div class="cart-total">Total: ${getTotalPrice().toFixed(2)}</div>
+             <div class="cart-total">Total: ${getTotalPrice().toFixed(2)}</div>
+             {cartItems && (
+              <button class="submit-button" onClick={handleSubmit}>Submit Order</button>
+             )}
+
            </div>
             <div>
                 <h2>Select your items you want to add</h2>
