@@ -26,8 +26,7 @@ function QueryBusiness() {
         <div className="dish-container">
 
     {query && query.queried_dishes && query.queried_dishes.map((dish, idx) => (
-        <div key={idx} className="dish-card">
-           <NavLink to={`/dish/${dish.id}`} onClick={(e) => setSelectedDish(dish.id, e)}></NavLink>
+        <div key={idx} className="dish-card" onClick={(e) => setSelectedDish(dish.dish_id, e)}>
           <div>
             <img src={dish.dish_image} alt="" />
           </div>

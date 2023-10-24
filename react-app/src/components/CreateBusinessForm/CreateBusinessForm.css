@@ -1,0 +1,68 @@
+/* General container styling */
+/* div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+} */
+
+/* Form specific styling */
+/* form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 50%;
+    padding: 20px;
+
+    border-radius: 5px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+} */
+
+/* .form__input.button__container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+} */
+/* Label styling */
+label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+/* Input fields styling */
+ input[type="text"], input[type="email"], textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+} */
+
+/* Error message styling */
+.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}

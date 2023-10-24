@@ -53,7 +53,7 @@ function DishDetail() {
 
             {currentUser && currentUser.id === currentBusiness.owner_id && (
                 <div className="dish-buttons">
-                    <Link to={`/dish/${id}/update`} className="edit-button">Edit</Link>
+                    <Link to={`/business/${currentBusiness.id}/update-dish/${id}`} className="edit-button">Edit</Link>
                     <button onClick={() => handleDeleteDish(currentDish.id)}>Delete</button>
                 </div>
             )}

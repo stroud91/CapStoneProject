@@ -1,0 +1,96 @@
+/* Form container */
+/* .form__container.business-update__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #ffffff;
+} */
+
+/* Error container */
+ .business-error__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.error {
+    margin: 5px 0;
+    color: red;
+    font-size: 14px;
+} */
+
+/* Form heading */
+form h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Form input containers */
+/* .form__input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 15px;
+} */
+
+/* Input labels */
+/* .form__input label {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #555;
+} */
+
+/* Input fields and textarea */
+.form__input input[type="text"],
+.form__input textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* .form__input textarea {
+    height: 100px;
+    resize: vertical;
+} */
+
+.form__input input[type="text"]:focus,
+.form__input textarea:focus {
+    border-color: #007BFF;
+}
+
+/* Button container */
+.form__input.button__container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Submit button */
+.form__button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form__button:hover {
+    background-color: #0056b3;
+}
