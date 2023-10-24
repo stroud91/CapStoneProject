@@ -12,6 +12,7 @@ import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton";
 
 function DishDetail() {
+
     const dispatch = useDispatch();
     const { id } = useParams();
     const { setModalContent, closeModal } = useModal();
@@ -33,7 +34,7 @@ function DishDetail() {
            setLoading(false);
         }
         fetchData();
-    }, [dispatch, id]);
+    }, [dispatch, id,currentDish.business_id]);
 
     const handleAddToCart = (dishId) => {
         dispatch(addItemToCart(dishId));

@@ -37,6 +37,7 @@ function BusinessDetails() {
     }
 
     const setSelectedDish = (id,event) => {
+        console.log("this is selected dish params", id)
         event.stopPropagation();
         history.push(`/dish/${id}`);
     }
