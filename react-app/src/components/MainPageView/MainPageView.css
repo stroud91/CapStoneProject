@@ -1,8 +1,8 @@
 /* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #2c2c2c;
-    color: #f0f0f0;
+    font-family: 'Roboto', sans-serif; /* Introduced a more modern font */
+    background-color: #22304A; /* Deep Blue */
+    color: #E6B567; /* Gold Accent */
     margin: 0;
     padding: 0;
     display: flex;
@@ -49,7 +49,7 @@ body, html {
     padding: 20px 0;
     text-align: center;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(34, 48, 74, 0.7);
 }
 
 .main-page-image-container {
@@ -92,10 +92,31 @@ body, html {
     margin: 10px;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.6);
-    max-width: 250px;
+    width: 250px;
+    height: 300px;
     text-align: center;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
 }
 
+.dish-card::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%;
+}
+.dish-card:hover {
+    transform: scale(1.05);
+}
+
+.dish-card img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 .dish-image {
     width: 100%;
     height: 150px;
@@ -141,11 +162,11 @@ body, html {
     background-color: #f0f0f0;
     padding: 20px 0;
     font-size: 14px;
-    color: #b0b0b0;
+    color: #22304A;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
 }
 
 .text-container {
@@ -160,7 +181,7 @@ body, html {
 
 .image-for-top-rated img, .image-for-top-picked img {
     width: 100%;
-    height: 100%;
+    height: 50%;
     border-radius: 6px;
     margin-bottom: 10px;
 }
@@ -168,4 +189,78 @@ body, html {
 .dish-card p {
     color: white;
     margin: 5px 0;
+}
+
+
+
+
+
+/* Cart Styling */
+.cart-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.item-name {
+    flex: 2;
+}
+
+.item-decrease,
+.item-increase,
+.item-remove {
+    background-color: #007BFF;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.item-decrease:hover,
+.item-increase:hover,
+.item-remove:hover {
+    background-color: #0056b3;
+}
+
+.item-decrease:active,
+.item-increase:active,
+.item-remove:active {
+    background-color: #004085;
+}
+
+.item-quantity {
+    margin: 0 10px;
+}
+
+.cart-total {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
 }

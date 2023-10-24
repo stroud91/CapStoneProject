@@ -17,11 +17,11 @@ function Navigation({ isLoaded }) {
           <img className="small-logo" src={dcSmall} alt="" />
         </NavLink>
       </div>
-      {location.pathname === '/' && (
+      {/* {location.pathname === '/' && ( */}
         <div className='searchbar'>
           <Search />
         </div>
-      )}
+      {/* // )} */}
       {sessionUser && (
         <NavLink exact to="/view-cart">
         <img className="small-logo" src={shopCart} alt="" />

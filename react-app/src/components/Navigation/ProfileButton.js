@@ -52,15 +52,13 @@ function ProfileButton({ user }) {
             <li>{user.email}</li>
             <li>
               <NavLink exact to="/owned" className="view-business-button">View Business</NavLink>
+
               <NavLink exact to="/create-business" className="create-business-button">Create a business</NavLink>
             </li>
             <li>
-              <Link>
-                buttonText="View Orders"
-                onItemClick={closeMenu}
-                modalComponent={<UserOrder />}
+              <Link className="order">
+                {<UserOrder />}
              </Link>
-
             </li>
             <li>
               <button onClick={handleLogout}>Log Out</button>

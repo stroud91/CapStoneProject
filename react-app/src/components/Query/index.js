@@ -1,54 +1,44 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import noImage from "../../images/no-image.png"
 import { searchBusinessByName } from "../../store/business";
-
+import { NavLink, useHistory} from "react-router-dom/cjs/react-router-dom";
 function QueryBusiness() {
   const dispatch = useDispatch();
-  let businesses = useSelector((state) => state.business.search);
+  const history = useHistory();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searched, setSearched] = useState(false)
+  const query = useSelector(state => state.business.search)
+  console.log('query', query)
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value)
+  };
 
-  businesses = businesses["queried businesses"];
-  console.log("This is the result of the search bar", businesses);
-
-  useEffect(() => {
-    dispatch(searchBusinessByName());
-  }, [dispatch]);
-
+  const setSelectedDish = (id,event) => {
+    event.stopPropagation();
+    history.push(`/dish/${id}`);
+}
 
   return (
     <div>
-      {businesses.length === 0 ? (
-        <div>
-          <p> No restaurants found. Please try a different search.</p>
-          <Link to="/">
-            <button className="noResultButton">Go back to main page</button>
-          </Link>
-        </div>
-      ) : (
+        {/* Display Queried Businesses and Dishes */}
+        <div className="dish-container">
 
-        <ul className="businessMain__grid">
-          {businesses &&
-            businesses.map((business) => (
-              <li key={business.id} className="businessMain__item">
-                <div className="businessMain__image">
-                  <img src={business.logo_id}
-                    className='busImg'
-                    alt={business.name}
-                    key={business.id}
-                  />
-                </div>
-                <p className="businessMain_name">{business.name}</p>
-                <p>
-                  {business.address}, {business.city}, {" "}
-                  {business.zip_code}
-                </p>
-                <p>{business.phone_number}</p>
-                <Link to={`/business/${business.id} `}>View More</Link>
-              </li>
-            ))}
-        </ul>
-      )}
+    {query && query.queried_dishes && query.queried_dishes.map((dish, idx) => (
+        <div key={idx} className="dish-card">
+           <NavLink to={`/dish/${dish.id}`} onClick={(e) => setSelectedDish(dish.id, e)}></NavLink>
+          <div>
+            <img src={dish.dish_image} alt="" />
+          </div>
+          <div>
+            <h2>Dish: {dish.dish_name}</h2>
+            <p>Price: {dish.dish_price}</p>
+            <p>From: {dish.business_name}</p></div>
+        </div>
+
+    ))}
+</div>
     </div>
   );
 }

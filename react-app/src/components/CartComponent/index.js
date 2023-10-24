@@ -1,83 +1,97 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {getCart, addItemToCart, deleteItemFromCart, checkoutCart } from '../../store/cart';  // Ensure these actions exist.
-import { getSingleDish } from '../../store/dish';
-const CartContainer = () => {
+import { getAllDishes } from '../../store/dish';
 
-  const [dish_id, setDishId] = useState('');
-  const [quantity, setQuantity] = useState(1);
-  const [delivery_address, setDeliveryAddress] = useState('');
-  const [loading, setLoading] = useState(true);
-  const dispatch = useDispatch();
-  const cartItems = useSelector(state => state.cart.current.items);
-  const total_price = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  const cart_id = useSelector(state => state.cart.current);
-  const currentUser = useSelector(state => state.session.user);
-  console.log("current user", currentUser)
-  const currentDish = useSelector(state => state.dish.current);
-  console.log("current Dish", currentDish)
+const Cart = ({ dishes }) => {
+
+    const [cartItems, setCartItems] = useState([]);
 
 
-  useEffect(() => {
-    async function fetchData() {
-      await dispatch(getCart(currentUser.id))
-      await dispatch(getSingleDish(currentDish.id));
-      setLoading(false);
-  }
-  fetchData();
-  }, [dispatch]);
+    useEffect(() => {
 
-  if (loading) return <div>Loading...</div>;
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+            setCartItems(JSON.parse(savedCart));
+        }
+    }, []);
 
-  const handleAddToCart = () => {
-    dispatch(addItemToCart(cart_id, dish_id, quantity));
-  };
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+    }, [cartItems]);
 
-  const handleDeleteFromCart = () => {
-    dispatch(deleteItemFromCart(dish_id));
-  };
+    const addToCart = (dish) => {
+      console.log("this is dish", dish)
+        const existingCartItem = cartItems.find(item => item.dish_id === dish.id);
+        if (existingCartItem) {
+            const updatedCartItems = cartItems.map(item =>
+                item.dish_id === dish.id ? { ...item, quantity: item.quantity + 1 } : item
+            );
+            setCartItems(updatedCartItems);
+        } else {
+            const newCartItem = {
+                id: Date.now(),
+                dish_id: dish.id,
+                dish_name: dish.name,
+                quantity: 1,
+                price: dish.price
+            };
+            setCartItems([...cartItems, newCartItem]);
+        }
 
-  const handleSubmitCart = async () => {
-    dispatch(checkoutCart(cart_id, total_price));
-  };
+    };
 
-  return (
-    <aside>
-      <h2>Cart</h2>
+    const updateQuantity = (dishId, amount) => {
+        const updatedCartItems = cartItems.map(item =>
+            item.dish_id === dishId ? { ...item, quantity: item.quantity + amount } : item
+        ).filter(item => item.quantity > 0);
+        setCartItems(updatedCartItems);
+    };
 
-      {/* List out cart items */}
-      <ul>
-        {cartItems.map(item => (
-          <li key={item.dish_id}>
-            {item.dish.name} - {item.quantity}
-            <button onClick={() => handleDeleteFromCart(item.dish_id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+    const getTotalPrice = () => {
+        return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    }
 
-      {/* Add to Cart */}
-      <div>
-      <select value={dish_id} onChange={(e) => setDishId(e.target.value)}>
-    <option value="">Select a dish</option>
-    {currentDish.map(dish => (
-      <option value={dish.id}>{dish.name}</option>
-    ))}
-</select>
+    return (
+        <div>
+            <div class="cart-container">
+            <h2 class="cart-title">Cart</h2>
+              <ul class="cart-items">
+             {cartItems.map(item => (
+            <li class="cart-item" key={item.id}>
+                <span class="item-name">{item.dish_name}</span>
+                <button class="item-decrease" onClick={() => updateQuantity(item.dish_id, -1)}>-</button>
+                <span class="item-quantity">{item.quantity}</span>
+                <button class="item-increase" onClick={() => updateQuantity(item.dish_id, 1)}>+</button>
+                <span class="item-subtotal">- Subtotal: ${item.price * item.quantity}</span>
+                <button class="item-remove" onClick={() => updateQuantity(item.dish_id, -item.quantity)}>Remove</button>
+            </li>
+               ))}
+             </ul>
+     <div class="cart-total">Total: ${getTotalPrice().toFixed(2)}</div>
+           </div>
+            <div>
+                <h2>Select your items you want to add</h2>
+                <ul>
+                <div className="dish-container">
+                    {dishes.map(dish => (
+                        <li key={dish.id} className="dish-card">
 
-        <input type="number" value={1} onChange={(e) => setQuantity(e.target.value)} />
-        <button onClick={handleAddToCart}>Add to Cart</button>
-      </div>
+                             <div class="product-item">
+                              <img className="image-inside" src={dish.image_id} alt="Product Name" />
+                            </div>
+                             <div class="product-description">
+                             <h2>{dish.name} - ${dish.price}</h2>
+                              From: {dish.business_name} </div>
+                            <button class="add-to-cart" onClick={() => addToCart(dish)}>Add to Cart</button>
 
-      {/* Submit Cart */}
-      <div>
-        <label>
-          Delivery Address:
-          <input type="text" value={delivery_address} onChange={(e) => setDeliveryAddress(e.target.value)} />
-        </label>
-        <button onClick={handleSubmitCart}>Submit Cart</button>
-      </div>
-    </aside>
-  );
-}
+                        </li>
+                    ))}
+                  </div>
+                </ul>
 
-export default CartContainer;
+            </div>
+        </div>
+    );
+};
+
+export default Cart;

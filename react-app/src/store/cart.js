@@ -23,9 +23,9 @@ export const removeItem = (itemId) => ({
   payload: itemId,
 });
 
-export const getCart = (currentUser) => async (dispatch) => {
-  const response = await fetch(`/api/cart/`);
-  if (response.ok) {
+export const getCart = () => async (dispatch) => {
+  const response = await fetch(`/api/cart/`)
+  if ( response.ok) {
     const cart = await response.json();
     dispatch(setCart(cart));
   } else {

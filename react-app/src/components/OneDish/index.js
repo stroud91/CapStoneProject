@@ -10,6 +10,7 @@ import EditReviewModal from '../UpdateReviewModal';
 import DeleteReviewModal from '../DeleteReviewModal';
 import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton";
+import addToCart from '../CartComponent';
 
 function DishDetail() {
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function DishDetail() {
     console.log("current dish", currentDish)
     const currentReviews = useSelector(state => state.review.reviewsForDish);
     console.log("current reviews", currentReviews)
-   const currentBusiness = useSelector(state => state.business.list).find(biz => biz.id === currentDish.business_id);
+    const currentBusiness = useSelector(state => state.business.list).find(biz => biz.id === currentDish.business_id);
 
 
     useEffect(() => {
@@ -30,18 +31,11 @@ function DishDetail() {
         async function fetchData() {
             await dispatch(getSingleDish(id));
             await dispatch(fetchReviewsForDish(id));
-
             await dispatch(getAllBusinesses());
-
-
             setLoading(false);
         }
         fetchData();
     }, [dispatch, id ]);
-
-    const handleAddToCart = (dishId) => {
-        dispatch(addItemToCart(dishId));
-    }
 
     const handleDeleteDish = async (dishId) => {
         if (!currentDish) return;
@@ -66,7 +60,7 @@ function DishDetail() {
 
             {currentUser && currentUser.id !== currentBusiness.owner_id && (
                 <div className="dish-user-actions">
-                    <button className="add-cart-btn" onClick={() => handleAddToCart(currentDish.id)}>Add to Cart</button>
+                    <button className="add-cart-btn" onClick={() => addToCart(currentDish.id)}>Add to Cart</button>
                     <div className="postYourReview">
                     {currentUser &&
                      currentUser.id !== currentBusiness.owner_id &&

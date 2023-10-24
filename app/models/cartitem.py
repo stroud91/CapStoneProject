@@ -22,6 +22,7 @@ class CartItem(db.Model):
             'id': self.id,
             'cart_id': self.cart_id,
             'dish_id': self.dish_id,
+            'dish_name': self.dish,
             'quantity': self.quantity,
             'created_at': self.created_at,
             'updated_at': self.updated_at,

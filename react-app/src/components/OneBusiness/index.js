@@ -13,6 +13,7 @@ import DeleteDishModal from "../DeleteDishModal";
 import "./OneBusiness.css";
 import plusImage from '../../images/plusimage.jpg'
 import { useModal } from "../../context/Modal";
+import addToCart from '../CartComponent';
 
 function BusinessDetails() {
 
@@ -124,7 +125,7 @@ function BusinessDetails() {
                         )}
                         {user && (
                         <div className="dish-user-actions">
-                            <button className="add-cart-btn" onClick={(event) => handleAddToCart(dish.id, event)}>Add to Cart</button>
+                            <button className="add-cart-btn" onClick={() => addToCart(dish.id)}>Add to Cart</button>
                         </div>
                         )}
                     </div>

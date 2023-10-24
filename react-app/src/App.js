@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -17,12 +17,16 @@ import BusinessMainPage from "./components/Bussiness";
 import SearchBar from "./components/Search"
 import QueryBusiness from "./components/Query";
 import OwnedBusinesses from "./components/OwnedBusiness";
-import CartContainer from "./components/CartComponent";
+import Cart from "./components/CartComponent";
+import { getAllDishes } from "./store/dish";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const dishes = useSelector(state=> state.dish.list)
+
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
+    dispatch(getAllDishes())
   }, [dispatch]);
 
   return (
@@ -45,10 +49,10 @@ function App() {
             <MainPageView />
           </Route>
           <Route path="/search" >
-            <SearchBar />
+            <QueryBusiness />
           </Route>
           <Route exact path="/view-cart">
-            <CartContainer />
+            <Cart dishes={dishes} />
           </Route>
           <Route exact path="/owned">
             <OwnedBusinesses />
