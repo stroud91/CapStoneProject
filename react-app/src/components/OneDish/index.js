@@ -25,7 +25,7 @@ function DishDetail() {
 
     useEffect(() => {
         async function fetchData() {
-            // await dispatch(fetchOneBusiness(id));
+            await dispatch(fetchOneBusiness(currentDish.business_id));
             await dispatch(getSingleDish(id));
             await dispatch(fetchReviewsForDish(id));
             setLoading(false);

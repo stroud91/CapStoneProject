@@ -36,7 +36,8 @@ function BusinessDetails() {
         history.push(`/create-dish`);
     }
 
-    const setSelectedDish = (id) => {
+    const setSelectedDish = (id,event) => {
+        event.stopPropagation();
         history.push(`/dish/${id}`);
     }
 
@@ -60,7 +61,8 @@ function BusinessDetails() {
     };
 
 
-    const handleAddToCart = (dishId) => {
+    const handleAddToCart = (dishId, event) => {
+        event.stopPropagation();
         dispatch(addItemToCart(dishId));
     }
 
@@ -106,7 +108,7 @@ function BusinessDetails() {
 
             <div className="dishes-container">
                 {dishes.map(dish => (
-                    <div className="dish" onClick={() => setSelectedDish(dish.id)}>
+                    <div className="dish" onClick={(event) => setSelectedDish(dish.id,event)}>
                         <div className="dish-photo-container">
                             <img src={dish.image_id} alt={dish.name} className="dish-image" />
                         </div>
@@ -122,7 +124,7 @@ function BusinessDetails() {
                         )}
                         {user && (
                         <div className="dish-user-actions">
-                            <button className="add-cart-btn" onClick={() => handleAddToCart(dish.id)}>Add to Cart</button>
+                            <button className="add-cart-btn" onClick={(event) => handleAddToCart(dish.id, event)}>Add to Cart</button>
                         </div>
                         )}
                     </div>
