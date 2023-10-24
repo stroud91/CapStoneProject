@@ -19,15 +19,17 @@ function DishDetail() {
 
     const currentUser = useSelector(state => state.session.user);
     const currentDish = useSelector(state => state.dish.current);
+    console.log("current dish", currentDish)
     const currentReviews = useSelector(state => state.review.reviewsForDish);
     console.log("current reviews", currentReviews)
     const business = useSelector(state => state.business.selectedBusiness);
 
     useEffect(() => {
+        dispatch(getSingleDish(id));
         async function fetchData() {
-            await dispatch(fetchOneBusiness(currentDish.business_id));
-            await dispatch(getSingleDish(id));
-            await dispatch(fetchReviewsForDish(id));
+
+            dispatch(fetchReviewsForDish(id));
+            dispatch(fetchOneBusiness(currentDish.business_id));
             setLoading(false);
         }
         fetchData();

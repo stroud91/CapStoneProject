@@ -5,7 +5,7 @@ import ProfileButton from "./ProfileButton";
 import Search from "../Search";
 import "./Navigation.css";
 import dcSmall from "../../images/dc.png";
-
+import shopCart from "../../images/shoppingcart.jpg";
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const location = useLocation();
@@ -21,6 +21,11 @@ function Navigation({ isLoaded }) {
         <div className='searchbar'>
           <Search />
         </div>
+      )}
+      {sessionUser && (
+        <NavLink exact to="/view-cart">
+        <img className="small-logo" src={shopCart} alt="" />
+      </NavLink>
       )}
       {isLoaded && (
         <div>

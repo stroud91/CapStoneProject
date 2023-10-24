@@ -33,9 +33,7 @@ function App() {
           <Route path="/business/:businessId/update-dish/:id">
             <UpdateDishForm />
           </Route>
-          <Route path="/search" >
-            <SearchBar />
-          </Route>
+
           <Route path="/login">
             <LoginFormPage />
           </Route>
@@ -46,7 +44,12 @@ function App() {
           <Route exact path="/">
             <MainPageView />
           </Route>
-
+          <Route path="/search" >
+            <SearchBar />
+          </Route>
+          <Route exact path="/view-cart">
+            <CartContainer />
+          </Route>
           <Route exact path="/owned">
             <OwnedBusinesses />
           </Route>

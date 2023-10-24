@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getCart, addItemToCart, deleteItemFromCart, checkoutCart } from '../../store/cart';  // Ensure these actions exist.
 import { getSingleDish } from '../../store/dish';
 const CartContainer = () => {
+
   const [dish_id, setDishId] = useState('');
   const [quantity, setQuantity] = useState(1);
-  const [deliveryAddress, setDeliveryAddress] = useState('');
+  const [delivery_address, setDeliveryAddress] = useState('');
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const cartItems = useSelector(state => state.cart.current.items);
@@ -20,7 +21,7 @@ const CartContainer = () => {
   useEffect(() => {
     async function fetchData() {
       await dispatch(getCart(currentUser.id))
-      await dispatch(getSingleDish(currentDish));
+      await dispatch(getSingleDish(currentDish.id));
       setLoading(false);
   }
   fetchData();
@@ -71,7 +72,7 @@ const CartContainer = () => {
       <div>
         <label>
           Delivery Address:
-          <input type="text" value={deliveryAddress} onChange={(e) => setDeliveryAddress(e.target.value)} />
+          <input type="text" value={delivery_address} onChange={(e) => setDeliveryAddress(e.target.value)} />
         </label>
         <button onClick={handleSubmitCart}>Submit Cart</button>
       </div>
