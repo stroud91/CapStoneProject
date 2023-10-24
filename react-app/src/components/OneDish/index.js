@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { fetchOneBusiness } from '../../store/business';
+import { fetchOneBusiness, getAllBusinesses } from '../../store/business';
 import { fetchReviewsForDish, createReview, updateReview, deleteReview } from '../../store/review';
 import { getDishesForBusiness, getSingleDish, removeDishForBusiness } from '../../store/dish';
 import { addItemToCart } from '../../store/cart';
@@ -12,7 +12,6 @@ import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton";
 
 function DishDetail() {
-
     const dispatch = useDispatch();
     const { id } = useParams();
     const { setModalContent, closeModal } = useModal();
@@ -23,18 +22,22 @@ function DishDetail() {
     console.log("current dish", currentDish)
     const currentReviews = useSelector(state => state.review.reviewsForDish);
     console.log("current reviews", currentReviews)
-    const business = useSelector(state => state.business.selectedBusiness);
+   const currentBusiness = useSelector(state => state.business.list).find(biz => biz.id === currentDish.business_id);
+
 
     useEffect(() => {
 
         async function fetchData() {
-           await dispatch(getSingleDish(id));
-           await dispatch(fetchReviewsForDish(id));
-           await dispatch(fetchOneBusiness(currentDish.business_id));
-           setLoading(false);
+            await dispatch(getSingleDish(id));
+            await dispatch(fetchReviewsForDish(id));
+
+            await dispatch(getAllBusinesses());
+
+
+            setLoading(false);
         }
         fetchData();
-    }, [dispatch, id,currentDish.business_id]);
+    }, [dispatch, id ]);
 
     const handleAddToCart = (dishId) => {
         dispatch(addItemToCart(dishId));
@@ -54,19 +57,19 @@ function DishDetail() {
             <p>{currentDish.description}</p>
             <span>${currentDish.price.toFixed(2)}</span>
 
-            {currentUser && currentUser.id === business.owner_id && (
+            {currentUser && currentUser.id === currentBusiness.owner_id && (
                 <div className="dish-buttons">
                     <Link to={`/dish/${id}/update`} className="edit-button">Edit</Link>
                     <button onClick={() => handleDeleteDish(currentDish.id)}>Delete</button>
                 </div>
             )}
 
-            {currentUser && currentUser.id !== business.owner_id && (
+            {currentUser && currentUser.id !== currentBusiness.owner_id && (
                 <div className="dish-user-actions">
                     <button className="add-cart-btn" onClick={() => handleAddToCart(currentDish.id)}>Add to Cart</button>
                     <div className="postYourReview">
                     {currentUser &&
-                     currentUser.id !== business.owner_id &&
+                     currentUser.id !== currentBusiness.owner_id &&
                       !currentReviews.some(review => review.user_id === currentUser.id) && (
                     <OpenModalButton
                      buttonText="Add a review"

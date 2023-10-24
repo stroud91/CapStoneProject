@@ -36,9 +36,8 @@ function BusinessDetails() {
         history.push(`/create-dish`);
     }
 
-    const setSelectedDish = (id,event) => {
-        console.log("this is selected dish params", id)
-        event.stopPropagation();
+    const setSelectedDish = (id) => {
+
         history.push(`/dish/${id}`);
     }
 
@@ -109,7 +108,7 @@ function BusinessDetails() {
 
             <div className="dishes-container">
                 {dishes.map(dish => (
-                    <div className="dish" onClick={(event) => setSelectedDish(dish.id,event)}>
+                    <div className="dish" onClick={() => setSelectedDish(dish.id)}>
                         <div className="dish-photo-container">
                             <img src={dish.image_id} alt={dish.name} className="dish-image" />
                         </div>
