@@ -57,7 +57,7 @@ function MainPage() {
                  <img src={dish.image_id} alt="CoverTwo" />
                 </div>
               <p>{dish.name}</p>
-              <p>{dish.rating.toFixed(2)} ★</p>
+              <p>{dish.rating} ★</p>
               <Link to={`/dish/${dish.id}`}>More...</Link>
             </div>
           ))}
