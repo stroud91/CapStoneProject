@@ -25,12 +25,12 @@ function DishDetail() {
     const business = useSelector(state => state.business.selectedBusiness);
 
     useEffect(() => {
-        dispatch(getSingleDish(id));
-        async function fetchData() {
 
-            dispatch(fetchReviewsForDish(id));
-            dispatch(fetchOneBusiness(currentDish.business_id));
-            setLoading(false);
+        async function fetchData() {
+           await dispatch(getSingleDish(id));
+           await dispatch(fetchReviewsForDish(id));
+           await dispatch(fetchOneBusiness(currentDish.business_id));
+           setLoading(false);
         }
         fetchData();
     }, [dispatch, id]);
