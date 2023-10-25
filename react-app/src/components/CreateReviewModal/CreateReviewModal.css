@@ -1,4 +1,4 @@
-/* #postReviewContainer {
+ #postReviewContainer {
     width: 400px;
     padding: 20px;
     background-color: #fff;
@@ -67,7 +67,7 @@
 
 /* StarsRating styling */
 
-/* .filled i,
+ .filled i,
 .empty i {
     font-size: 24px;
     cursor: pointer;
@@ -86,4 +86,4 @@
 .filled:hover i,
 .filled:hover ~ .empty i {
     color: #FFD700;
-} */ 
+}

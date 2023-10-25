@@ -264,3 +264,24 @@ body, html {
     font-weight: bold;
     margin-top: 20px;
 }
+.container {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.scrollable-items {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 20px;
+}
+
+.fixed-cart {
+    width: 365px;
+    position: fixed;
+    top: 10p;
+    right: 0;
+    height: 100vh;
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+}

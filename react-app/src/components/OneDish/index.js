@@ -11,11 +11,13 @@ import DeleteReviewModal from '../DeleteReviewModal';
 import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton";
 import addToCart from '../CartComponent';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function DishDetail() {
     const dispatch = useDispatch();
     const { id } = useParams();
     const { setModalContent, closeModal } = useModal();
+    const history = useHistory()
     const [loading, setLoading] = useState(true);
 
     const currentUser = useSelector(state => state.session.user);
@@ -37,6 +39,12 @@ function DishDetail() {
         fetchData();
     }, [dispatch, id ]);
 
+    const handleEditDish = async (business_id, id) => {
+        // if (!currentDish) return;
+        // await dispatch(removeDishForBusiness(currentDish.business_id, dishId));
+        history.push(`/business/${currentBusiness.id}/update-dish/${id}`)
+    };
+
     const handleDeleteDish = async (dishId) => {
         if (!currentDish) return;
         await dispatch(removeDishForBusiness(currentDish.business_id, dishId));
@@ -45,61 +53,56 @@ function DishDetail() {
     if (loading) return <div>Loading...</div>;
 
     return (
-        <div className="dish-detail-container">
-            <img src={currentDish.image_id} alt={currentDish.name} className="dish-image" />
-            <h3>{currentDish.name}</h3>
-            <p>{currentDish.description}</p>
-            <span>${currentDish.price.toFixed(2)}</span>
+        <div className="dishDetail-container">
+            <img src={currentDish.image_id} alt={currentDish.name} className="dishDetail-image" />
+            <h3 className="dishDetail-name">{currentDish.name}</h3>
+            <p className="dishDetail-description">{currentDish.description}</p>
+            <span className="dishDetail-price">${currentDish.price.toFixed(2)}</span>
 
             {currentUser && currentUser.id === currentBusiness.owner_id && (
-                <div className="dish-buttons">
-                    <Link to={`/business/${currentBusiness.id}/update-dish/${id}`} className="edit-button">Edit</Link>
-                    <button onClick={() => handleDeleteDish(currentDish.id)}>Delete</button>
+                <div className="dishDetail-buttons">
+                    {/* <Link to={`/business/${currentBusiness.id}/update-dish/${id}`} className="dishDetail-delete-button">Edit</Link> */}
+                    <button className="dishDetail-delete-button" onClick={() => handleEditDish(currentBusiness.id,id)}>Edit</button>
+                    <button className="dishDetail-delete-button" onClick={() => handleDeleteDish(currentDish.id)}>Delete</button>
                 </div>
             )}
 
             {currentUser && currentUser.id !== currentBusiness.owner_id && (
-                <div className="dish-user-actions">
-                    <button className="add-cart-btn" onClick={() => addToCart(currentDish.id)}>Add to Cart</button>
-                    <div className="postYourReview">
-                    {currentUser &&
-                     currentUser.id !== currentBusiness.owner_id &&
-                      !currentReviews.some(review => review.user_id === currentUser.id) && (
-                    <OpenModalButton
-                     buttonText="Add a review"
-                     modalComponent={<CreateReviewModal id={id} currentUser={currentUser.id} />}
-                     id={"post-review-button"}
-  />
-)}
-
-      </div>
+                <div className="dishDetail-userActions">
+                    <div className="dishDetail-postReview">
+                        {currentUser &&
+                         currentUser.id !== currentBusiness.owner_id &&
+                         !currentReviews.some(review => review.user_id === currentUser.id) && (
+                            <OpenModalButton
+                                buttonText="Add a review"
+                                modalComponent={<CreateReviewModal id={id} currentUser={currentUser.id} />}
+                                id="dishDetail-postReview-button"
+                            />
+                        )}
+                    </div>
                 </div>
             )}
 
-            <div className="dish-reviews">
-                <h4>Reviews</h4>
+            <div className="dishDetail-reviews">
+                <h4 className="dishDetail-reviewsTitle">Reviews</h4>
                 {currentReviews.map(review => (
-                    <div key={review.id} className="review">
-                        <h5>{review.user_name}</h5>
-                        <p>{review.comment}</p>
-                        <span>Rating: {review.rating}</span>
+                    <div key={review.id} className="dishDetail-reviewItem">
+                        <h5 className="dishDetail-reviewUserName">{review.user_name}</h5>
+                        <p className="dishDetail-reviewComment">{review.comment}</p>
+                        <span className="dishDetail-reviewRating">Rating: {review.rating}</span>
 
                         {currentUser && currentUser.id === review.user_id && (
-                            <div className="reviewButtons">
+                            <div className="dishDetail-reviewButtons">
                                 <OpenModalButton
-                                buttonText="Edit"
-                                modalComponent={
-                                <EditReviewModal id={id} review={review} />
-                                }
-                                id={"review-edit-button"}
+                                    buttonText="Edit"
+                                    modalComponent={<EditReviewModal id={id} review={review} />}
+                                    id="dishDetail-reviewEdit-button"
                                 />
                                 <OpenModalButton
-                                 buttonText="Delete"
-                                 modalComponent={
-                                <DeleteReviewModal id={id} review={review.id} />
-                                 }
-                                 id={"review-delete-button"}
-                               />
+                                    buttonText="Delete"
+                                    modalComponent={<DeleteReviewModal id={id} review={review.id} />}
+                                    id="dishDetail-reviewDelete-button"
+                                />
                             </div>
                         )}
                     </div>

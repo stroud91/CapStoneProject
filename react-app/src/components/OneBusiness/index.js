@@ -123,11 +123,11 @@ function BusinessDetails() {
                                 <button className="delete-btn" onClick={(event) => handleDelete(selectedBusiness.id, dish.id, event)}>Delete</button>
                             </div>
                         )}
-                        {user && (
+                        {/* {user && (
                         <div className="dish-user-actions">
                             <button className="add-cart-btn" onClick={() => addToCart(dish.id)}>Add to Cart</button>
                         </div>
-                        )}
+                        )} */}
                     </div>
                 ))}
                 {user && selectedBusiness.owner_id === user.id && (

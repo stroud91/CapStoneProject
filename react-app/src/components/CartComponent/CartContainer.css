@@ -1,0 +1,83 @@
+/* .container {
+    display: flex;
+    height: 100vh;
+    padding: 20px;
+}
+
+.scrollable-items {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 20px;
+    border-right: 1px solid #ccc;
+}
+
+.dish-container {
+    list-style-type: none;
+    padding: 0;
+}
+
+.dish-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.image-inside {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.product-description {
+    flex: 1;
+}
+
+.add-to-cart {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #0056b3;
+}
+
+.fixed-cart {
+    width: 300px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+}
+.cart-title {
+    margin-top: 0;
+}
+
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+} */

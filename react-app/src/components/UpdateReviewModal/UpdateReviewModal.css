@@ -1,66 +1,90 @@
-/* EditReviewModal.css
+
 #editReviewContainer {
-    background-color: #f5f5f5;
+    width: 400px;
     padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: 20px auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .editReviewHeading {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: 15px;
 }
 
 .comment-input {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #e1e1e1;
-    border-radius: 5px;
-    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.post-review-errors {
+    color: red;
+    margin: 5px 0;
+}
+
+.empty-space {
+    height: 20px;
+    display: block;
 }
 
 .rating-input {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.rating-input > div {
+    margin-left: 5px;
 }
 
 .submit-button-inactive,
 .submit-button {
-    background-color: #0077cc;
-    padding: 10px 15px;
+    padding: 8px 15px;
     border: none;
-    border-radius: 5px;
-    color: white;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 .submit-button-inactive {
-    background-color: #c7c7c7;
+    background-color: #ccc;
+    color: #888;
     cursor: not-allowed;
 }
 
+.submit-button {
+    background-color: #007BFF;
+    color: #fff;
+}
+
 .submit-button:hover {
-    background-color: #005fa3;
+    background-color: #0056b3;
 }
 
-/* StarsRating.css */
-/* .filled, .empty {
+/* StarsRating styling */
+
+ .filled i,
+.empty i {
     font-size: 24px;
-    margin-right: 5px;
     cursor: pointer;
+    margin-right: 5px;
+    transition: color 0.2s;
 }
 
-.filled {
-    color: gold;
+.filled i {
+    color: #FFD700;
 }
 
-.empty {
-    color: #c7c7c7;
-} */ 
+.empty i {
+    color: #ccc;
+}
+
+.filled:hover i,
+.filled:hover ~ .empty i {
+    color: #FFD700;
+}

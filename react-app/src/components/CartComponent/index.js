@@ -58,45 +58,44 @@ const Cart = ({ dishes }) => {
 
     return (
         <div>
-            <div class="cart-container">
-            <h2 class="cart-title">Cart</h2>
-              <ul class="cart-items">
-             {cartItems.map(item => (
-            <li class="cart-item" key={item.id}>
+             <div className="container">
+            <div className="scrollable-items">
+                <h2>Select your items you want to add</h2>
+                <ul className="dish-container">
+                    {dishes.map(dish => (
+                        <li key={dish.id} className="dish-card">
+                            <div className="product-item">
+                                <img className="image-inside" src={dish.image_id} alt="Product Name" />
+                            </div>
+                            <div className="product-description">
+                                <h2>{dish.name} - ${dish.price}</h2>
+                                From: {dish.business_name}
+                            </div>
+                            <button className="add-to-cart" onClick={() => addToCart(dish)}>Add to Cart</button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div className="fixed-cart">
+                <h2 className="cart-title">Cart</h2>
+                <ul className="cart-items">
+                {cartItems.map(item => (
+                <li class="cart-item" key={item.id}>
                 <span class="item-name">{item.dish_name}</span>
                 <button class="item-decrease" onClick={() => updateQuantity(item.dish_id, -1)}>-</button>
                 <span class="item-quantity">{item.quantity}</span>
                 <button class="item-increase" onClick={() => updateQuantity(item.dish_id, 1)}>+</button>
                 <span class="item-subtotal">- Subtotal: ${item.price * item.quantity}</span>
                 <button class="item-remove" onClick={() => updateQuantity(item.dish_id, -item.quantity)}>Remove</button>
-            </li>
-               ))}
-             </ul>
-             <div class="cart-total">Total: ${getTotalPrice().toFixed(2)}</div>
-             {cartItems && (
-              <button class="submit-button" onClick={handleSubmit}>Submit Order</button>
-             )}
+                </li>
+                 ))}
+                <div className="cart-total">Total: ${getTotalPrice().toFixed(2)}</div>
+                {cartItems.length > 0 && (
+                    <button className="submit-button" onClick={handleSubmit}>Submit Order</button>
+                )}
+                 </ul>
+            </div>
 
-           </div>
-            <div>
-                <h2>Select your items you want to add</h2>
-                <ul>
-                <div className="dish-container">
-                    {dishes.map(dish => (
-                        <li key={dish.id} className="dish-card">
-
-                             <div class="product-item">
-                              <img className="image-inside" src={dish.image_id} alt="Product Name" />
-                            </div>
-                             <div class="product-description">
-                             <h2>{dish.name} - ${dish.price}</h2>
-                              From: {dish.business_name} </div>
-                            <button class="add-to-cart" onClick={() => addToCart(dish)}>Add to Cart</button>
-
-                        </li>
-                    ))}
-                  </div>
-                </ul>
 
             </div>
         </div>
