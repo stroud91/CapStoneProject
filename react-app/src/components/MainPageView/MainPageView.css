@@ -58,6 +58,8 @@ body, html {
     align-items: center;
     justify-content: center;
     height: 300px;
+    margin-top: -26px;
+
 }
 
 .main-page-image-container img {
