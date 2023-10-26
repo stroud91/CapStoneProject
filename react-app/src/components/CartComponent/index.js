@@ -52,6 +52,7 @@ const Cart = ({ dishes }) => {
     }
 
     const handleSubmit = () => {
+        alert("Order Submitted! Thank you for your purchase!");
         setCartItems([]);
         localStorage.removeItem('cart');
     };
