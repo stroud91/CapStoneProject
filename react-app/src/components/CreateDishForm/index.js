@@ -29,6 +29,7 @@ function DishCreationForm() {
  const dispatch = useDispatch();
  const history = useHistory();
  const selectedBusiness = useSelector(state => state.business.selectedBusiness);
+ const [validationErrors, setValidationErrors] = useState([]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -38,6 +39,27 @@ function DishCreationForm() {
     category_id: CATEGORIES[0].id,
 
   });
+
+  const validate = () => {
+    const errors = {};
+
+    if (!formData.name) {
+      errors.name = "Dish name is required.";
+    }
+
+    if (formData.description.length > 500) {
+      errors.description = "Description should be under 500 characters.";
+    }
+
+    if (formData.price <= 0) {
+      errors.price = "Price should be a positive value.";
+    }
+
+    if (!formData.image_id) {
+      errors.image_id = "Image ID is required.";
+    }
+    return errors;
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -49,6 +71,13 @@ function DishCreationForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const errors = validate();
+
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      return;
+  }
 
     const dishData = {
       name: formData.name,
@@ -76,8 +105,9 @@ function DishCreationForm() {
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            required
+            
           />
+          {validationErrors.name && <div className="error">{validationErrors.name}</div>}
         </div>
 
         {/* Description Field */}
@@ -89,6 +119,7 @@ function DishCreationForm() {
             value={formData.description}
             onChange={handleInputChange}
           ></textarea>
+          {validationErrors.description && <div className="error">{validationErrors.description}</div>}
         </div>
 
         {/* Price Field */}
@@ -100,8 +131,9 @@ function DishCreationForm() {
             name="price"
             value={formData.price}
             onChange={handleInputChange}
-            required
+
           />
+          {validationErrors.price && <div className="error">{validationErrors.price}</div>}
         </div>
 
         {/* Image ID  */}
@@ -114,6 +146,7 @@ function DishCreationForm() {
             value={formData.image_id}
             onChange={handleInputChange}
           />
+          {validationErrors.image_id && <div className="error">{validationErrors.image_id}</div>}
         </div>
 
         {/* Category Dropdown */}

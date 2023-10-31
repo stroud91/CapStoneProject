@@ -82,7 +82,7 @@ function CreateReviewModal({ id, currentUser }) {
   if (!dish) return <div>Loading...</div>;
   return (
     <div id="postReviewContainer">
-      <div className="postReviewHeading">How was your stay?</div>
+      <div className="postReviewHeading">How was your meal?</div>
       <div className="post-review-errors">
         {errors.comment && errors.comment ? <>{errors.comment}</> : <div className="empty-space"> </div>}
       </div>
