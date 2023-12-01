@@ -193,7 +193,14 @@ body, html {
     color: white;
     margin: 5px 0;
 }
-
+.dish-card a {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
 
 
 
@@ -288,3 +295,73 @@ body, html {
     background-color: #fff;
     border-left: 1px solid #ccc;
 }
+
+
+.container_owned {
+    max-width: 600px;
+    max-height: 1500px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #1a1919;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(246, 245, 245);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+
+
+
+  /* styling owned  */
+  .businessMain__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+  }
+
+  .businessMain__item {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+
+  .businessMain__image {
+
+    height: 200px;
+    background-color: #ccc; /* temporary */
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  .businessMain__item p {
+    margin: 5px 0;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .businessMain__item a {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .businessMain__item a:hover {
+    background-color: #0056b3;
+  }

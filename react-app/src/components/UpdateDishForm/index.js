@@ -72,11 +72,11 @@ function DishUpdateForm() {
   };
 
   return (
-    <div className="update-dish-form-container">
-      <h2>Update Dish</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
+    <div className="business-form-container">
+      <h2>Change the info below to update the menu item</h2>
+      <form onSubmit={handleSubmit} className='form-group'>
+
+          <label>Name:
           <input
             type="text"
             name="name"
@@ -84,18 +84,16 @@ function DishUpdateForm() {
             onChange={handleInputChange}
             required
           />
-        </div>
-        <div>
-          <label>Description:</label>
+          </label>
+          <label>Description:
           <textarea
             name="description"
             value={formData.description}
             onChange={handleInputChange}
             required
           />
-        </div>
-        <div>
-          <label>Price:</label>
+          </label>
+          <label>Price:
           <input
             type="number"
             name="price"
@@ -103,9 +101,8 @@ function DishUpdateForm() {
             onChange={handleInputChange}
             required
           />
-        </div>
-        <div>
-          <label>Category:</label>
+          </label>
+          <label>Category:
           <select
             name="category_id"
             value={formData.category_id}
@@ -118,19 +115,18 @@ function DishUpdateForm() {
               </option>
             ))}
           </select>
-        </div>
-        <div>
-          <label>Image:</label>
+          </label>
+          <label>Image:
           <input
             type="text"
             name="image_id"
             value={formData.image_id}
             onChange={handleInputChange}
           />
-        </div>
-        <div>
+          </label>
+
           <button type="submit">Update Dish</button>
-        </div>
+
       </form>
     </div>
   );

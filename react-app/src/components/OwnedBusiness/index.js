@@ -42,6 +42,8 @@ function OwnedBusinesses() {
 
 
     return (
+
+
         <ul className='businessMain__grid'>
             {ownedBusinesses && ownedBusinesses.map((business) => (
                 <li key={business.id} className='businessMain__item'>
@@ -63,6 +65,7 @@ function OwnedBusinesses() {
                     <button className="edit-button" onClick={() => handleEditBusiness(business.id)}>Edit</button>
                     <OpenModalButton
                       buttonText="Delete"
+
                       modalComponent={<DeleteModal bus_data={business} />}
                       id={"delete-business-button"}
                     />
@@ -71,6 +74,7 @@ function OwnedBusinesses() {
                 </li>
             ))}
         </ul>
+       
     );
 }
 
