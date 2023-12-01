@@ -29,7 +29,7 @@ function UpdateBusiness() {
   const [city, setCity] = useState(business ? business.city : '');
   const [state, setState] = useState(business ? business.state : '');
   const [zip_code, setZipCode] = useState(business ? business.zip_code : '');
-  const [phone_number, setPhoneNumber] = useState(business ? business.phone_number : '');
+  const [phone, setPhoneNumber] = useState(business ? business.phone : '');
   const [email, setEmail] = useState(business ? business.email : '');
   const [about, setAbout] = useState(business ? business.about : '');
   const [type, setType] = useState(business ? business.type : '');
@@ -64,7 +64,7 @@ function UpdateBusiness() {
         errors.push("Invalid ZIP Code.");
     }
 
-    if (!values.phone_number || !/^\d{10}$/.test(values.phone_number)) {
+    if (!values.phone || !/^\d{10}$/.test(values.phone)) {
         errors.push("Invalid phone number.");
     }
 
@@ -99,7 +99,7 @@ function UpdateBusiness() {
       city,
       state,
       zip_code,
-      phone_number,
+      phone,
       logo_id,
       owner_id,
       email,
@@ -119,7 +119,7 @@ function UpdateBusiness() {
       city,
       state,
       zip_code,
-      phone_number,
+      phone,
       logo_id,
       owner_id,
       email,
@@ -203,7 +203,7 @@ function UpdateBusiness() {
           <label>Phone Number</label>
           <input
             type="text"
-            value={phone_number}
+            value={phone}
             onChange={(e) => setPhoneNumber(e.target.value)}
             required
             placeholder='Enter the phone number'

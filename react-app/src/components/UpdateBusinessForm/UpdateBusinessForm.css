@@ -1,15 +1,14 @@
 /* Form container */
-/* .form__container.business-update__form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 450px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.form__container.business-update__form {
+    max-width: 800px;
+    max-height: 1500px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #1a1919;
     border-radius: 8px;
-    background-color: #ffffff;
-} */
+    box-shadow: 0 2px 4px rgb(246, 245, 245);
+    flex-direction: column;
+}
 
 /* Error container */
  .business-error__container {
@@ -81,16 +80,19 @@ form h2 {
 
 /* Submit button */
 .form__button {
+    margin-top: 20px;
     padding: 10px 20px;
     border: none;
-    background-color: #007BFF;
-    color: #ffffff;
-    font-size: 16px;
     border-radius: 5px;
+    background-color: #007BFF;
+    color: #FFF;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 1rem;
+    transition: background-color 0.2s;
 }
 
 .form__button:hover {
     background-color: #0056b3;
 }
+
+

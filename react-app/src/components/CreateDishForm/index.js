@@ -93,26 +93,28 @@ function DishCreationForm() {
   };
 
   return (
-    <div className="dish-form-container">
-      <form onSubmit={handleSubmit}>
+
+    <div className="business-form-container">
+      <h3 className="dish-form-heading">Create Your Menu Item</h3>
+      <form onSubmit={handleSubmit} className="form-group">
 
         {/* Name Field */}
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
+
+          <label htmlFor="name">Name:
           <input
             type="text"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            
+
           />
           {validationErrors.name && <div className="error">{validationErrors.name}</div>}
-        </div>
+          </label>
 
         {/* Description Field */}
-        <div className="form-group">
-          <label htmlFor="description">Description:</label>
+
+          <label htmlFor="description">Description:
           <textarea
             id="description"
             name="description"
@@ -120,11 +122,11 @@ function DishCreationForm() {
             onChange={handleInputChange}
           ></textarea>
           {validationErrors.description && <div className="error">{validationErrors.description}</div>}
-        </div>
+          </label>
 
         {/* Price Field */}
-        <div className="form-group">
-          <label htmlFor="price">Price:</label>
+
+          <label htmlFor="price">Price:
           <input
             type="number"
             id="price"
@@ -134,11 +136,11 @@ function DishCreationForm() {
 
           />
           {validationErrors.price && <div className="error">{validationErrors.price}</div>}
-        </div>
+          </label>
 
         {/* Image ID  */}
-        <div className="form-group">
-          <label htmlFor="image_id">Image ID:</label>
+
+          <label htmlFor="image_id">Image ID:
           <input
             type="text"
             id="image_id"
@@ -147,11 +149,11 @@ function DishCreationForm() {
             onChange={handleInputChange}
           />
           {validationErrors.image_id && <div className="error">{validationErrors.image_id}</div>}
-        </div>
+          </label>
 
         {/* Category Dropdown */}
-        <div className="form-group">
-          <label htmlFor="category">Category:</label>
+
+          <label htmlFor="category">Category:
           <select
             id="category"
             name="category_id"
@@ -164,14 +166,15 @@ function DishCreationForm() {
               </option>
             ))}
           </select>
-        </div>
+          </label>
 
         {/* Submit Button */}
-        <div className="form-group">
+
           <button type="submit">Add Dish</button>
-        </div>
+
       </form>
     </div>
+
   );
 }
 
