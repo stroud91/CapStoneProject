@@ -161,17 +161,21 @@ body, html {
 }
 
 /* Footer Styles */
-.footer {
-    background-color: #f0f0f0;
-    padding: 20px 0;
+.main-footer {
+    background-color: black;
+    padding: 2px ;
     font-size: 14px;
-    color: #22304A;
+    color: #E6B567;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
 }
+.main-footer a {
+    color: #E6B567;
+    text-decoration: none;
 
+}
 .text-container {
     background-color: rgba(255, 255, 255, 0.8);
 }

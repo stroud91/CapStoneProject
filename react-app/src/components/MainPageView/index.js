@@ -81,7 +81,8 @@ function MainPage() {
        </section>
 
       <footer className='main-footer'>
-        <p>&copy; 2023 Capstone Project - Developed by Ledian Fekaj - React - Python - Flask - SQLAlchemy - PostgreSQL - Redux</p>
+        <p>&copy; 2023 Capstone Project - Developed by <a href="https://github.com/stroud91">Ledian Fekaj</a> - React - Python - Flask - SQLAlchemy - PostgreSQL - Redux</p>
+
       </footer>
     </div>
   ) : (
