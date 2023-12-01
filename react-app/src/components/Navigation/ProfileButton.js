@@ -48,18 +48,18 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <li>Welcome, {user.username} </li>
-            <li>{user.firstName} {user.lastName}</li>
-            <li>{user.email}</li>
+            <li>Name: {user.firstName} {user.lastName}</li>
+            <li>Email: {user.email}</li>
             <li>
               <NavLink exact to="/owned" className="view-business-button">View Business</NavLink>
 
               <NavLink exact to="/create-business" className="create-business-button">Create a business</NavLink>
             </li>
-            <li>
+            {/* <li>
               <Link className="order">
                 {<UserOrder />}
              </Link>
-            </li>
+            </li> */}
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

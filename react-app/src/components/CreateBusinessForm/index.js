@@ -111,10 +111,11 @@ const CreateBusinessForm = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="business-form-container">
+            <h2 className="business-form-heading">Create Your Business Listing</h2>
+            <form onSubmit={handleSubmit} className="business-form">
                 <label>
-                    Name:
+                    Let's start creating the signature name for your business:
                     {validationErrors.name && <div className="error">{validationErrors.name}</div>}
                     <input type="text" value={name} onChange={e => setName(e.target.value)} />
                 </label>
@@ -139,27 +140,27 @@ const CreateBusinessForm = () => {
                     <input type="text" value={zip_code} onChange={e => setZipCode(e.target.value)} />
                 </label>
                 <label>
-                    Phone Number:
+                    Please type the business phone number so customers can conctact you:
                     {validationErrors.phone_number && <div className="error">{validationErrors.phone_number}</div>}
                     <input type="text" value={phone_number} onChange={e => setPhoneNumber(e.target.value)} />
                 </label>
                 <label>
-                    About:
+                    Let's write something about you and your bussiness:
                     {validationErrors.about && <div className="error">{validationErrors.about}</div>}
                     <textarea value={about} onChange={e => setAbout(e.target.value)} />
                 </label>
                 <label>
-                    Type:
+                    Type :
                     {validationErrors.type && <div className="error">{validationErrors.type}</div>}
                     <input type="text" value={type} onChange={e => setType(e.target.value)} />
                 </label>
                 <label>
-                    Email:
+                    Please type the email address so customers can conctact you:
                     {validationErrors.email && <div className="error">{validationErrors.email}</div>}
                     <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
                 </label>
                 <label>
-                    Logo ID:
+                    Please input an image for your business:
                     {validationErrors.logo_id && <div className="error">{validationErrors.logo_id}</div>}
                     <input type="text" value={logo_id} onChange={e => setLogoId(e.target.value)} />
                 </label>
@@ -167,6 +168,7 @@ const CreateBusinessForm = () => {
             </form>
         </div>
     );
+
 };
 
 export default CreateBusinessForm;
