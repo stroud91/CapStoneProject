@@ -18,8 +18,8 @@ function BusinessCard({ business }) {
     return (
         <div className='businessMain__item'>
             <div className="businessMain__image">
-                <img src={getPrev(business)}
-                     className='busImg'
+                <img src={business.logo_id}
+                     className='businessMain__image'
                      alt={business.name}
                      key={business.id} />
             </div>
