@@ -70,7 +70,7 @@ function UpdateBusiness() {
         errors.push("Invalid phone number.");
     }
 
-    if (!values.logo_id || values.logo_id.length > 500) {
+    if (!values.logo_id || values.logo_id.length > 1000) {
       errors.push("Invalid image url.");
   }
 

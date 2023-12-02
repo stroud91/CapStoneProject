@@ -141,20 +141,21 @@ def delete_business(b_id):
     if current_user.id != business.owner_id:
         return jsonify({"error": "Unauthorized to delete this business"}), 403
 
-    temp = business.to_dict()
 
     for dish in business.dishes:
+
         for order_detail in dish.order_details:
             db.session.delete(order_detail)
+        
         for review in dish.reviews:
             db.session.delete(review)
         db.session.delete(dish)
 
-        db.session.delete(business)
-        db.session.commit()
+    db.session.delete(business)
+    db.session.commit()
 
-        response = {
-            "message": "Business successfully deleted.",
-        }
+    response = {
+        "message": "Business successfully deleted.",
+    }
 
-        return jsonify(response)
+    return jsonify(response), 200
