@@ -50,7 +50,7 @@ function OwnedBusinesses() {
                     <p className="businessMain_name">{business.name}</p>
                     <div className="businessMain__image">
                         <img src={business.logo_id}
-                            className='busImg'
+                            className='businessMain__image'
                             alt={business.name}
                             key={business.id}
                         />
@@ -74,7 +74,7 @@ function OwnedBusinesses() {
                 </li>
             ))}
         </ul>
-       
+
     );
 }
 

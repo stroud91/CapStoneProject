@@ -118,6 +118,7 @@ export const fetchOneBusiness = (id) => async (dispatch) => {
 };
 
 export const editBusiness = (id, updatedBusiness) => async (dispatch) => {
+  console.log("business info on the thunk passed", id, updatedBusiness)
   const response = await fetch(`/api/business/${id}/edit`, {
     method: "POST",
     headers: {
@@ -128,6 +129,7 @@ export const editBusiness = (id, updatedBusiness) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log("this is the data compiled from thunk" ,data)
     dispatch(updateBusiness(data));
     return data;
   } else {

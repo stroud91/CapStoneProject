@@ -1,5 +1,5 @@
 /* Form container */
-.form__container.business-update__form {
+.form__container_business-update__form {
     max-width: 800px;
     max-height: 1500px;
     margin: 30px auto;
@@ -94,5 +94,3 @@ form h2 {
 .form__button:hover {
     background-color: #0056b3;
 }
-
-

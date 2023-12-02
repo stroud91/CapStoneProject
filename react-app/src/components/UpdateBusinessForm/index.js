@@ -20,7 +20,9 @@ function UpdateBusiness() {
 
 
   useEffect(() => {
-    dispatch(businessActions.getAllBusinesses());
+    // dispatch(businessActions.getAllBusinesses())
+    dispatch(businessActions.fetchOneBusiness(id));
+    console.log("this is id that is passed on useEffect", id)
   }, [dispatch]);
 
 
@@ -29,11 +31,11 @@ function UpdateBusiness() {
   const [city, setCity] = useState(business ? business.city : '');
   const [state, setState] = useState(business ? business.state : '');
   const [zip_code, setZipCode] = useState(business ? business.zip_code : '');
-  const [phone, setPhoneNumber] = useState(business ? business.phone : '');
+  const [phone_number, setPhoneNumber] = useState(business ? business.phone : '');
   const [email, setEmail] = useState(business ? business.email : '');
   const [about, setAbout] = useState(business ? business.about : '');
   const [type, setType] = useState(business ? business.type : '');
-  const [logo_id, setLogo] = useState(business ? business.type : '');
+  const [logo_id, setLogo] = useState(business ? business.logo_id : '');
   const [validationErrors, setValidationErrors] = useState([]);
 
 
@@ -64,12 +66,12 @@ function UpdateBusiness() {
         errors.push("Invalid ZIP Code.");
     }
 
-    if (!values.phone || !/^\d{10}$/.test(values.phone)) {
+    if (!values.phone_number || values.phone_number.length > 14) {
         errors.push("Invalid phone number.");
     }
 
     if (!values.logo_id || values.logo_id.length > 500) {
-      errors.push("Invalid url.");
+      errors.push("Invalid image url.");
   }
 
     if (!values.email || values.email.length > 255) {
@@ -99,7 +101,7 @@ function UpdateBusiness() {
       city,
       state,
       zip_code,
-      phone,
+      phone_number,
       logo_id,
       owner_id,
       email,
@@ -119,14 +121,14 @@ function UpdateBusiness() {
       city,
       state,
       zip_code,
-      phone,
+      phone_number,
       logo_id,
       owner_id,
       email,
       about,
       type
     };
-
+    console.log("this is react side updated bussines data", updatedBusinessData)
 
     await dispatch(businessActions.editBusiness(id, updatedBusinessData));
 
@@ -135,7 +137,7 @@ function UpdateBusiness() {
 
 
   return (
-    <div className='form__container business-update__form'>
+    <div className='form__container_business-update__form'>
       <div className='business-error__container'>
         {validationErrors.map((error, index) => (
           <div className='error' key={index}>{error}</div>
@@ -203,7 +205,7 @@ function UpdateBusiness() {
           <label>Phone Number</label>
           <input
             type="text"
-            value={phone}
+            value={phone_number}
             onChange={(e) => setPhoneNumber(e.target.value)}
             required
             placeholder='Enter the phone number'
