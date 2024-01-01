@@ -12,6 +12,7 @@ import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton";
 import addToCart from '../CartComponent';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import LoadingAnimation from '../Loading';
 
 function DishDetail() {
     const dispatch = useDispatch();
@@ -31,10 +32,14 @@ function DishDetail() {
     useEffect(() => {
 
         async function fetchData() {
+            setLoading(true);
             await dispatch(getSingleDish(id));
             await dispatch(fetchReviewsForDish(id));
             await dispatch(getAllBusinesses());
-            setLoading(false);
+
+            setTimeout(() => {
+                setLoading(false);
+              }, 1000);
         }
         fetchData();
     }, [dispatch, id ]);
@@ -50,7 +55,9 @@ function DishDetail() {
         await dispatch(removeDishForBusiness(currentDish.business_id, dishId));
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) {
+        return <div><LoadingAnimation /></div>;
+      }
 
     return (
         <div className="dishDetail-container">

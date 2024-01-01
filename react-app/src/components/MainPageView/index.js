@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import dcImg from "../../images/dl.png";
 import './MainPageView.css';
 import backgroundImage from "../../images/backgroundImage.jpg"
+import LoadingAnimation from "../Loading";
 function MainPage() {
   const [search, setSearch] = useState('');
   const [businesses, setBusinesses] = useState([]);
   const [topRatedDishes, setTopRatedDishes] = useState([]);
   const [topOrderedDishes, setTopOrderedDishes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +22,9 @@ function MainPage() {
 
   useEffect(() => {
     async function fetchData() {
+
+      setIsLoading(true);
+
       const businessesResponse = await fetch("/api/business/");
       const businessesData = await businessesResponse.json();
       setBusinesses(businessesData);
@@ -31,10 +36,19 @@ function MainPage() {
       const topOrderedResponse = await fetch("/api/menu/top-ordered");
       const topOrderedData = await topOrderedResponse.json();
       setTopOrderedDishes(topOrderedData);
+
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
     }
 
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return <div><LoadingAnimation /></div>;
+  }
 
   return businesses.length > 0 ? (
     <div className='main-page-container' style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -86,7 +100,7 @@ function MainPage() {
       </footer>
     </div>
   ) : (
-    <div>Loading...</div>
+    <div><LoadingAnimation /></div>
   );
 }
 
