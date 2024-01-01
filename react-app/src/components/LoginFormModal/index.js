@@ -36,40 +36,48 @@ function LoginFormModal() {
     }
   }
 
+  const handleOutsideClick = (e) => {
+    if (e.target.className === 'modal-background') {
+      closeModal();
+    }
+  };
+
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-      <button onClick={demoUser} className="btn-demo">
-          Log In as Demo User
-      </button>
-    </>
-  );
+    <div className="modal-background" onClick={handleOutsideClick}>
+        <div className="modal-container">
+            <h1 className="modal-title">Log In</h1>
+            <form onSubmit={handleSubmit} className="modal-form">
+                <ul className="error-messages">
+                    {errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
+                <label>
+                    Email
+                    <input
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    Password
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </label>
+                <button type="submit">Log In</button>
+            </form>
+            <button onClick={demoUser} className="btn-demo">
+                Log In as Demo User
+            </button>
+        </div>
+    </div>
+);
 }
 
 export default LoginFormModal;

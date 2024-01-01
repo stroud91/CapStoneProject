@@ -31,14 +31,13 @@ function OwnedBusinesses() {
 
 
     if (ownedBusinesses.length === 0) {
-        return <div>Currently you have no businesses created. Will you want to create one?
-                <div>
-                <NavLink exact to="/create-business" className="create-business-button">Create a business</NavLink>
-                </div>
+        return (
+            <div className="no-businesses">
+                Currently you have no businesses created. Will you want to create one?
+                <NavLink to="/create-business" className="create-business-form">Create a business</NavLink>
             </div>
-
+        );
     }
-
 
 
     return (

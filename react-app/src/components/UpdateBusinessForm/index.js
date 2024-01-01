@@ -42,6 +42,9 @@ function UpdateBusiness() {
   const currentUser = useSelector(state => state.session.user);
   const owner_id = currentUser ? currentUser.id : null;
 
+  if(!currentUser) {
+    history.push("/")
+}
 
   const validate = (values) => {
     const errors = [];
