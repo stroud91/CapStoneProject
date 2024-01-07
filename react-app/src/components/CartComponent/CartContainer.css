@@ -1,83 +1,70 @@
-/* .container {
+.cart-container {
     display: flex;
-    height: 100vh;
-    padding: 20px;
-}
-
-.scrollable-items {
-    flex: 1;
-    overflow-y: auto;
-    padding-right: 20px;
-    border-right: 1px solid #ccc;
-}
-
-.dish-container {
-    list-style-type: none;
-    padding: 0;
-}
-
-.dish-card {
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
-}
-
-.image-inside {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    margin-right: 20px;
-}
-
-.product-description {
-    flex: 1;
-}
-
-.add-to-cart {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.add-to-cart:hover {
-    background-color: #0056b3;
-}
-
-.fixed-cart {
-    width: 300px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    background-color: #fff;
-    border-left: 1px solid #ccc;
-    padding: 20px;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-}
-.cart-title {
-    margin-top: 0;
 }
 
 .cart-items {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
 }
 
-.submit-button {
-    background-color: #4CAF50;
+.cart-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: center;
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.cart-item-image {
+    width: 100px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.cart-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cart-item-name {
+    font-weight: bold;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cart-item-remove {
+    background-color: #dc3545;
     color: white;
-    padding: 10px 15px;
     border: none;
-    border-radius: 5px;
+    padding: 5px 10px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.submit-button:hover {
-    background-color: #45a049;
-} */
+.cart-total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cart-submit {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}

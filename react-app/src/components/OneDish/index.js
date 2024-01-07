@@ -39,10 +39,18 @@ function DishDetail() {
 
             setTimeout(() => {
                 setLoading(false);
-              }, 1000);
+              }, 100);
         }
         fetchData();
     }, [dispatch, id ]);
+
+    const handleAddToCart = () => {
+
+        if (currentDish) {
+            dispatch(addItemToCart(currentDish.id, 1));
+            console.log("add to cart logs from one dish", currentDish.id)
+        }
+    }
 
     const handleEditDish = async (business_id, id) => {
         // if (!currentDish) return;
@@ -61,11 +69,12 @@ function DishDetail() {
 
     return (
         <div className="dishDetail-container">
+
             <img src={currentDish.image_id} alt={currentDish.name} className="dishDetail-image" />
             <h3 className="dishDetail-name">{currentDish.name}</h3>
             <p className="dishDetail-description">{currentDish.description}</p>
             <span className="dishDetail-price">${currentDish.price.toFixed(2)}</span>
-
+            {currentUser && (<button onClick={handleAddToCart}>Add to Cart</button>)}
             {currentUser && currentUser.id === currentBusiness.owner_id && (
                 <div className="dishDetail-buttons">
                     {/* <Link to={`/business/${currentBusiness.id}/update-dish/${id}`} className="dishDetail-delete-button">Edit</Link> */}
@@ -85,6 +94,7 @@ function DishDetail() {
                                 modalComponent={<CreateReviewModal id={id} currentUser={currentUser.id} />}
                                 id="dishDetail-postReview-button"
                             />
+
                         )}
                     </div>
                 </div>

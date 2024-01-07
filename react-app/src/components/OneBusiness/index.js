@@ -47,25 +47,17 @@ function BusinessDetails() {
         history.push(`/business/${businessId}/update-dish/${id}`);
     }
 
+    const handleAddToCart = (dishId, event) => {
+        console.log("add to cart logs from one bussiness", dishId)
+        event.stopPropagation();
+        dispatch(addItemToCart(dishId, 1));
+    };
 
-    // const handleDelete = async (businessId, dishId, event) => {
-    //     event.stopPropagation();
-    //      return dispatch(removeDishForBusiness(businessId, dishId)).then(() => {
-
-    //        dispatch(getDishesForBusiness(businessId));
-    //        history.push(`/business/${businessId}`);
-    //      });
-    //    };
     const handleDelete = (businessId, dishId, event) => {
         event.stopPropagation();
         setModalContent(<DeleteDishModal businessId={businessId} dishId={dishId} />);
     };
 
-
-    const handleAddToCart = (dishId, event) => {
-        event.stopPropagation();
-        dispatch(addItemToCart(dishId));
-    }
 
     useEffect(() => {
         let isMounted = true;
@@ -123,11 +115,11 @@ function BusinessDetails() {
                                 <button className="delete-btn" onClick={(event) => handleDelete(selectedBusiness.id, dish.id, event)}>Delete</button>
                             </div>
                         )}
-                        {/* {user && (
+                        {user && (
                         <div className="dish-user-actions">
-                            <button className="add-cart-btn" onClick={() => addToCart(dish.id)}>Add to Cart</button>
+                            <button onClick={(event) => handleAddToCart(dish.id, event)}>Add to Cart</button>
                         </div>
-                        )} */}
+                        )}
                     </div>
                 ))}
                 {user && selectedBusiness.owner_id === user.id && (

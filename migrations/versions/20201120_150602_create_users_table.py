@@ -111,7 +111,8 @@ def upgrade():
         sa.Column('delivery_address', sa.String, nullable=False),
         sa.Column('status', sa.String, nullable=False),
         sa.Column('created_at', sa.DateTime, nullable=False),
-        sa.Column('updated_at', sa.DateTime, nullable=False)
+        sa.Column('updated_at', sa.DateTime, nullable=False),
+        sa.Column('cart_id', sa.Integer, sa.ForeignKey('carts.id'))
     )
 
     # Creating the OrderDetails table

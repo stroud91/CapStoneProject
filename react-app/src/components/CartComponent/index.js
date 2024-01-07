@@ -1,102 +1,97 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector, history } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { getCart, addItemToCart, updateCartItem, deleteItemFromCart, submitCartThunk } from '../../store/cart';
 import { getAllDishes } from '../../store/dish';
 
-const Cart = ({ dishes }) => {
+const Cart = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-    const [cartItems, setCartItems] = useState([]);
-
-
-    useEffect(() => {
-
-        const savedCart = localStorage.getItem('cart');
-        if (savedCart) {
-            setCartItems(JSON.parse(savedCart));
-        }
-    }, []);
+    const cartItems = useSelector(state => state.cart.items);
+    console.log("this is cartItems", cartItems)
+    const dishes = useSelector(state => state.dish.list);
 
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cartItems));
-    }, [cartItems]);
+        dispatch(getAllDishes());
+        dispatch(getCart());
+        console.log("Cart items: ", cartItems);
+        const totalPrice = getTotalPrice();
+        console.log("Total Price: ", totalPrice);
+    }, [dispatch]);
 
-    const addToCart = (dish) => {
-      console.log("this is dish", dish)
-        const existingCartItem = cartItems.find(item => item.dish_id === dish.id);
-        if (existingCartItem) {
-            const updatedCartItems = cartItems.map(item =>
-                item.dish_id === dish.id ? { ...item, quantity: item.quantity + 1 } : item
-            );
-            setCartItems(updatedCartItems);
-        } else {
-            const newCartItem = {
-                id: Date.now(),
-                dish_id: dish.id,
-                dish_name: dish.name,
-                quantity: 1,
-                price: dish.price
-            };
-            setCartItems([...cartItems, newCartItem]);
+    const getDishDetails = (dishId) => dishes.find(dish => dish.id === dishId);
+
+    const handleAddToCart = (dish) => {
+        dispatch(addItemToCart(dish.id, 1));
+    };
+
+    const handleUpdateQuantity = async (itemId, newQuantity) => {
+        if (newQuantity > 0) {
+            await dispatch(updateCartItem(itemId, newQuantity));
+            dispatch(getCart());
         }
-
     };
 
-    const updateQuantity = (dishId, amount) => {
-        const updatedCartItems = cartItems.map(item =>
-            item.dish_id === dishId ? { ...item, quantity: item.quantity + amount } : item
-        ).filter(item => item.quantity > 0);
-        setCartItems(updatedCartItems);
+
+    const handleRemoveItem = async (itemId) => {
+        await dispatch(deleteItemFromCart(itemId));
+        dispatch(getCart());
     };
+
+
+    const handleSubmitCart = async () => {
+        await dispatch(submitCartThunk());
+        alert("Order Submitted! Thank you for your purchase!");
+        history.push("/");
+    };
+
 
     const getTotalPrice = () => {
-        return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
-    }
 
-    const handleSubmit = () => {
-        alert("Order Submitted! Thank you for your purchase!");
-        setCartItems([]);
-        localStorage.removeItem('cart');
+        if (Array.isArray(cartItems.items) && cartItems.items.length > 0) {
+            return cartItems.items.reduce((total, item) => {
+                const dishDetails = getDishDetails(item.dish_id);
+                return total + (dishDetails?.price * item.quantity || 0);
+            }, 0);
+        }
+        return 0;
     };
 
-    return (
-        <div className="container">
-            <div className="scrollable-items">
-                <h2>Select your items you want to add</h2>
-                <ul className="dish-container">
-                    {dishes.map(dish => (
-                        <li key={dish.id} className="dish-card-2">
-                            <img className="image-inside" src={dish.image_id} alt={dish.name} />
-                            <div className="product-description">
-                                <h3>{dish.name}</h3>
-                                <p>${dish.price.toFixed(2)}</p>
-                                <p>From: {dish.business_name}</p>
-                                <button className="add-to-cart" onClick={() => addToCart(dish)}>Add to Cart</button>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-                <div className="fixed-cart">
-                    <h2 className="cart-title">Cart</h2>
-                    <ul className="cart-items">
-                        {cartItems.map(item => (
-                            <li className="cart-item" key={item.id}>
-                                <span className="item-name">{item.dish_name}</span>
-                                <button className="item-decrease" onClick={() => updateQuantity(item.dish_id, -1)}>-</button>
-                                <span className="item-quantity">{item.quantity}</span>
-                                <button className="item-increase" onClick={() => updateQuantity(item.dish_id, 1)}>+</button>
-                                <span className="item-subtotal">Subtotal: ${item.price * item.quantity}</span>
-                                <button className="item-remove" onClick={() => updateQuantity(item.dish_id, -item.quantity)}>Remove</button>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="cart-total">Total: ${getTotalPrice().toFixed(2)}</div>
-                    {cartItems.length > 0 && (
-                        <button className="submit-button" onClick={handleSubmit}>Submit Order</button>
-                    )}
-                </div>
-            </div>
 
+    return (
+        <div className="cart-container">
+            <h2>Your Cart</h2>
+            <div className="cart-items">
+                {cartItems && cartItems.items && cartItems.items.length > 0 ? (
+                    cartItems.items.map(item => {
+                        const dishDetails = getDishDetails(item.dish_id);
+                        return (
+                            <div className="cart-item" key={item.item_id}>
+                                <img src={dishDetails?.image_url} alt={dishDetails?.name} className="cart-item-image" />
+                                <div className="cart-item-details">
+                                    <div className="cart-item-name">{dishDetails?.name}</div>
+                                    <div className="cart-item-price">${dishDetails?.price.toFixed(2)}</div>
+                                    <div className="cart-item-quantity">
+                                        <button onClick={() => handleUpdateQuantity(item.item_id, item.quantity - 1)}>-</button>
+                                        <span>{item.quantity}</span>
+                                        <button onClick={() => handleUpdateQuantity(item.item_id, item.quantity + 1)}>+</button>
+                                    </div>
+                                    <button className="cart-item-remove" onClick={() => handleRemoveItem(item.item_id)}>Remove</button>
+                                </div>
+                            </div>
+                        );
+                    })
+                ) : (
+                    <p>Your cart is empty.</p>
+                )}
+            </div>
+            <div className="cart-total">
+                <div>Total: ${getTotalPrice().toFixed(2)}</div>
+                <button className="cart-submit" onClick={() => handleSubmitCart()}>Checkout</button>
+            </div>
+        </div>
     );
-};
+}
 
 export default Cart;

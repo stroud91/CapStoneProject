@@ -11,7 +11,11 @@ class Cart(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
+
     items = db.relationship('CartItem', back_populates='cart', primaryjoin='CartItem.cart_id == Cart.id')
+
+
+    order = db.relationship("Order", back_populates="cart", uselist=False)
 
     def to_dict(self):
         return {
