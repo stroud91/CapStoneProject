@@ -48,7 +48,7 @@ function BusinessDetails() {
     }
 
     const handleAddToCart = (dishId, event) => {
-       
+
         event.stopPropagation();
         dispatch(addItemToCart(dishId, 1));
     };
@@ -116,10 +116,10 @@ function BusinessDetails() {
                             </div>
                         )}
                         {user && (
-                        <div className="dish-user-actions">
-                            <button onClick={(event) => handleAddToCart(dish.id, event)}>Add to Cart</button>
-                        </div>
-                        )}
+  <div className="dish-user-actions">
+    <button className="add-to-cart-btn" onClick={(event) => handleAddToCart(dish.id, event)}>Add to Cart</button>
+  </div>
+)}
                     </div>
                 ))}
                 {user && selectedBusiness.owner_id === user.id && (

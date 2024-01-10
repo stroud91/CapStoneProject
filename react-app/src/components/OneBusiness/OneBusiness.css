@@ -6,6 +6,7 @@
     align-items: center;
     padding: 20px;
     font-family: 'Arial', sans-serif;
+
 }
 
 .business-logo img {
@@ -43,7 +44,8 @@
 
 .business-actions, .dish-owner-actions, .dish-user-actions {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 10px;
     margin-top: 20px;
 }
 
@@ -75,6 +77,7 @@ button.add-cart-btn:hover {
     justify-content: center;
     margin-top: 30px;
 
+
 }
 
 .dish {
@@ -83,6 +86,10 @@ button.add-cart-btn:hover {
     transition: box-shadow 0.3s ease;
     cursor: pointer;
     background-color: rgb(39, 39, 39);
+    width: 225px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .dish:hover {
@@ -95,6 +102,7 @@ button.add-cart-btn:hover {
     align-items: center;
     height: 150px;
     overflow: hidden;
+    max-width: 250px;
 }
 
 .dish-image {
@@ -139,8 +147,8 @@ button.add-cart-btn:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120px;
-    width: 120px;
+    height: 1500px;
+    width: 150x;
     border-radius: 50%;
     background-color: #e0e0e0;
     transition: background-color 0.3s ease;
@@ -155,10 +163,40 @@ button.add-cart-btn:hover {
     transition: transform 0.3s ease;
 }
 
-/* .plus-image:hover {
-    transform: rotate(45deg);
-} */
+.dishDetail-userActions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
 
+.dish-owner-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dish-user-actions {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+/* Add styles for the new add-to-cart button */
+.add-to-cart-btn {
+    align-self: center;
+    padding: 10px 20px;
+    margin-top: auto;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #218838;
+}
 
 
 
