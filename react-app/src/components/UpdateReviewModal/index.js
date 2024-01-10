@@ -7,7 +7,7 @@ import { updateReview } from "../../store/review";
 import { fetchReviewsForDish } from "../../store/review";
 
 function EditReviewModal({ id, review }) {
- console.log("modal for update r", id, review)
+
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [errors, setErrors] = useState({});

@@ -13,7 +13,7 @@ function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searched, setSearched] = useState(false)
   const query = useSelector(state => state.business.search)
-  console.log('query', query)
+ 
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
   };
@@ -62,7 +62,7 @@ function SearchBar() {
         <div>
 
         </div>
-        
+
     </section>
 )
 }

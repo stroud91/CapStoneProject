@@ -9,15 +9,15 @@ const Cart = () => {
     const history = useHistory();
 
     const cartItems = useSelector(state => state.cart.items);
-    console.log("this is cartItems", cartItems)
+
     const dishes = useSelector(state => state.dish.list);
 
     useEffect(() => {
         dispatch(getAllDishes());
         dispatch(getCart());
-        console.log("Cart items: ", cartItems);
+
         const totalPrice = getTotalPrice();
-        console.log("Total Price: ", totalPrice);
+        
     }, [dispatch]);
 
     const getDishDetails = (dishId) => dishes.find(dish => dish.id === dishId);
@@ -27,7 +27,7 @@ const Cart = () => {
     };
 
     const handleUpdateQuantity = async (itemId, quantityChange) => {
-        
+
         await dispatch(updateCartItem(itemId, quantityChange));
         dispatch(getCart());
       };

@@ -23,9 +23,9 @@ function DishDetail() {
 
     const currentUser = useSelector(state => state.session.user);
     const currentDish = useSelector(state => state.dish.current);
-    console.log("current dish", currentDish)
+
     const currentReviews = useSelector(state => state.review.reviewsForDish);
-    console.log("current reviews", currentReviews)
+
     const currentBusiness = useSelector(state => state.business.list).find(biz => biz.id === currentDish.business_id);
 
 
@@ -48,7 +48,7 @@ function DishDetail() {
 
         if (currentDish) {
             dispatch(addItemToCart(currentDish.id, 1));
-            console.log("add to cart logs from one dish", currentDish.id)
+            
         }
     }
 

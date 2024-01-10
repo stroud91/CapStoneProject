@@ -9,7 +9,7 @@ import { fetchReviewsForDish } from '../../store/review';
 
 
 function DeleteReviewModal({ id, review }) {
-    console.log("modal for delete r", id , review)
+  
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
   const dispatch = useDispatch();

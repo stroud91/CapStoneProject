@@ -12,13 +12,13 @@ function DishUpdateForm() {
   const dispatch = useDispatch();
   const history = useHistory();
   const {businessId, id} = useParams();
-  console.log("this is use params for bid and id", businessId, id)
+
   const currentDish = useSelector(state =>
     state.dish.list
       ? state.dish.list.find(dish => dish.id === parseInt(id))
       : null
   );
-  console.log("this is current dish for update form", currentDish)
+ 
   const CATEGORIES = [
     { id: 1, name: 'Asian' },
     { id: 2, name: 'European' },

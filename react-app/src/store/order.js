@@ -36,7 +36,7 @@ export const getUserOrders = () => async (dispatch) => {
   const response = await fetch("/api/order_user/orders");
   if (response.ok) {
     const data = await response.json();
-    console.log("this is data", data)
+  
     dispatch(setOrders(data));
   } else {
     console.error("Thunk Error: Failed to fetch user orders");

@@ -51,7 +51,7 @@ export const getCart = () => async (dispatch) => {
 };
 
 export const addItemToCart = (dish_id, quantity) => async (dispatch) => {
-  console.log("add to cart logs from thunk", dish_id, quantity)
+ 
   try {
     const response = await fetch(`/api/cart/add`, {
       method: "POST",

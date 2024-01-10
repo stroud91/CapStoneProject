@@ -14,7 +14,6 @@ function getPrev(business) {
 }
 
 function BusinessCard({ business }) {
-    console.log("this is for the image", business)
     return (
         <div className='businessMain__item'>
             <div className="businessMain__image">

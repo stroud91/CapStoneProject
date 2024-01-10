@@ -22,7 +22,7 @@ function UpdateBusiness() {
   useEffect(() => {
     // dispatch(businessActions.getAllBusinesses())
     dispatch(businessActions.fetchOneBusiness(id));
-    console.log("this is id that is passed on useEffect", id)
+
   }, [dispatch]);
 
 
@@ -131,7 +131,7 @@ function UpdateBusiness() {
       about,
       type
     };
-    console.log("this is react side updated bussines data", updatedBusinessData)
+    
 
     await dispatch(businessActions.editBusiness(id, updatedBusinessData));
 

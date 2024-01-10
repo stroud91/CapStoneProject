@@ -6,7 +6,7 @@ import { getDishesForBusiness } from '../../store/dish';
 import { useModal } from "../../context/Modal";
 
 function DeleteDishModal({ businessId, dishId }) {
-console.log("this is dish delete modal", businessId,dishId)
+
   const dispatch = useDispatch();
   const history = useHistory();
   const { closeModal } = useModal();

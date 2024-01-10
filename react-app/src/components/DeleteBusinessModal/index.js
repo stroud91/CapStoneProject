@@ -6,7 +6,7 @@ import "./DeleteBusinessModal.css";
 import { useModal } from "../../context/Modal";
 
 export default function DeleteModal({ bus_data }) {
-  console.log("DeleteModal is rendered", bus_data.id);
+ 
   const id = bus_data.id
   const dispatch = useDispatch();
   const { closeModal } = useModal();

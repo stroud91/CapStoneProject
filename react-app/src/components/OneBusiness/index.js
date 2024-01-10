@@ -22,7 +22,7 @@ function BusinessDetails() {
     const { id } = useParams();
     const { setModalContent } = useModal();
 
-    console.log("Business ID from params:", id);
+
     const [loading, setLoading] = useState(true);
     const [showAddDishForm, setShowAddDishForm] = useState(false);
     const [showAddBusinesshForm, setShowAddBusinessForm] = useState(false);
@@ -31,7 +31,7 @@ function BusinessDetails() {
     const currentUser = useSelector((state) => state.session.user);
     const reviews = useSelector((state) => state.review.allReviews);
     const user = currentUser;
-    console.log("Selected Business from Redux:", selectedBusiness);
+
 
     const showAddDishFormFunction = () => {
         history.push(`/create-dish`);
@@ -48,7 +48,7 @@ function BusinessDetails() {
     }
 
     const handleAddToCart = (dishId, event) => {
-        console.log("add to cart logs from one bussiness", dishId)
+       
         event.stopPropagation();
         dispatch(addItemToCart(dishId, 1));
     };

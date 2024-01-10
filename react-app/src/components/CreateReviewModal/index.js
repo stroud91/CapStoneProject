@@ -10,12 +10,12 @@ import { fetchReviewsForDish } from '../../store/review';
 import { fetchSingleBusinessReviews } from "../../store/review";
 
 function CreateReviewModal({ id, currentUser }) {
-  console.log("review props", id , currentUser)
+
   const dispatch = useDispatch();
   const history = useHistory();
   const currentReviews = useSelector(state => state.review.reviewsForDish);
   const dish = useSelector(state => state.dish.current);
-  console.log("dish for create review", dish)
+  
 
   const [errors, setErrors] = useState({});
   const [stars, setStars] = useState(0);
