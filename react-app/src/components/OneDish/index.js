@@ -33,9 +33,10 @@ function DishDetail() {
 
         async function fetchData() {
             setLoading(true);
+            await dispatch(getAllBusinesses());
             await dispatch(getSingleDish(id));
             await dispatch(fetchReviewsForDish(id));
-            await dispatch(getAllBusinesses());
+
 
             setTimeout(() => {
                 setLoading(false);
@@ -61,7 +62,9 @@ function DishDetail() {
     const handleDeleteDish = async (dishId) => {
         if (!currentDish) return;
         await dispatch(removeDishForBusiness(currentDish.business_id, dishId));
+        history.push(`/business/${currentBusiness.id}`);
     };
+
 
     if (loading) {
         return <div><LoadingAnimation /></div>;
