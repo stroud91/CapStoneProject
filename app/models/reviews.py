@@ -29,5 +29,6 @@ class Review(db.Model):
             'comment': self.comment,
             'review_date': self.review_date,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'profile_image_id': self.user.profile_image_id
         }

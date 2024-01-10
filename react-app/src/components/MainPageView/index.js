@@ -63,36 +63,41 @@ function MainPage() {
       </div>
 
       <section className="top-rated-dish">
-        <h2>Top Rated Dish</h2>
-        <div className="dish-container">
-          {topRatedDishes.map(dish => (
-            <div key={dish.id} className="dish-card">
-              <div className="image-for-top-rated">
-                 <img src={dish.image_id} alt="CoverTwo" />
-                </div>
-              <p>{dish.name}</p>
-              <p>{parseFloat(dish.rating).toFixed(2)} ★</p>
-              <Link to={`/dish/${dish.id}`}>More...</Link>
-            </div>
-          ))}
+  <h2>Top Rated Dish</h2>
+  <div className="dish-container">
+    {topRatedDishes.map(dish => (
+      <Link key={dish.id} to={`/dish/${dish.id}`} className="dish-card">
+        <div className="image-for-top-rated">
+          <img src={dish.image_id} alt={dish.name} />
         </div>
-      </section>
-
-      <section className="top-ordered-dish">
-        <h2>Top Ordered Dish</h2>
-        <div className="dish-container">
-          {topOrderedDishes.map(dish => (
-
-              <div key={dish.id} className="dish-card">
-                <div className="image-for-top-picked">
-                 <img src={dish.image_id} alt="CoverTwo" />
-                </div>
-              <p>{dish.name}</p>
-              <Link to={`/dish/${dish.id}`}>More...</Link>
-            </div>
-          ))}
+        <div className="dish-card-content">
+          <p>{dish.name}</p>
+          <p>{parseFloat(dish.rating).toFixed(2)} ★</p>
+          <p>{dish.description}</p>
         </div>
-       </section>
+      </Link>
+    ))}
+  </div>
+</section>
+
+
+<section className="top-ordered-dish">
+  <h2>Top Ordered Dish</h2>
+  <div className="dish-container">
+    {topOrderedDishes.map(dish => (
+      <Link key={dish.id} to={`/dish/${dish.id}`} className="dish-card">
+        <div className="image-for-top-picked">
+          <img src={dish.image_id} alt={dish.name} />
+        </div>
+        <div className="dish-card-content">
+          <p>{dish.name}</p>
+          <p>{dish.description}</p>
+        </div>
+      </Link>
+    ))}
+  </div>
+</section>
+
 
       <footer className='main-footer'>
         <p>&copy; 2023 Capstone Project - Developed by <a href="https://github.com/stroud91">Ledian Fekaj</a> - React - Python - Flask - SQLAlchemy - PostgreSQL - Redux</p>

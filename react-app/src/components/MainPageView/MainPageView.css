@@ -100,6 +100,10 @@ body, html {
     transition: transform 0.3s ease-in-out;
     position: relative;
     overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dish-card::before {
@@ -108,7 +112,8 @@ body, html {
     padding-top: 56.25%;
 }
 .dish-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .dish-card img {
@@ -207,7 +212,19 @@ body, html {
 }
 
 
+.action-buttons-container {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 20px;
+  }
 
+  .action-button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
 
 /* Cart Styling */
 .cart-container {
@@ -397,3 +414,82 @@ body, html {
     transition: background-color 0.2s;
     text-decoration: none;
   }
+
+
+
+  /*Reviews Styling  */
+
+  /* Container for each review */
+.dishDetail-reviewItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 10px;
+}
+
+.dishDetail-reviewContent {
+    flex-grow: 1;
+  }
+
+  .dishDetail-reviewUserDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+/* Profile photo */
+.dishDetail-reviewUserPhoto {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+/* Header containing user name and time of the review */
+.dishDetail-reviewHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* User name styling */
+.dishDetail-reviewUserName {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* Timestamp styling */
+.dishDetail-reviewTime {
+    font-size: 0.8em;
+    color: #666;
+}
+
+/* Review text styling */
+.dishDetail-reviewComment {
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+/* Rating container */
+.dishDetail-reviewRating {
+    display: flex;
+    align-items: center;
+}
+
+/* Style for filled stars */
+.dishDetail-reviewRating .on i {
+    color: #ffc107;
+}
+
+/* Style for empty stars */
+.dishDetail-reviewRating .off i {
+    color: #e4e5e9;
+}
+
+/* Star icon styling */
+.fa-star {
+    margin-right: 2px;
+}

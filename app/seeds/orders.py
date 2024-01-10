@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy.sql import text
 
 def seed_orders():
-    # Sample orders for seeding. Adjust the values as necessary
+   
     order1 = Order(
         user_id=1,
         total_price=25.99,

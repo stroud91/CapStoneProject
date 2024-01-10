@@ -131,7 +131,7 @@ def get_top_rated_dishes():
         .order_by(func.avg(Review.rating).desc())\
         .limit(3).all()
 
-    dishes_data = [{'id': dish.id, 'name': dish.name, 'rating': average_rating, 'image_id': dish.image_id} for dish, average_rating in top_rated_dishes]
+    dishes_data = [{'id': dish.id, 'name': dish.name, 'rating': average_rating, 'image_id': dish.image_id, 'description': dish.description} for dish, average_rating in top_rated_dishes]
     return jsonify(dishes_data)
 
 
@@ -144,5 +144,5 @@ def get_top_ordered_dishes():
         .order_by(func.count(OrderDetail.dish_id).desc())\
         .limit(3).all()
 
-    dishes_data = [{'id': dish.id, 'name': dish.name, 'orders': order_count, 'image_id': dish.image_id} for dish, order_count in top_ordered_dishes]
+    dishes_data = [{'id': dish.id, 'name': dish.name, 'orders': order_count, 'image_id': dish.image_id, 'description': dish.description} for dish, order_count in top_ordered_dishes]
     return jsonify(dishes_data)
