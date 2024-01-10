@@ -13,7 +13,7 @@ function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searched, setSearched] = useState(false)
   const query = useSelector(state => state.business.search)
- 
+
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
   };
@@ -22,6 +22,7 @@ function SearchBar() {
     e.preventDefault();
     if (searchTerm !== '') {
       await dispatch(searchBusinessByName(searchTerm));
+      setSearchTerm('');
       setSearched(true);
       history.push('/search');
     } else {
