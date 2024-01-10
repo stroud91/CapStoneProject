@@ -97,13 +97,14 @@ export const submitCartThunk = () => async (dispatch) => {
 
 
 export const updateCartItem = (cartItemId, newQuantity) => async (dispatch) => {
+
   try {
     const response = await fetch(`/api/cart/update`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ cart_item_id: cartItemId, quantity: newQuantity }),
+      body: JSON.stringify({ cart_item_id: cartItemId, change: newQuantity }),
     });
 
     if (response.ok) {
@@ -164,10 +165,11 @@ const cartReducer = (state = initialState, action) => {
         return {
           ...state,
           items: state.items.map(item =>
-            item.id === action.payload.itemId ? { ...item, quantity: action.payload.newQuantity } : item
+            item.id === action.payload.id ? { ...item, ...action.payload } : item
           ),
           error: null
         };
+
         case SUBMIT_CART:
           return {
               ...state,
