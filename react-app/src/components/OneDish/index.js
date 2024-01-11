@@ -29,23 +29,22 @@ function DishDetail() {
     const currentBusiness = useSelector(state => state.business.list).find(biz => biz.id === currentDish.business_id);
 
 
-    useEffect(() => {
-    
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const businessResponse = await dispatch(getAllBusinesses()).unwrap();
-        const dishResponse = await dispatch(getSingleDish(id)).unwrap();
-        const reviewsResponse = await dispatch(fetchReviewsForDish(id)).unwrap();
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      }
-    }
+  useEffect(() => {
 
-    fetchData();
-  }, [dispatch, id]);
+        async function fetchData() {
+            setLoading(true);
+            
+            await dispatch(getSingleDish(id));
+            await dispatch(getAllBusinesses());
+            await dispatch(fetchReviewsForDish(id));
+
+
+            setTimeout(() => {
+                setLoading(false);
+              }, 100);
+        }
+        fetchData();
+    }, [dispatch, id ]);
 
     const handleAddToCart = () => {
 
