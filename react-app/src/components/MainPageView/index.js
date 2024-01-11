@@ -11,6 +11,7 @@ function MainPage() {
   const [topOrderedDishes, setTopOrderedDishes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -37,7 +38,6 @@ function MainPage() {
       const topOrderedData = await topOrderedResponse.json();
       setTopOrderedDishes(topOrderedData);
 
-
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
@@ -48,6 +48,11 @@ function MainPage() {
 
   if (isLoading) {
     return <div><LoadingAnimation /></div>;
+  }
+
+  const getOrdinalIndicator = (index) => {
+    const ordinals = ['1st Top Rated', '2nd Top Rated', '3rd Top Rated'];
+    return ordinals[index] || `${index + 1}th Top Rated`;
   }
 
   return businesses.length > 0 ? (
@@ -82,27 +87,33 @@ function MainPage() {
 
 
 <section className="top-ordered-dish">
-  <h2>Top Ordered Dish</h2>
-  <div className="dish-container">
-    {topOrderedDishes.map(dish => (
-      <Link key={dish.id} to={`/dish/${dish.id}`} className="dish-card">
-        <div className="image-for-top-picked">
-          <img src={dish.image_id} alt={dish.name} />
-        </div>
-        <div className="dish-card-content">
-          <p>{dish.name}</p>
-          <p>{dish.description}</p>
-        </div>
-      </Link>
-    ))}
-  </div>
-</section>
+      <h2>Top Ordered Dish</h2>
+      <div className="dish-container">
+        {topOrderedDishes.map((dish, index) => (
+          <Link key={dish.id} to={`/dish/${dish.id}`} className="dish-card">
+            <div className="image-for-top-picked">
+              <img src={dish.image_id} alt={dish.name} />
+            </div>
+            <div className="dish-card-content">
+              <p>{dish.name}</p>
+              <p>{dish.description}</p>
 
+              <p>{getOrdinalIndicator(index)}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
 
-      <footer className='main-footer'>
-        <p>&copy; 2023 Capstone Project - Developed by <a href="https://github.com/stroud91">Ledian Fekaj</a> - React - Python - Flask - SQLAlchemy - PostgreSQL - Redux</p>
+    <footer className='main-footer'>
+  <p>
+    &copy; 2023 Capstone Project - Developed by
+     <a href="https://github.com/stroud91">  <a/>
+      <i className="fab fa-github"></i>Ledian Fekaj
+    </a> - React - Python - Flask - SQLAlchemy - PostgreSQL - Redux
+  </p>
+</footer>
 
-      </footer>
     </div>
   ) : (
     <div><LoadingAnimation /></div>

@@ -36,6 +36,11 @@ body, html {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
+.fa-github {
+    margin-right: 5px;
+  }
+
+
 /* Main Page Styles */
 .main-page-container {
     width: 100vw;
