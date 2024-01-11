@@ -108,8 +108,10 @@ function MainPage() {
     <footer className='main-footer'>
   <p>
     &copy; 2023 Capstone Project - Developed by
-     <a href="https://github.com/stroud91">  <a/>
-      <i className="fab fa-github"></i>Ledian Fekaj
+    <a href="https://github.com/stroud91"> </a>
+       <i className="fab fa-github"> </i>
+    <a href="https://www.linkedin.com/in/ledian-f-47b586143/"> <a/>
+      <i className="fab fa-linkedin"></i> Ledian Fekaj
     </a> - React - Python - Flask - SQLAlchemy - PostgreSQL - Redux
   </p>
 </footer>
