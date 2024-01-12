@@ -14,6 +14,7 @@ import "./OneBusiness.css";
 import plusImage from '../../images/plusimage.jpg'
 import { useModal } from "../../context/Modal";
 import addToCart from '../CartComponent';
+import LoadingAnimation from "../Loading";
 
 function BusinessDetails() {
 
@@ -77,7 +78,7 @@ function BusinessDetails() {
     }, [dispatch, id]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div><LoadingAnimation /></div>;
     }
 
     return (
