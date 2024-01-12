@@ -29,12 +29,13 @@ function DishDetail() {
     const currentBusiness = useSelector(state => state.business.list).find(biz => biz.id === currentDish.business_id);
 
 
-    useEffect(() => {
+  useEffect(() => {
 
         async function fetchData() {
             setLoading(true);
-            await dispatch(getAllBusinesses());
+            
             await dispatch(getSingleDish(id));
+            await dispatch(getAllBusinesses());
             await dispatch(fetchReviewsForDish(id));
 
 
