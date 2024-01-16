@@ -24,7 +24,7 @@ function Navigation({ isLoaded }) {
       {/* // )} */}
       {sessionUser && (
         <NavLink exact to="/view-cart">
-        <img className="small-logo" src={shopCart} alt="" />
+        <img className="small-logo2" src={shopCart} alt="" />
       </NavLink>
       )}
       {isLoaded && (
