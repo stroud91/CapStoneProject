@@ -8,8 +8,7 @@ import { fetchReviewsForDish } from '../../store/review';
 
 
 
-function DeleteReviewModal({ id, review }) {
-  
+function DeleteReviewModal({ id, reviewId }) {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
   const dispatch = useDispatch();
@@ -18,7 +17,7 @@ function DeleteReviewModal({ id, review }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors({});
-    return dispatch(deleteReview(review))
+    return dispatch(deleteReview(reviewId))
       .then(() => {
         closeModal();
         dispatch(fetchReviewsForDish(id))
@@ -42,7 +41,7 @@ function DeleteReviewModal({ id, review }) {
           onClick={handleSubmit}
           className='confirm-yes'
         >
-          Yes (Delete Review)
+          Yes
         </button>
         <button
           onClick={((e) => {
@@ -50,7 +49,7 @@ function DeleteReviewModal({ id, review }) {
           })}
           className='cancel'
         >
-          No (Keep Review)
+          No
         </button>
       </div>
     </div>
