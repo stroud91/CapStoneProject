@@ -15,7 +15,7 @@ function CreateReviewModal({ id, currentUser }) {
   const history = useHistory();
   const currentReviews = useSelector(state => state.review.reviewsForDish);
   const dish = useSelector(state => state.dish.current);
-  
+
 
   const [errors, setErrors] = useState({});
   const [stars, setStars] = useState(0);
@@ -91,7 +91,7 @@ function CreateReviewModal({ id, currentUser }) {
           type="text"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          className="comment-input"
+          className="comment-input2"
           placeholder="Leave your review here..."
         />
       </label>

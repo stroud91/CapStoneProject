@@ -13,8 +13,8 @@
     margin-bottom: 15px;
 }
 
-.comment-input {
-    width: 100%;
+.comment-input2 {
+    width: 95%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -57,12 +57,12 @@
 }
 
 .submit-button {
-    background-color: #007BFF;
+    background-color: #b5a240;
     color: #fff;
 }
 
 .submit-button:hover {
-    background-color: #0056b3;
+    background-color: #b5a240;
 }
 
 /* StarsRating styling */
