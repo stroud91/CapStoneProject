@@ -29,6 +29,7 @@ function OwnedBusinesses() {
         business => business.owner_id === currentUser.id
     );
 
+   
 
     if (ownedBusinesses.length === 0) {
         return (

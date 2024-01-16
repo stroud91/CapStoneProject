@@ -57,7 +57,7 @@ button.edit-button, button.delete-button, button.edit-btn, button.delete-btn, bu
 }
 
 button.edit-button:hover, button.edit-btn:hover {
-    background-color: #ddd;
+    background-color: #000000;
 }
 
 button.delete-button:hover, button.delete-btn:hover {
@@ -189,13 +189,13 @@ button.add-cart-btn:hover {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    background-color: #28a745;
+    background-color: #b5a240;
     color: white;
     border-radius: 5px;
 }
 
 .add-to-cart-btn:hover {
-    background-color: #218838;
+    background-color: black;
 }
 
 
@@ -317,7 +317,7 @@ button.add-cart-btn:hover {
 .dishDetail-reviewRating {
     font-size: 1rem;
     font-weight: bold;
-    color: #FFD700; /* Gold color for ratings */
+    color: #FFD700;
 }
 
 /* Review action buttons */
